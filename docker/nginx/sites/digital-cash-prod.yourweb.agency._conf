@@ -1,0 +1,39 @@
+server {
+    listen 80;
+    server_name digital-cash-prod.yourweb.agency
+    root /var/www/digital-cash/public;
+
+    location / {
+        # try to serve file directly, fallback to index.php
+        try_files $uri /index.php$is_args$args;
+    }
+
+    location ~* \.(?:ico|css|js|gif|jpe?g|png|svg|woff|woff2|eot|ttf)$ {
+        try_files $uri /index.php/$1?$query_string;
+        access_log off;
+        expires 30d;
+        add_header Pragma public;
+        add_header Cache-Control "public";
+    }
+
+    location ~ ^/index\.php(/|$) {
+        fastcgi_pass php-upstream;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+        fastcgi_buffers 16 16k;
+        fastcgi_buffer_size 32k;
+
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT $realpath_root;
+        fastcgi_param SYMFONY_ENV prod;
+
+        internal;
+    }
+
+    location ~ \.php$ {
+        return 404;
+    }
+
+    error_log /var/log/nginx/digital-cash.log;
+    access_log /var/log/nginx/digital-cash.log;
+}

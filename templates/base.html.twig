@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome to YourWeb.Agency!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        {% block headerExtra %}{% endblock %}
+    </head>
+    <body>
+        <header id="sectionPageHeader">
+            <h1>{% block pageTitle %}Welcome To YourWeb.Agency{% endblock %}</h1>
+        </header>
+        <section id="body">
+            {% block sectionPageBody %}
+                <p>Body content goes here.</p>
+            {% endblock %}
+        </section>
+        <footer>
+            {% block sectionPageFoot %}{% endblock %}
+        </footer>
+        {% block sectionBodyJavascripts %}{% endblock %}
+    </body>
+</html>
