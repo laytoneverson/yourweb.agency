@@ -1,23 +1,616 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome to YourWeb.Agency!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        {% block headerExtra %}{% endblock %}
-    </head>
-    <body>
-        <header id="sectionPageHeader">
-            <h1>{% block pageTitle %}Welcome To YourWeb.Agency{% endblock %}</h1>
-        </header>
-        <section id="body">
-            {% block sectionPageBody %}
-                <p>Body content goes here.</p>
-            {% endblock %}
-        </section>
-        <footer>
-            {% block sectionPageFoot %}{% endblock %}
-        </footer>
-        {% block sectionBodyJavascripts %}{% endblock %}
-    </body>
+<!--
+Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
+Version: 1.0.0
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<!-- Head BEGIN -->
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Welcome to YourWeb.Agency!{% endblock %}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="{% block metaDescription %}Web technology and resources. Php Development, CryptoCurrency, Docker{% endblock %}" name="description">
+    <meta content="{% block metaKeywords %}Php Development, CryptoCurrency, Docker{% endblock %}" name="keywords">
+    <meta content="keenthemes" name="author">
+
+    <meta property="og:site_name" content="{% block socialSiteName %}YourWeb.Agency{% endblock %}">
+    <meta property="og:title" content="{% block socialTitle %}YourWeb.Agency - Making the Web YourWeb.{% endblock %}">
+    <meta property="og:description" content="{% block socialDescription %}Talored web applications, resources for developers, and cryptocurrency. We're making the web YourWeb.{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{% block socialLog %}{% endblock %}"><!-- link to image for socio -->
+    <meta property="og:url" content="{% block socialUrl %}http://yourweb.agency/{% endblock %}">
+
+    <link rel="shortcut icon" href="{% block favicon %}favicon.ico{% endblock %}">
+
+    {% block manifest %}<script src="{{ asset('build/manifest.js') }}"></script>{% endblock %}
+
+    <!-- Fonts START -->
+    {% block fontsStart %}
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
+    {% endblock %}
+    <!-- Fonts END -->
+
+    {% block globalCssHref %}<link rel="stylesheet" href="{{ asset('build/global/app-global.css') }}">{% endblock %}    
+    {% block themeStyleSheets %}<link rel="stylesheet" href="{{ asset('build/theme/matronic.css') }}">{% endblock %}    
+    {% block pageCssHref %}<link rel="stylesheet" href="{{ asset('build/page/home-page.css') }}">{% endblock %}
+</head>
+<!-- Head END -->
+
+<!-- Body BEGIN -->
+<body class="{% block bodyClass %} corporate {% endblock %}">
+
+{% block styleCustomizer %}
+<div class="color-panel hidden-sm">
+    <div class="color-mode-icons icon-color"></div>
+    <div class="color-mode-icons icon-color-close"></div>
+    <div class="color-mode">
+        <p>THEME COLOR</p>
+        <ul class="inline">
+            <li class="color-red {% block themColorRed %}current{% endblock %} color-default" data-style="red"></li>
+            <li class="color-blue" {% block themeColorBlue %} {% endblock %} data-style="blue"></li>
+            <li class="color-green" {% block themeColorGree %} {% endblock %} data-style="green"></li>
+            <li class="color-orange" {% block themeColorOrange %} {% endblock %} data-style="orange"></li>
+            <li class="color-gray" {% block themeColorGray %} {% endblock %} data-style="gray"></li>
+            <li class="color-turquoise" {% block themeColorTurquoise %} {% endblock %} data-style="turquoise"></li>
+        </ul>
+    </div>
+</div>
+{% endblock styleCustomizer %}
+
+{% block topBar %}
+<div class="pre-header">
+    <div class="container">
+        <div class="row">
+
+            {% block topBarLeft %}
+            <div class="col-md-6 col-sm-6 additional-shop-info">
+                <ul class="list-unstyled list-inline">
+
+                    {% block topBarLeftItems %}
+                    <li><i class="fa fa-twitter"></i><a href="https://twitter.com/laytone?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @laytone</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></li>
+                    <li><i class="fa fa-envelope-o"></i><span>info@yourweb.agency</span></li>
+                    {% endblock topBarLeftItems %}
+
+                </ul>
+            </div>
+            {% endblock topBarLeft %}
+
+            {% block topBarRight %}
+            <div class="col-md-6 col-sm-6 additional-nav">
+                <ul class="list-unstyled list-inline pull-right">
+                    
+                    {% block topBarRightItems %}
+                    <li><a href="page-login.html">Log In</a></li>
+                    <li><a href="page-reg-page.html">Registration</a></li>
+                    {% endblock topBarRightItems %}
+
+                </ul>
+            </div>
+            {% endblock topBarRight %}
+
+        </div>
+    </div>
+</div>
+{% endblock topBar %}
+
+{% block pageHeader %}
+<div class="header">
+    <div class="container">
+
+        {% block siteLogo %}
+        <a class="site-logo" 
+          href="{% block logoLinkUrl %} http://yourweb.agency/ {% endblock %}"
+        >
+            <img src="{% block logoImageSrc %}assets/corporate/img/logos/logo-corp-red.png{% endblock %}"
+                 alt="{% block logoAltText %}YourWeb.Agency Logo{% endblock %}">
+        </a>
+        {% endblock siteLogo %}
+
+        <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+        {% block siteNavigation %}
+        <div class="header-navigation pull-right font-transform-inherit">
+            <ul>
+
+                {% block headerNav %}
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">YourWeb.Agency</a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="http://yourweb.agency/">YourWeb.Agency Home</a></li>
+                        <li><a href="http://digital-cash.yourweb.agency/">Digital Cash Home</a></li>
+                    </ul>
+                </li>
+                <li><a href="/wallets">Wallets</a></li>
+                <li><a href="/top-bitcoin-faucets">Best Faucets</a></li>
+                <li><a href="/games-and-casinos">Games And Casions</a></li>
+                <li><a href="/where-to-buy-bitcoins">Buy Coins</a></li>
+                <li><a href="/invest-and-trade">Invest And Exchange</a></li>
+                <li><a href="/mining">Mine Coins</a></li>
+                {% endblock %}
+
+                {% block search %}
+                <li class="menu-search">
+                    <span class="sep"></span>
+                    <i class="fa fa-search search-btn"></i>
+                    <div class="search-box">
+                        <form action="#">
+                            <div class="input-group">
+                                <input type="text" placeholder="Search" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                {% endblock search %}
+                <!-- END TOP SEARCH -->
+            </ul>
+        </div>
+        {% endblock siteNavigation %}
+
+    </div>
+</div>
+{% endblock pageHeader %}
+
+<!-- BEGIN SLIDER -->
+<div class="page-slider margin-bottom-40">
+    <div id="carousel-example-generic" class="carousel slide carousel-slider">
+        <!-- Indicators -->
+        <ol class="carousel-indicators carousel-indicators-frontend">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <!-- First slide -->
+            <div class="item carousel-item-eight active">
+                <div class="container">
+                    <div class="carousel-position-six text-uppercase text-center">
+                        <h2 class="margin-bottom-20 animate-delay carousel-title-v5" data-animation="animated fadeInDown">
+                            Expore the power <br/>
+                            <span class="carousel-title-normal">of Metronic</span>
+                        </h2>
+                        <p class="carousel-subtitle-v5 border-top-bottom margin-bottom-30" data-animation="animated fadeInDown">This is what you were looking for</p>
+                        <a class="carousel-btn-green" href="#" data-animation="animated fadeInUp">Purchase Now!</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second slide -->
+            <div class="item carousel-item-nine">
+                <div class="container">
+                    <div class="carousel-position-six">
+                        <h2 class="animate-delay carousel-title-v6 text-uppercase" data-animation="animated fadeInDown">
+                            Need a website design?
+                        </h2>
+                        <p class="carousel-subtitle-v6 text-uppercase" data-animation="animated fadeInDown">
+                            This is what you were looking for
+                        </p>
+                        <p class="carousel-subtitle-v7 margin-bottom-30" data-animation="animated fadeInDown">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+                            Sed est nunc, sagittis at consectetur id.
+                        </p>
+                        <a class="carousel-btn-green" href="#" data-animation="animated fadeInUp">Purchase Now!</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third slide -->
+            <div class="item carousel-item-ten">
+                <div class="container">
+                    <div class="carousel-position-six">
+                        <h2 class="animate-delay carousel-title-v6 text-uppercase" data-animation="animated fadeInDown">
+                            Powerful &amp; Clean
+                        </h2>
+                        <p class="carousel-subtitle-v6 text-uppercase" data-animation="animated fadeInDown">
+                            Responsive Website &amp; Admin Theme
+                        </p>
+                        <p class="carousel-subtitle-v7 margin-bottom-30" data-animation="animated fadeInDown">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
+                            Sed est nunc, sagittis at consectetur id.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control carousel-control-shop carousel-control-frontend" href="#carousel-example-generic" role="button" data-slide="prev">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </a>
+        <a class="right carousel-control carousel-control-shop carousel-control-frontend" href="#carousel-example-generic" role="button" data-slide="next">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+<!-- END SLIDER -->
+
+<div class="main">
+    <div class="container">
+        <!-- BEGIN SERVICE BOX -->
+        <div class="row service-box margin-bottom-40">
+            <div class="col-md-4 col-sm-4">
+                <div class="service-box-heading">
+                    <em><i class="fa fa-location-arrow blue"></i></em>
+                    <span>Multipurpose Template</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut et dolore Ut veniam unde nostrudlaboris. Sed unde omnis iste natus error sit voluptatem.</p>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="service-box-heading">
+                    <em><i class="fa fa-check red"></i></em>
+                    <span>Well Documented</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut et dolore Ut veniam unde nostrudlaboris. Sed unde omnis iste natus error sit voluptatem.</p>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="service-box-heading">
+                    <em><i class="fa fa-compress green"></i></em>
+                    <span>Responsive Design</span>
+                </div>
+                <p>Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut et dolore Ut veniam unde nostrudlaboris. Sed unde omnis iste natus error sit voluptatem.</p>
+            </div>
+        </div>
+        <!-- END SERVICE BOX -->
+
+        <!-- BEGIN BLOCKQUOTE BLOCK -->
+        <div class="row quote-v1 margin-bottom-30">
+            <div class="col-md-9">
+                <span>Metronic - The Most Complete &amp; Popular Admin &amp; Frontend Theme</span>
+            </div>
+            <div class="col-md-3 text-right">
+                <a class="btn-transparent" href="http://www.keenthemes.com/preview/index.php?theme=metronic_admin" target="_blank"><i class="fa fa-rocket margin-right-10"></i>Preview Admin</a>
+            </div>
+        </div>
+        <!-- END BLOCKQUOTE BLOCK -->
+
+        <!-- BEGIN RECENT WORKS -->
+        <div class="row recent-work margin-bottom-40">
+            <div class="col-md-3">
+                <h2><a href="portfolio.html">Recent Works</a></h2>
+                <p>Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut et dolore Ut veniam unde voluptatem. Sed unde omnis iste natus error sit voluptatem.</p>
+            </div>
+            <div class="col-md-9">
+                <div class="owl-carousel owl-carousel3">
+                    <div class="recent-work-item">
+                        <em>
+                            <img src="assets/pages/img/works/img1.jpg" alt="Amazing Project" class="img-responsive">
+                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
+                            <a href="assets/pages/img/works/img1.jpg" class="fancybox-button" title="Project Name #1" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                        </em>
+                        <a class="recent-work-description" href="javascript:;">
+                            <strong>Amazing Project</strong>
+                            <b>Agenda corp.</b>
+                        </a>
+                    </div>
+                    <div class="recent-work-item">
+                        <em>
+                            <img src="assets/pages/img/works/img2.jpg" alt="Amazing Project" class="img-responsive">
+                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
+                            <a href="assets/pages/img/works/img2.jpg" class="fancybox-button" title="Project Name #2" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                        </em>
+                        <a class="recent-work-description" href="javascript:;">
+                            <strong>Amazing Project</strong>
+                            <b>Agenda corp.</b>
+                        </a>
+                    </div>
+                    <div class="recent-work-item">
+                        <em>
+                            <img src="assets/pages/img/works/img3.jpg" alt="Amazing Project" class="img-responsive">
+                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
+                            <a href="assets/pages/img/works/img3.jpg" class="fancybox-button" title="Project Name #3" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                        </em>
+                        <a class="recent-work-description" href="javascript:;">
+                            <strong>Amazing Project</strong>
+                            <b>Agenda corp.</b>
+                        </a>
+                    </div>
+                    <div class="recent-work-item">
+                        <em>
+                            <img src="assets/pages/img/works/img4.jpg" alt="Amazing Project" class="img-responsive">
+                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
+                            <a href="assets/pages/img/works/img4.jpg" class="fancybox-button" title="Project Name #4" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                        </em>
+                        <a class="recent-work-description" href="javascript:;">
+                            <strong>Amazing Project</strong>
+                            <b>Agenda corp.</b>
+                        </a>
+                    </div>
+                    <div class="recent-work-item">
+                        <em>
+                            <img src="assets/pages/img/works/img5.jpg" alt="Amazing Project" class="img-responsive">
+                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
+                            <a href="assets/pages/img/works/img5.jpg" class="fancybox-button" title="Project Name #5" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                        </em>
+                        <a class="recent-work-description" href="javascript:;">
+                            <strong>Amazing Project</strong>
+                            <b>Agenda corp.</b>
+                        </a>
+                    </div>
+                    <div class="recent-work-item">
+                        <em>
+                            <img src="assets/pages/img/works/img6.jpg" alt="Amazing Project" class="img-responsive">
+                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
+                            <a href="assets/pages/img/works/img6.jpg" class="fancybox-button" title="Project Name #6" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                        </em>
+                        <a class="recent-work-description" href="javascript:;">
+                            <strong>Amazing Project</strong>
+                            <b>Agenda corp.</b>
+                        </a>
+                    </div>
+                    <div class="recent-work-item">
+                        <em>
+                            <img src="assets/pages/img/works/img3.jpg" alt="Amazing Project" class="img-responsive">
+                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
+                            <a href="assets/pages/img/works/img3.jpg" class="fancybox-button" title="Project Name #3" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                        </em>
+                        <a class="recent-work-description" href="javascript:;">
+                            <strong>Amazing Project</strong>
+                            <b>Agenda corp.</b>
+                        </a>
+                    </div>
+                    <div class="recent-work-item">
+                        <em>
+                            <img src="assets/pages/img/works/img4.jpg" alt="Amazing Project" class="img-responsive">
+                            <a href="portfolio-item.html"><i class="fa fa-link"></i></a>
+                            <a href="assets/pages/img/works/img4.jpg" class="fancybox-button" title="Project Name #4" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                        </em>
+                        <a class="recent-work-description" href="javascript:;">
+                            <strong>Amazing Project</strong>
+                            <b>Agenda corp.</b>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END RECENT WORKS -->
+
+        <!-- BEGIN TABS AND TESTIMONIALS -->
+        <div class="row mix-block margin-bottom-40">
+            <!-- TABS -->
+            <div class="col-md-7 tab-style-1">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab-1" data-toggle="tab">Multipurpose</a></li>
+                    <li><a href="#tab-2" data-toggle="tab">Documented</a></li>
+                    <li><a href="#tab-3" data-toggle="tab">Responsive</a></li>
+                    <li><a href="#tab-4" data-toggle="tab">Clean & Fresh</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane row fade in active" id="tab-1">
+                        <div class="col-md-3 col-sm-3">
+                            <a href="assets/temp/photos/img7.jpg" class="fancybox-button" title="Image Title" data-rel="fancybox-button">
+                                <img class="img-responsive" src="assets/pages/img/photos/img7.jpg" alt="">
+                            </a>
+                        </div>
+                        <div class="col-md-9 col-sm-9">
+                            <p class="margin-bottom-10">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Cosby sweater eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</p>
+                            <p><a class="more" href="javascript:;">Read more <i class="icon-angle-right"></i></a></p>
+                        </div>
+                    </div>
+                    <div class="tab-pane row fade" id="tab-2">
+                        <div class="col-md-9 col-sm-9">
+                            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia..</p>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <a href="assets/temp/photos/img10.jpg" class="fancybox-button" title="Image Title" data-rel="fancybox-button">
+                                <img class="img-responsive" src="assets/pages/img/photos/img10.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="tab-3">
+                        <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                    </div>
+                    <div class="tab-pane fade" id="tab-4">
+                        <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- END TABS -->
+
+            <!-- TESTIMONIALS -->
+            <div class="col-md-5 testimonials-v1">
+                <div id="myCarousel" class="carousel slide">
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                        <div class="active item">
+                            <blockquote><p>Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum dolor met.</p></blockquote>
+                            <div class="carousel-info">
+                                <img class="pull-left" src="assets/pages/img/people/img1-small.jpg" alt="">
+                                <div class="pull-left">
+                                    <span class="testimonials-name">Lina Mars</span>
+                                    <span class="testimonials-post">Commercial Director</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <blockquote><p>Raw denim you Mustache cliche tempor, williamsburg carles vegan helvetica probably haven't heard of them jean shorts austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p></blockquote>
+                            <div class="carousel-info">
+                                <img class="pull-left" src="assets/pages/img/people/img5-small.jpg" alt="">
+                                <div class="pull-left">
+                                    <span class="testimonials-name">Kate Ford</span>
+                                    <span class="testimonials-post">Commercial Director</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <blockquote><p>Reprehenderit butcher stache cliche tempor, williamsburg carles vegan helvetica.retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid Aliquip placeat salvia cillum iphone.</p></blockquote>
+                            <div class="carousel-info">
+                                <img class="pull-left" src="assets/pages/img/people/img2-small.jpg" alt="">
+                                <div class="pull-left">
+                                    <span class="testimonials-name">Jake Witson</span>
+                                    <span class="testimonials-post">Commercial Director</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carousel nav -->
+                    <a class="left-btn" href="#myCarousel" data-slide="prev"></a>
+                    <a class="right-btn" href="#myCarousel" data-slide="next"></a>
+                </div>
+            </div>
+            <!-- END TESTIMONIALS -->
+        </div>
+        <!-- END TABS AND TESTIMONIALS -->
+
+        <!-- BEGIN STEPS -->
+        <div class="row margin-bottom-40 front-steps-wrapper front-steps-count-3">
+            <div class="col-md-4 col-sm-4 front-step-col">
+                <div class="front-step front-step1">
+                    <h2>Goal definition</h2>
+                    <p>Lorem ipsum dolor sit amet sit consectetur adipisicing eiusmod tempor.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 front-step-col">
+                <div class="front-step front-step2">
+                    <h2>Analyse</h2>
+                    <p>Lorem ipsum dolor sit amet sit consectetur adipisicing eiusmod tempor.</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 front-step-col">
+                <div class="front-step front-step3">
+                    <h2>Implementation</h2>
+                    <p>Lorem ipsum dolor sit amet sit consectetur adipisicing eiusmod tempor.</p>
+                </div>
+            </div>
+        </div>
+        <!-- END STEPS -->
+
+        <!-- BEGIN CLIENTS -->
+        <div class="row margin-bottom-40 our-clients">
+            <div class="col-md-3">
+                <h2><a href="javascript:;">Our Clients</a></h2>
+                <p>Lorem dipsum folor margade sitede lametep eiusmod psumquis dolore.</p>
+            </div>
+            <div class="col-md-9">
+                <div class="owl-carousel owl-carousel6-brands">
+                    <div class="client-item">
+                        <a href="javascript:;">
+                            <img src="assets/pages/img/clients/client_1_gray.png" class="img-responsive" alt="">
+                            <img src="assets/pages/img/clients/client_1.png" class="color-img img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="client-item">
+                        <a href="javascript:;">
+                            <img src="assets/pages/img/clients/client_2_gray.png" class="img-responsive" alt="">
+                            <img src="assets/pages/img/clients/client_2.png" class="color-img img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="client-item">
+                        <a href="javascript:;">
+                            <img src="assets/pages/img/clients/client_3_gray.png" class="img-responsive" alt="">
+                            <img src="assets/pages/img/clients/client_3.png" class="color-img img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="client-item">
+                        <a href="javascript:;">
+                            <img src="assets/pages/img/clients/client_4_gray.png" class="img-responsive" alt="">
+                            <img src="assets/pages/img/clients/client_4.png" class="color-img img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="client-item">
+                        <a href="javascript:;">
+                            <img src="assets/pages/img/clients/client_5_gray.png" class="img-responsive" alt="">
+                            <img src="assets/pages/img/clients/client_5.png" class="color-img img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="client-item">
+                        <a href="javascript:;">
+                            <img src="assets/pages/img/clients/client_6_gray.png" class="img-responsive" alt="">
+                            <img src="assets/pages/img/clients/client_6.png" class="color-img img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="client-item">
+                        <a href="javascript:;">
+                            <img src="assets/pages/img/clients/client_7_gray.png" class="img-responsive" alt="">
+                            <img src="assets/pages/img/clients/client_7.png" class="color-img img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="client-item">
+                        <a href="javascript:;">
+                            <img src="assets/pages/img/clients/client_8_gray.png" class="img-responsive" alt="">
+                            <img src="assets/pages/img/clients/client_8.png" class="color-img img-responsive" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END CLIENTS -->
+    </div>
+</div>
+
+<!-- BEGIN PRE-FOOTER -->
+{% include('footer.html.twig') %}
+<!-- END PRE-FOOTER -->
+
+<!-- BEGIN FOOTER -->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- BEGIN COPYRIGHT -->
+            <div class="col-md-4 col-sm-4 padding-top-10">
+                2018 © YourWeb.Agency & Layton Everson - ALL Rights Reserved. 
+                <a href="javascript:;">Privacy Policy</a> | 
+                <a href="javascript:;">Terms of Service</a>
+            </div>
+            <!-- END COPYRIGHT -->
+            <!-- BEGIN PAYMENTS -->
+            <div class="col-md-4 col-sm-4">
+                <ul class="social-footer list-unstyled list-inline pull-right">
+                    <li><a href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="javascript:;"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="javascript:;"><i class="fa fa-skype"></i></a></li>
+                    <li><a href="javascript:;"><i class="fa fa-github"></i></a></li>
+                    <li><a href="javascript:;"><i class="fa fa-youtube"></i></a></li>
+                    <li><a href="javascript:;"><i class="fa fa-dropbox"></i></a></li>
+                </ul>
+            </div>
+            <!-- END PAYMENTS -->
+            <!-- BEGIN POWERED -->
+            <div class="col-md-4 col-sm-4 text-right">
+                <p class="powered">Template By (Thank You): <a href="http://www.keenthemes.com/">KeenThemes.com</a></p>
+            </div>
+            <!-- END POWERED -->
+        </div>
+    </div>
+</div>
+
+<!-- END FOOTER -->
+{% block globalJavascripts %}
+    <script src="{{ asset('build/global/app-global.js') }}"></script>
+    <script src="{{ asset('build/js/app.js') }}"></script>
+    
+    <!--[if lt IE 9]>
+        <script src="assets/plugins/respond.min.js"></script>
+    <![endif]-->
+    <!-- END CORE PLUGINS -->
+{% endblock %}
+{% block pageJavascripts %} 
+    <script src="{{ asset('build/js/digital-cash/home-page.js') }}"></script>
+{% endblock %}
+<!-- BEGIN PAGE LEVEL JAVASCRIPTS (REQUIRED ONLY FOR CURRENT PAGE) -->
+
+
+<!-- END PAGE LEVEL JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
 </html>
