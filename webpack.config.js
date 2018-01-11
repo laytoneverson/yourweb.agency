@@ -6,15 +6,15 @@ Encore
 
     .addEntry('js/app', './assets/js/app.js')
     .addEntry('js/digital-cash/home-page', './assets/js/digital-cash/home-page.js')
-    .addEntry('theme/metronic', './assets/js/theme/metronic.js')
+    .addEntry('theme/metronic', './assets/js/digital-cash/theme/metronic.js')
 
     .createSharedEntry('global/app-global', [
-        './assets/plugins/jquery.min.js',
-        './assets/plugins/jquery-migrate.min.js',
-        './assets/plugins/bootstrap/js/bootstrap.min.js',
-        './assets/corporate/scripts/back-to-top.js',
-        './assets/plugins/bootstrap/css/bootstrap.min.css',
-        './assets/plugins/font-awesome/css/font-awesome.min.css'
+        './assets/Metronic/plugins/jquery.min.js',
+        './assets/Metronic/plugins/jquery-migrate.min.js',
+        './assets/Metronic/plugins/bootstrap/js/bootstrap.min.js',
+        './assets/Metronic/corporate/scripts/back-to-top.js',
+        './assets/Metronic/plugins/bootstrap/css/bootstrap.min.css',
+        './assets/Metronic/plugins/font-awesome/css/font-awesome.min.css'
     ])
 
     .enableSassLoader()
