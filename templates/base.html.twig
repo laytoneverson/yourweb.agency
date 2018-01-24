@@ -1,59 +1,43 @@
 <!DOCTYPE html>
 
-{%block preHead %}
+{% block preHead %}
 <html lang="en">
 {% endblock preHead %}
 
-<!-- Head BEGIN -->
-<head>
-    <meta charset="utf-8">
-    <title>{% block title %}Welcome to YourWeb.Agency!{% endblock %}</title>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}Welcome to YourWeb.Agency!{% endblock %}</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="description" content="{% block metaDescription %}Web technology and resources. Php Development, CryptoCurrency, Docker{% endblock %}">
-    <meta name="keywords" content="{% block metaKeywords %}Php Development, CryptoCurrency, Docker{% endblock %}">
-    <meta  name="author" content="YourWeb.Agency, Layton Everson <layton.everson@gmail.com>">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="{% block metaDescription %}Web technology and resources. Php Development, CryptoCurrency, Docker{% endblock %}">
+        <meta name="keywords" content="{% block metaKeywords %}Php Development, CryptoCurrency, Docker{% endblock %}">
+        <meta  name="author" content="YourWeb.Agency, Layton Everson <layton.everson@gmail.com>">
 
-    <meta property="og:site_name" content="{% block socialSiteName %}YourWeb.Agency{% endblock %}">
-    <meta property="og:title" content="{% block socialTitle %}YourWeb.Agency - Making the Web YourWeb.{% endblock %}">
-    <meta property="og:description" content="{% block socialDescription %}Talored web applications, resources for developers, and cryptocurrency. We're making the web YourWeb.{% endblock %}">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="{% block socialImageUrl %}{% endblock %}"><!-- link to image for socio -->
-    <meta property="og:url" content="{% block socialUrl %}http://yourweb.agency/{% endblock %}">
+        <meta property="og:site_name" content="{% block socialSiteName %}YourWeb.Agency{% endblock %}">
+        <meta property="og:title" content="{% block socialTitle %}YourWeb.Agency - Making the Web YourWeb.{% endblock %}">
+        <meta property="og:description" content="{% block socialDescription %}Talored web applications, resources for developers, and cryptocurrency. We're making the web YourWeb.{% endblock %}">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="{% block socialImageUrl %}{% endblock %}"><!-- link to image for socio -->
+        <meta property="og:url" content="{% block socialUrl %}http://yourweb.agency/{% endblock %}">
 
-    <link rel="shortcut icon" href="{% block favicon %}favicon.ico{% endblock %}">
+        <link rel="shortcut icon" href="{% block favicon %}favicon.ico{% endblock %}">
 
-    {% block manifest %}<script src="{{ asset('build/manifest.js') }}"></script>{% endblock %}
-
-    {% block fontsLink %}{% endblock %}
-    
-    {% block globalCssHref %}{% endblock %}    
-    
-    {% block themeStyleSheets %}{% endblock %} 
-
-    {% block pageCssHref %}{% endblock %}
-
-</head>
-<!-- Head END -->
-
-<!-- Body BEGIN -->
-<body class="{% block bodyClass %} corporate {% endblock %}">
-
-{% block preHeader %}{% endblock preHeader%}
-
-{% block topBar %}{% endblock topBar %}
-
-{% block pageHeader %}{% endblock pageHeader %}
-
-{% block bodyContent %}{% endblock bodyContent %}
-
-{% block pageBigFoot %}{% endblock pageBigFoot %}
-{% block pageFinalFoot %}{% endblock pageFinalFoot %}
-
-
-{% block globalJavascripts %}{% endblock %}
-
-{% block pageJavascripts %}{% endblock %}
-</body>
+        {% block manifest %}<script src="{{ asset('build/manifest.js') }}"></script>{% endblock %}
+        {% block fontsLink %}{% endblock %}
+        {% block globalCssHref %}{% endblock %}    
+        {% block themeStyleSheets %}{% endblock %} 
+        {% block pageCssHref %}{% endblock %}
+    </head>
+    <body class="{% block bodyClass %} corporate {% endblock %}">
+        {% block preHeader %}{% endblock preHeader%}
+        {% block topBar %}{% endblock topBar %}
+        {% block pageHeader %}{% endblock pageHeader %}
+        {% block bodyHero %}{% endblock bodyHero %}
+        {% block bodyContent %}{% endblock bodyContent %}
+        {% block pageBigFoot %}{% endblock pageBigFoot %}
+        {% block pageFinalFoot %}{% endblock pageFinalFoot %}
+        {% block globalJavascripts %}{% endblock %}
+        {% block pageJavascripts %}{% endblock %}
+    </body>
 </html>

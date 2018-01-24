@@ -1,6 +1,9 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    domain_cryptocurrency: '%env(DOMAIN_CRYPTOCURRENCY)%'
+    domain_home: '%env(DOMAIN_HOME)%'
+    domain_storage: '%env(DOMAIN_STORAGE)%'
 
 services:
     # default configuration for services in *this* file

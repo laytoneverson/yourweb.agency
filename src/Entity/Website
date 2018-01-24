@@ -1,0 +1,10 @@
+namespace App\Entity;
+
+class Website
+{
+    public function __construct()
+    {
+
+    }
+
+}

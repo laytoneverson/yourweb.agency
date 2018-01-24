@@ -4,6 +4,7 @@
 
 ###> symfony/framework-bundle ###
 .env
+app.yaml.dist
 /public/bundles/
 /var/
 /vendor/

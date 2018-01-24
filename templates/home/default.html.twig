@@ -19,18 +19,15 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <!--<![endif]-->
 {% endblock preHead %}
 
-{% block title %}Everything CryptoCurrency!{% endblock %}
-{% block metaDescription %}
-Welcome to the CryptoCurrency by YourWeb Agency. Find the best bitcoin services in one place.
-{% endblock %}
-{% block metaKeywords %}Bitcoin, AltCoins, bitcoin services, best bitcoin wallet, best bitcoin exchange,
-best bitcoin faucets, top paying faucets, altcoins{% endblock %}
-{% block socialSiteName %}Everyting CryptoCurrency by YourWeb{% endblock %}
-{% block socialTitle %}Everything CryptoCurrency By YourWeb.online{% endblock %}
-{% block socialDescription %}CryptoCurrency by YourWeb Agency. Find the best bitcoin services in one place.{% endblock %}
-{% block socialImageUrl %}https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-1/c0.0.200.200/p200x200/26815110_182160825866115_4596465814440902108_n.png?oh=ee320467d86b0f1e198d7299d46a94a0&oe=5ADB3338{% endblock %}
-{% block socialUrl %}https://www.facebook.com/YourWebPresentsCryptoCurrenc{% endblock %}
-{% block favicon %}https://CryptoCurrency.yourweb.online/favicon.ico{% endblock %}
+{% block title %}Welcome to YourWeb.Agency!{% endblock %}
+{% block metaDescription %}Web technology and resources. Php Development, CryptoCurrency, Docker{% endblock %}
+{% block metaKeywords %}Php Development, CryptoCurrency, Docker{% endblock %}
+{% block socialSiteName %}YourWeb.Agency{% endblock %}
+{% block socialTitle %}YourWeb.Agency - Making the Web YourWeb.{% endblock %}
+{% block socialDescription %}Talored web applications, resources for developers, and cryptocurrency. We're making the web YourWeb.{% endblock %}
+{% block socialImageUrl %}{% endblock %}
+{% block socialUrl %}http://yourweb.agency/{% endblock %}
+{% block favicon %}favicon.ico{% endblock %}
 {% block manifest %}<script src="{{ asset('build/manifest.js') }}"></script>{% endblock %}
 {% block fontsLink %}
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
@@ -45,7 +42,7 @@ best bitcoin faucets, top paying faucets, altcoins{% endblock %}
     <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
     <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('build/theme/matronic.css') }}">
-{% endblock %}
+{% endblock %} 
 
 {% block pageCssHref %}{{ parent() }}{% endblock %}
 
@@ -96,7 +93,7 @@ best bitcoin faucets, top paying faucets, altcoins{% endblock %}
             {% block topBarRight %}
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-
+                    
                     {% block topBarRightItems %}
                     <li><a href="page-login.html">Log In</a></li>
                     <li><a href="page-reg-page.html">Registration</a></li>
@@ -116,11 +113,11 @@ best bitcoin faucets, top paying faucets, altcoins{% endblock %}
     <div class="container">
 
         {% block siteLogo %}
-        <a class="site-logo"
-          href="{% block logoLinkUrl %} https://CryptoCurrencyourweb.agency/ {% endblock %}"
+        <a class="site-logo" 
+          href="{% block logoLinkUrl %} http://yourweb.agency/ {% endblock %}"
         >
-            <img src="{% block logoImageSrc %}assets/logo/logo-small-dark.png{% endblock %}"
-                 alt="{% block logoAltText %}Cryptocurrency By YourWeb.Online Logo{% endblock %}">
+            <img src="{% block logoImageSrc %}assets/corporate/img/logos/logo-corp-red.png{% endblock %}"
+                 alt="{% block logoAltText %}YourWeb.Agency Logo{% endblock %}">
         </a>
         {% endblock siteLogo %}
 
@@ -131,7 +128,20 @@ best bitcoin faucets, top paying faucets, altcoins{% endblock %}
             <ul>
 
                 {% block headerNav %}
-                {% include 'cryptocurrency/nav-coins.html.twig' %}
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:">YourWeb</a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="http://yourweb.agency/">YourWeb Home</a></li>
+                        <li class="active"><a href="http://digital-cash.yourweb.agency/">Digital Cash Home</a></li>
+                    </ul>
+                </li>
+                <li><a href="/wallets">Wallets</a></li>
+                <li><a href="/top-bitcoin-faucets">Best Faucets</a></li>
+                <li><a href="/games-and-casinos">Games And Casions</a></li>
+                <li><a href="/where-to-buy-bitcoins">Buy Coins</a></li>
+                <li><a href="/invest-and-trade">Invest And Exchange</a></li>
+                <li><a href="/mining">Mine Coins</a></li>
                 {% endblock %}
 
                 {% block search %}
@@ -150,6 +160,7 @@ best bitcoin faucets, top paying faucets, altcoins{% endblock %}
                     </div>
                 </li>
                 {% endblock search %}
+                <!-- END TOP SEARCH -->
             </ul>
         </div>
         {% endblock siteNavigation %}
@@ -178,9 +189,9 @@ best bitcoin faucets, top paying faucets, altcoins{% endblock %}
     <script src="{{ asset('build/js/app.js') }}"></script>
     <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>      
     <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
-
+    
     <!--[if lt IE 9]>
         <script src="assets/plugins/respond.min.js"></script>
     <![endif]-->

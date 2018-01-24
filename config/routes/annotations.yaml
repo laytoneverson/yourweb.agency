@@ -1,3 +1,7 @@
-controllers:
-    resource: ../../src/Controller/
+app_controllers:
+    resource: ../../src/Controller/Home/
+    type: annotation
+
+cryptocurrency_controllers:
+    resource: ../../src/Controller/CryptoCurrency/
     type: annotation
