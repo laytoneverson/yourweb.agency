@@ -1,0 +1,24 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        in_memory:
+            memory:
+                users:
+                    layton:
+                        password: $2y$12$ynX9afdMGTW6GLC4nJg/vOFh411el2hdk.ZsbT6EFSibj6fGHmEUe
+                        roles: 'ROLE_ADMIN'
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 12
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: ~
+            http_basic: ~
+
+    access_control:
+        # require ROLE_ADMIN for /admin*
+        - { path: ^/_edit_site_data, roles: ROLE_ADMIN }

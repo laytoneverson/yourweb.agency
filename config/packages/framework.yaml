@@ -1,7 +1,7 @@
 framework:
     secret: '%env(APP_SECRET)%'
-    #default_locale: en
-    #csrf_protection: ~
+    default_locale: en
+    csrf_protection: ~
     #http_method_override: true
 
     # uncomment this entire section to enable sessions
@@ -16,3 +16,11 @@ framework:
 
     assets:
         json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
+
+sensio_framework_extra:
+    router:      { annotations: true }
+    request:     { converters: true, auto_convert: true }
+    view:        { annotations: true }
+    cache:       { annotations: true }
+    security:    { annotations: true }
+    psr_message: { enabled: false } # Defaults to true if the PSR-7 bridge is installed

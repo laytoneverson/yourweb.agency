@@ -6,10 +6,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class HomeController
+ * #Route(host="%domain_cryptocurrency%")
+ * @package App\Controller\CryptoCurrency
+ */
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", host="%domain_cryptocurrency%")
+     * @Route("/")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */

@@ -1,16 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{#
-Template: Metronic Frontend Freebie - Responsive HTML Template Based On Twitter Bootstrap 3.3.4
-Version: 1.0.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-#}
-
 {% block preHead %}
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -18,6 +7,7 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
 <html lang="en">
 <!--<![endif]-->
 {% endblock preHead %}
+{% block googleAnalyticsCode %}UA-113142152-1{% endblock %}
 
 {% block title %}Everything CryptoCurrency!{% endblock %}
 {% block metaDescription %}
@@ -31,20 +21,23 @@ best bitcoin faucets, top paying faucets, altcoins{% endblock %}
 {% block socialImageUrl %}https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-1/c0.0.200.200/p200x200/26815110_182160825866115_4596465814440902108_n.png?oh=ee320467d86b0f1e198d7299d46a94a0&oe=5ADB3338{% endblock %}
 {% block socialUrl %}https://www.facebook.com/YourWebPresentsCryptoCurrenc{% endblock %}
 {% block favicon %}https://CryptoCurrency.yourweb.online/favicon.ico{% endblock %}
-{% block manifest %}<script src="{{ asset('build/manifest.js') }}"></script>{% endblock %}
+{% block manifest %}<script src="{{ asset('/build/manifest.js') }}"></script>{% endblock %}
 {% block fontsLink %}
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block globalCssHref %}
-    <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('build/global/app-global.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/plugins/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/plugins/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/build/global/app-global.css') }}">
 {% endblock %}
 {% block themeStyleSheets %}
-    <link href="assets/pages/css/animate.css" rel="stylesheet">
-    <link href="assets/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
-    <link href="assets/plugins/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('build/theme/matronic.css') }}">
+    <link href="{{ asset('/assets/pages/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/corporate/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/corporate/css/style-responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/corporate/css/themes/green.css') }}" rel="stylesheet" id="style-color">
+
+    <link href="{{ asset('/assets/plugins/fancybox/source/jquery.fancybox.css') }}" rel="stylesheet">
+
 {% endblock %}
 
 {% block pageCssHref %}{{ parent() }}{% endblock %}
@@ -52,25 +45,7 @@ best bitcoin faucets, top paying faucets, altcoins{% endblock %}
 {# Body BEGIN #}
 {% block bodyClass %} corporate {% endblock %}
 
-{% block preHeader %}
-    {% block styleCustomizer %}
-    <div class="color-panel hidden-sm">
-        <div class="color-mode-icons icon-color"></div>
-        <div class="color-mode-icons icon-color-close"></div>
-        <div class="color-mode">
-            <p>THEME COLOR</p>
-            <ul class="inline">
-                <li class="color-red {% block themColorRed %}current{% endblock %} color-default" data-style="red"></li>
-                <li class="color-blue" {% block themeColorBlue %} {% endblock %} data-style="blue"></li>
-                <li class="color-green" {% block themeColorGree %} {% endblock %} data-style="green"></li>
-                <li class="color-orange" {% block themeColorOrange %} {% endblock %} data-style="orange"></li>
-                <li class="color-gray" {% block themeColorGray %} {% endblock %} data-style="gray"></li>
-                <li class="color-turquoise" {% block themeColorTurquoise %} {% endblock %} data-style="turquoise"></li>
-            </ul>
-        </div>
-    </div>
-    {% endblock styleCustomizer %}
-{% endblock preHeader %}
+{% block preHeader %}{% endblock preHeader %}
 
 {% block topBar %}
 <div class="pre-header">
@@ -86,9 +61,8 @@ best bitcoin faucets, top paying faucets, altcoins{% endblock %}
                         <i class="fa fa-twitter-square"></i>
                         <a href="" class="">Follow @laytone</a>
                     </li>
-                    <li><i class="fa fa-envelope-o"></i><span>info@yourweb.agency</span></li>
+                    <li><i class="fa fa-envelope-o"></i><span>info@yourweb.online</span></li>
                     {% endblock topBarLeftItems %}
-
                 </ul>
             </div>
             {% endblock topBarLeft %}
@@ -96,12 +70,10 @@ best bitcoin faucets, top paying faucets, altcoins{% endblock %}
             {% block topBarRight %}
             <div class="col-md-6 col-sm-6 additional-nav">
                 <ul class="list-unstyled list-inline pull-right">
-
                     {% block topBarRightItems %}
-                    <li><a href="page-login.html">Log In</a></li>
-                    <li><a href="page-reg-page.html">Registration</a></li>
+                    {# <li><a href="page-login.html">Log In</a></li> #}
+                    {# <li><a href="page-reg-page.html">Registration</a></li> #}
                     {% endblock topBarRightItems %}
-
                 </ul>
             </div>
             {% endblock topBarRight %}
@@ -117,10 +89,11 @@ best bitcoin faucets, top paying faucets, altcoins{% endblock %}
 
         {% block siteLogo %}
         <a class="site-logo"
-          href="{% block logoLinkUrl %} https://CryptoCurrencyourweb.agency/ {% endblock %}"
-        >
-            <img src="{% block logoImageSrc %}assets/logo/logo-small-dark.png{% endblock %}"
-                 alt="{% block logoAltText %}Cryptocurrency By YourWeb.Online Logo{% endblock %}">
+          href="{% block logoLinkUrl %} https://CryptoCurrency.yourweb.online/ {% endblock %}"
+          style="padding: 12px 0">
+            <img src="{% block logoImageSrc %}/assets/logo/logo-small-dark.png{% endblock %}"
+                 alt="{% block logoAltText %}CryptoCurrency By YourWeb.Online Logo{% endblock %}"
+                 style="height: 55px">
         </a>
         {% endblock siteLogo %}
 
@@ -131,7 +104,7 @@ best bitcoin faucets, top paying faucets, altcoins{% endblock %}
             <ul>
 
                 {% block headerNav %}
-                {% include 'cryptocurrency/nav-coins.html.twig' %}
+                    {% include 'cryptocurrency/nav-coins.html.twig' %}
                 {% endblock %}
 
                 {% block search %}
@@ -150,6 +123,7 @@ best bitcoin faucets, top paying faucets, altcoins{% endblock %}
                     </div>
                 </li>
                 {% endblock search %}
+
             </ul>
         </div>
         {% endblock siteNavigation %}
@@ -168,21 +142,18 @@ best bitcoin faucets, top paying faucets, altcoins{% endblock %}
 {% endblock bodyContent %}
 
 {% block pageBigFoot %}{% include 'cryptocurrency/big-foot.html.twig' %}{% endblock pageBigFoot %}
-
-
 {% block pageFinalFoot %}{% include 'cryptocurrency/final-foot.html.twig' %}{% endblock pageFinalFoot %}
 
-
 {% block globalJavascripts %}
-    <script src="{{ asset('build/global/app-global.js') }}"></script>
-    <script src="{{ asset('build/js/app.js') }}"></script>
-    <script src="assets/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="assets/corporate/scripts/back-to-top.js" type="text/javascript"></script>
+    <script src="{{ asset('/build/global/app-global.js') }}"></script>
+    <script src="{{ asset('/build/js/app.js') }}"></script>
+    <script src="{{ asset('/assets/plugins/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/assets/plugins/jquery-migrate.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/assets/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/assets/corporate/scripts/back-to-top.js') }}" type="text/javascript"></script>
 
     <!--[if lt IE 9]>
-        <script src="assets/plugins/respond.min.js"></script>
+        <script src="{{ asset('/assets/plugins/respond.min.js') }}" type="text/javascript"></script>
     <![endif]-->
     <!-- END CORE PLUGINS -->
 {% endblock %}

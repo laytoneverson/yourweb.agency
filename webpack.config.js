@@ -5,8 +5,8 @@ Encore
     .setPublicPath('/build')
 
     .addEntry('js/app', './assets/js/app.js')
-    .addEntry('js/digital-cash/home-page', './assets/js/digital-cash/home-page.js')
-    .addEntry('theme/metronic', './assets/js/digital-cash/theme/metronic.js')
+    .addEntry('js/cryptocurrency/home-page', './assets/js/cryptocurrency/home-page.js')
+    .addEntry('theme/metronic', './assets/js/cryptocurrency/theme/metronic.js')
 
     .createSharedEntry('global/app-global', [
         './assets/Metronic/plugins/jquery.min.js',

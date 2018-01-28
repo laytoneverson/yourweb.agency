@@ -4,8 +4,8 @@
 
 ###> symfony/framework-bundle ###
 .env
-app.yaml.dist
-/public/bundles/
+#app.yaml.dist
+#/public/bundles/
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
@@ -16,5 +16,5 @@ app.yaml.dist
 
 ###> symfony/webpack-encore-pack ###
 /node_modules/
-/public/build/
+# /public/build/
 ###< symfony/webpack-encore-pack ###
