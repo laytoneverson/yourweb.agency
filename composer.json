@@ -2,7 +2,7 @@
     "type": "YourWeb Web Application",
     "license": "proprietary",
     "require": {
-        "php": "^7.1.2",
+        "php": "7.1.*",
         "ext-iconv": "*",
         "ext-intl": "*",
         "ext-yaml": "*",
@@ -24,6 +24,7 @@
         "symfony/yaml": "^4.0"
     },
     "require-dev": {
+        "google/cloud-tools": "@dev",
         "symfony/dotenv": "^4.0",
         "symfony/profiler-pack": "^1.0",
         "symfony/web-server-bundle": "^4.0"
@@ -53,8 +54,6 @@
     "scripts": {
         "auto-scripts": {
             "assets:install --relative %PUBLIC_DIR%": "symfony-cmd",
-            "doctrine:migrations:migrate": "symfony-cmd",
-            "doctrine:fixture:load --append": "symfony-cmd",
             "cache:clear": "symfony-cmd"
         },
         "post-install-cmd": [

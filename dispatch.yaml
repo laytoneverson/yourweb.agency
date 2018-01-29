@@ -1,0 +1,12 @@
+dispatch:
+  - url: "cryptocurrency.yourweb.online/"
+    service: default
+
+  - url: "yourweb.agency/"
+    service: default
+
+  - url: "yourweb.online/"
+    service: default
+
+  - url: "yourweb.website/"
+    service: default

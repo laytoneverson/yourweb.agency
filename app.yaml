@@ -1,0 +1,23 @@
+runtime: php
+env: flex
+service: default
+
+runtime_config:
+  document_root: public/
+  front_controller: index.php
+
+env_variables:
+  APP_ENV: prod
+  APP_SECRET: JLKSFLK80988rwrEERW4543SSDLVGXJrrm8GasfsferreERWiN
+  DB_DATABASE: yourwebdb
+  DB_USERNAME: yourweb-db
+  DB_PASSWORD: 8!93a27B3135
+  DB_SOCKET: /cloudsql/yourweb-192700:us-central1:yourwebdb
+  DATABASE_URL: mysql://yourwebdb:8!93a27B3135@unix(/cloudsql/yourweb-192700:us-central1:yourwebdb)/yourwebdb
+
+  DOMAIN_CRYPTOCURRENCY: cryptocurrency.yourweb.online
+  DOMAIN_HOME: yourweb.online
+  DOMAIN_STORAGE: cloudstorage.yourweb.online
+
+beta_settings:
+  cloud_sql_instances: yourweb-192700:us-central1:yourwebdb
