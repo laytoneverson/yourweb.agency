@@ -6,8 +6,12 @@ doctrine:
         driver: 'pdo_mysql'
         server_version: '5.7'
         charset: utf8mb4
-
         url: '%env(resolve:DATABASE_URL)%'
+        mapping_types:
+          enum: string
+        types:
+            CurrencyType: App\DBAL\Types\CurrencyType
+            ReviewSiteStatusType: App\DBAL\Types\ReviewSiteStatusType
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore

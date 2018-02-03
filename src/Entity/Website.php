@@ -70,15 +70,34 @@ class Website
     private $websiteReview = '';
 
     /**
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    private $myRecommendation = 5;
+
+    /**
      * @ORM\Column(type="decimal", scale=2)
      */
     private $averageRating = 2.5;
 
     /**
-     * @ORM\Column(type="integer")
-     * @var int
+     * @ORM\Column(type="decimal", scale=2)
+     * @var float
      */
-    private $myRecommendation = 5;
+    private $websiteFriendlyRating = 2.5;
+
+    /**
+     * @ORM\Column(type="decimal", scale=2)
+     * @var float
+     */
+    private $websiteSafetyRating = 2.5;
+
+    /**
+     *
+     * @var 
+     */
+    private $currenciesAccepted;
+
 
     public function __toString()
     {
@@ -89,6 +108,7 @@ class Website
     {
         $this->websiteRatings = new ArrayCollection();
         $this->websiteCategories = new ArrayCollection();
+        $this->currenciesAccepted = new ArrayCollection();
     }
 
     /**
