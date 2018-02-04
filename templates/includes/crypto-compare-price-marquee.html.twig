@@ -1,0 +1,16 @@
+<script type="text/javascript">
+    baseUrl = "https://widgets.cryptocompare.com/";
+    var scripts = document.getElementsByTagName("script");
+    var embedder = scripts[ scripts.length - 1 ];
+    var cccTheme = {"General":{"priceText":"#313030","enableMarquee":true},"Currency":{"color":"#E6400C"},"Trend":{"colorUp":"#b3d334","colorDown":"#E6400C"}};
+    (function (){
+        var appName = encodeURIComponent(window.location.hostname);
+        if(appName==""){appName="local";}
+        var s = document.createElement("script");
+        s.type = "text/javascript";
+        s.async = true;
+        var theUrl = baseUrl+'serve/v3/coin/header?fsyms=BTC,ETH,XMR,DOGE,LTC,PAC&tsyms=USD,EUR';
+        s.src = theUrl + ( theUrl.indexOf("?") >= 0 ? "&" : "?") + "app=" + appName;
+        embedder.parentNode.appendChild(s);
+    })();
+</script>

@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WebsiteCategoryRepository")
  */
@@ -56,7 +55,7 @@ class WebsiteCategory
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -64,7 +63,7 @@ class WebsiteCategory
     }
 
     /**
-     * @param mixed $id
+     * @param string $id
      * @return WebsiteCategory
      */
     public function setId($id)
@@ -75,7 +74,7 @@ class WebsiteCategory
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getWebsites()
     {
@@ -83,7 +82,7 @@ class WebsiteCategory
     }
 
     /**
-     * @param mixed $websites
+     * @param string $websites
      * @return WebsiteCategory
      */
     public function setWebsites($websites)
@@ -94,7 +93,7 @@ class WebsiteCategory
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCategoryName()
     {
@@ -102,7 +101,7 @@ class WebsiteCategory
     }
 
     /**
-     * @param mixed $categoryName
+     * @param string $categoryName
      * @return WebsiteCategory
      */
     public function setCategoryName($categoryName)
@@ -113,21 +112,19 @@ class WebsiteCategory
     }
 
     /**
-     * @param mixed $website
+     * @param Website $website
      */
     public function addWebsite($website)
     {
         $this->websites->add($website);
-        $website->setWebsiteCategory($this);
     }
 
     /**
-     * @param mixed $website
+     * @param Website $website
      */
     public function removeWebsite($website)
     {
         $this->websites->removeElement($website);
-        $website->setWebsiteCategory(null);
     }
 
     /**

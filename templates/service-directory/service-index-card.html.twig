@@ -1,0 +1,39 @@
+{% macro writeStatusClass(statusEnum) %}
+{% spaceless %}
+    {% if statusEnum == 1 %}
+        success
+    {% elseif statusEnum == 6 %}
+        danger
+    {% elseif statusEnum == 4 %}
+        info
+    {% else %}
+        warning
+    {% endif %}
+{% endspaceless %}
+{% endmacro %}
+
+{% import _self as macros %}
+{% set contextColor = macros.writeStatusClass(website.websiteStatus) %}
+<div class="row">
+    <div class="service-directory-card shadow-{{ contextColor }} col-xs-12">
+        <div class="col-md-3 col-sm-3">
+            <img src="{{ website.websiteImageUrl }}" width="100%" alt="{{ website.websiteName }}">
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <div class="row">
+                <p class="pull-right">
+                    Status:
+                    <span style="font-weight: bold" class="text-{{- contextColor -}}">
+                        {{ website.websiteStatus|readable_enum("ReviewSiteStatusType") }}
+                    </span>
+                </p>
+                <h3>{{ website.websiteName }} </h3>
+            </div>
+            <p class="card-summary">{{ website.websiteSummary }}</p>
+            <p class="text-right .bottom-align-text">
+                <a href="{{ website.websiteUrl }}" class="btn btn-link">Visit Website</a>
+            </p>
+        </div>
+    </div>
+    <hr>
+</div>

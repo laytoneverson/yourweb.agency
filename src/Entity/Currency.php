@@ -4,8 +4,8 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
-use Doctrine\ORM\Mapping as ORM;
 use App\DBAL\Types\CurrencyType;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CurrencyRepository")

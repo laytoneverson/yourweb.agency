@@ -13,14 +13,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class ReviewController extends AbstractController
 {
     /**
-     * @Route("/website-reviews-for/{slug}", name="websiteReviewCategory")
+     * @Route("/cryptocoin-service-directory/{slug}", name="websiteReviewCategory")
      * @param CryptoCurrencySiteService $siteService
      * @param $slug
+     * @param $siteStatus
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function viewCategoryAction(CryptoCurrencySiteService $siteService, $slug)
+    public function viewCategoryAction(CryptoCurrencySiteService $siteService, $slug, $siteStatus = null)
     {
-        return $this->render('review-sites-list.html.twig', [
-            'sites' => $siteService->getReviewSitesInCategory($slug)
+        return $this->render('service-directory/index.html.twig', [
+            'category' => $siteService->getReviewSitesCategory($slug)
         ]);
     }
 }

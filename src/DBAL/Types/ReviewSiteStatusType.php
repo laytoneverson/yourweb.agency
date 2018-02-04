@@ -6,8 +6,6 @@ use Fresh\DoctrineEnumBundle\DBAL\Types\AbstractEnumType;
 
 class ReviewSiteStatusType extends AbstractEnumType
 {
-    protected $name = 'ReviewSiteStatus';
-
     const GOOD_STANDING   = 1;
     const PENDING_VARIFICATION   = 2;
     const USE_CAUTION = 3;
@@ -19,7 +17,7 @@ class ReviewSiteStatusType extends AbstractEnumType
         self::GOOD_STANDING    => 'Good Standing',
         self::PENDING_VARIFICATION => 'Pending Verification',
         self::OFFLINE_TEMPORARY  => 'Offline - Temporary ',
-        self::USE_CAUTION => "Use Caution",
+        self::USE_CAUTION => 'Use Caution',
         self::OFFLINE_PERMINENT  => 'Offline - Indefinite',
         self::SCAM_ALERT  => 'CONFIRMED_SCAM',
     ];

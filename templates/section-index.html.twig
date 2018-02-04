@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block bodyContent %}
+    <div class="main">
+        <div class="container">
+
+            {% block breadCrumb %}
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    {% block breadCrumbItems %}
+                    <li><a href="javascript:;">Blog</a></li>
+                    <li class="active">Blog Page</li>
+                    {% endblock breadCrumbItems %}
+                </ul>
+            {% endblock breadCrumb %}
+
+            <div class="row margin-bottom-40">
+                <div class="col-md-12 col-sm-12">
+                    <h1>{% block indexPageTitle %}ADD ME block indexPageTitle{% endblock %}</h1>
+                    <div class="content-page">
+                        <div class="row">
+                            <div class="col-sm-9 col-xs-12">
+                                {% block indexBody %}
+
+                                {% endblock %}
+                            </div>
+                            <div class="col-sm-3 .hidden-xs-down text-center">
+                                {% block sideBar %}
+                                    {{ include ('sidebar-adverts.html.twig') }}
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

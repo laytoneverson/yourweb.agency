@@ -18,7 +18,7 @@
 
         <meta charset="utf-8">
         <title>{% block title %}Cryptocurrency Resources by YourWeb!{% endblock %}</title>
-
+        <meta name="maValidation" content="6fad9d3a1e9c3223a3070706bb4e2345" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="{% block metaDescription %}Welcome to the CryptoCurrency by YourWeb Agency. Find the best bitcoin services in one place.{% endblock %}">
@@ -53,6 +53,7 @@
         {% block pageCssHref %}{% endblock %}
     </head>
     <body class="{% block bodyClass %} corporate {% endblock %}">
+        {% include 'includes/facebook-sdk-include.html.twig' %}
         {% block preHeader %}{% endblock preHeader%}
         {% block topBar %}
         <div class="pre-header">
@@ -62,12 +63,7 @@
                     {% block topBarLeft %}
                     <div class="col-md-6 col-sm-6 additional-shop-info">
                         <ul class="list-unstyled list-inline">
-
                             {% block topBarLeftItems %}
-                            <li>
-                                <i class="fa fa-twitter-square"></i>
-                                <a href="" class="">Follow @laytone</a>
-                            </li>
                             <li><i class="fa fa-envelope-o"></i><span>info@yourweb.online</span></li>
                             {% endblock topBarLeftItems %}
                         </ul>
@@ -110,7 +106,7 @@
                     <ul>
 
                         {% block headerNav %}
-                            {% include 'nav-coins.html.twig' %}
+                            {% include 'nav.html.twig' %}
                         {% endblock %}
 
                         {% block search %}

@@ -6,6 +6,7 @@ use App;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WebsiteRepository")
@@ -28,8 +29,9 @@ class Website
     private $websiteCategories;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\WebsiteStatus")
-     * @var App\Entity\WebsiteStatus
+     * @DoctrineAssert\Enum(entity="App\DBAL\Types\ReviewSiteStatusType")
+     * @ORM\Column(type="ReviewSiteStatusType", nullable=true)
+     * @var string
      */
     private $websiteStatus;
 
@@ -49,7 +51,7 @@ class Website
     * @ORM\Column(type="string", length=255)
     * @var string
     */
-    private $websiteUrl = "http://";
+    private $websiteUrl = '';
 
     /**
     * @ORM\Column(type="string", length=255)
@@ -61,13 +63,13 @@ class Website
      * @ORM\Column(type="text", nullable=true)
      * @var string
      */
-    private $websiteSummary = '';
+    private $websiteSummary;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      * @var string
      */
-    private $websiteReview = '';
+    private $websiteReview ;
 
     /**
      * @ORM\Column(type="integer")
@@ -123,7 +125,7 @@ class Website
      * @param mixed $id
      * @return Website
      */
-    public function setId($id)
+    public function setId($id): Website
     {
         $this->id = $id;
 
@@ -150,18 +152,18 @@ class Website
     }
 
     /**
-     * @return WebsiteStatus
+     * @return int
      */
-    public function getWebsiteStatus(): ?WebsiteStatus
+    public function getWebsiteStatus(): ?int
     {
         return $this->websiteStatus;
     }
 
     /**
-     * @param WebsiteStatus $websiteStatus
+     * @param int $websiteStatus
      * @return Website
      */
-    public function setWebsiteStatus(WebsiteStatus $websiteStatus): Website
+    public function setWebsiteStatus(int $websiteStatus): Website
     {
         $this->websiteStatus = $websiteStatus;
 
@@ -294,7 +296,7 @@ class Website
      * @param mixed $averageRating
      * @return Website
      */
-    public function setAverageRating($averageRating)
+    public function setAverageRating($averageRating): Website
     {
         $this->averageRating = $averageRating;
 
@@ -322,8 +324,9 @@ class Website
 
     /**
      * @param mixed $websiteCategory
+     * @return Void
      */
-    public function addWebsiteCategory($websiteCategory)
+    public function addWebsiteCategory($websiteCategory): Void
     {
         $this->websiteCategories->add($websiteCategory);
         // uncomment if you want to update other side
@@ -332,31 +335,88 @@ class Website
 
     /**
      * @param mixed $websiteCategory
+     * @return Void
      */
-    public function removeWebsiteCategory($websiteCategory)
+    public function removeWebsiteCategory($websiteCategory): Void
     {
         $this->websiteCategories->removeElement($websiteCategory);
-        // uncomment if you want to update other side
         $websiteCategory->setWebsite(null);
     }
 
     /**
      * @param mixed $websiteRating
+     * @return Void
      */
-    public function addWebsiteRating($websiteRating)
+    public function addWebsiteRating($websiteRating): Void
     {
         $this->websiteRatings->add($websiteRating);
-        // uncomment if you want to update other side
         $websiteRating->setWebsite($this);
     }
 
     /**
      * @param mixed $websiteRating
      */
-    public function removeWebsiteRating($websiteRating)
+    public function removeWebsiteRating($websiteRating): void
     {
         $this->websiteRatings->removeElement($websiteRating);
-        // uncomment if you want to update other side
         $websiteRating->setWebsite(null);
     }
+
+    /**
+     * @return float
+     */
+    public function getWebsiteFriendlyRating(): float
+    {
+        return $this->websiteFriendlyRating;
+    }
+
+    /**
+     * @param float $websiteFriendlyRating
+     * @return Website
+     */
+    public function setWebsiteFriendlyRating(float $websiteFriendlyRating): Website
+    {
+        $this->websiteFriendlyRating = $websiteFriendlyRating;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getWebsiteSafetyRating(): float
+    {
+        return $this->websiteSafetyRating;
+    }
+
+    /**
+     * @param float $websiteSafetyRating
+     * @return Website
+     */
+    public function setWebsiteSafetyRating(float $websiteSafetyRating): Website
+    {
+        $this->websiteSafetyRating = $websiteSafetyRating;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCurrenciesAccepted()
+    {
+        return $this->currenciesAccepted;
+    }
+
+    /**
+     * @param mixed $currenciesAccepted
+     * @return Website
+     */
+    public function setCurrenciesAccepted($currenciesAccepted): Website
+    {
+        $this->currenciesAccepted = $currenciesAccepted;
+
+        return $this;
+    }
+
 }

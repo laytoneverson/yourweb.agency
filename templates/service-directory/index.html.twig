@@ -1,0 +1,54 @@
+{% extends 'section-index.html.twig' %}
+
+{% block title %} Top {{ category.categoryName }} Services | Crypto-Coin Service Directory {% endblock %}
+
+{% block pageCssHref %}
+    {{  parent() }}
+    <link rel="stylesheet" href="{{ asset('/assets/custom.css') }}">
+{% endblock %}
+{% block breadCrumbItems %}
+    <li><a href="javascript:;">CryptoCoin Service Directory</a></li>
+    <li class="active">{{ category.categoryName }}</li>
+{% endblock breadCrumbItems %}
+
+{% block indexPageTitle %}{{ category.categoryName }} - Service Directory{% endblock %}
+
+{% block indexBody %}
+    <h4>
+        Top Services in the "{{ category.categoryName }}" Category
+    </h4>
+    <p>
+        Our Promise: The team at YourWeb is proud of our high morals and integrity. We will never
+        intentionally mislead you, lie to you, endorse a site or product we don't personally believe in,
+        or make false claims for a pay check.
+    </p>
+    <p>
+        If we discover any of these sites or services misleading customers or not providing quality service
+        their status will be immediately updated. If you are investigating a new service check out our scam list
+        to see if w have reviewed or tested it.
+    </p>
+    <div class="service-list">
+        {% set count=0 %}
+        {% for website in category.websites %}
+            {%  include 'service-directory/service-index-card.html.twig' with { 'website': website } %}
+
+            {% set count = count + 1 %}
+
+            {% if count % 3 == 0 %}
+                <div class="inline-advert">
+                    <p>Advertisement</p>
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- CryptoCurrencyBanner -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:468px;height:60px"
+                         data-ad-client="ca-pub-6979594208465691"
+                         data-ad-slot="3172986111"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block indexAdverts %}{{ parent() }}{% endblock %}

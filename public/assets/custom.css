@@ -1,0 +1,52 @@
+.service-list hr {
+    color: #eeeeee;
+    padding: 30px 0 0 0;
+}
+
+.service-directory-card {
+    padding: 15px;
+    border: 1px solid rgba(49, 48, 48, 0.08);
+    box-shadow: 3px 4px 6px rgba(179, 211, 52, 0.49);
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    min-height: 180px;
+}
+
+.service-directory-card h3 {
+    padding-top: 0;
+}
+
+.service-directory-card a.btn-link {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    color: #222222;
+    background-color: rgb(179, 211, 52) ;
+    box-shadow: 2px 2px 2px #222222;
+    bottom: 0;
+    right: 0;
+}
+
+/* Variations */
+.shadow-danger {
+    border: 1px solid rgba(99, 26, 19, 0.42);
+    box-shadow: 3px 4px 6px rgba(237, 78, 42, 0.49);
+}
+
+.shadow-warning {
+    border: 1px solid rgba(127, 87, 26, 0.44);
+    box-shadow: 3px 4px 6px rgba(252, 179, 34, 0.49);
+}
+
+.shadow-info {
+    border: 1px solid rgba(60, 118, 151, 0.32);
+    box-shadow: 3px 4px 6px rgba(87, 181, 227, 0.49);
+}
+
+.shadow-success {
+    border: 1px solid rgba(109, 147, 42, 0.45);
+    box-shadow: 3px 4px 6px rgba(179, 211, 52, 0.49);
+}
+
+

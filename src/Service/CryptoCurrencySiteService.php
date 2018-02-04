@@ -6,6 +6,7 @@ use App\Entity\Website;
 use App\Entity\WebsiteCategory;
 use App\Repository\WebsiteCategoryRepository;
 use App\Repository\WebsiteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use function is_numeric;
 
@@ -33,15 +34,25 @@ class CryptoCurrencySiteService
         $this->entityManager = $entityManager;
     }
 
-    public function getReviewSitesInCategory(string $categorySlug)
+    public function getReviewSitesCategory(string $categorySlug, $status = null)
     {
-        return $this->websiteRepository->findSitesInCategoryBySlug($categorySlug);
+        return $this->categoryRepository->findCategoryWithSitesBySlug($categorySlug, $status);
     }
 
-    public function getReviewSite(string $siteIdOrSlug)
+    /**
+     * @return array
+     */
+    public function getReviewSiteCategories(): array
     {
-        if (is_numeric($siteIdOrSlug)){
-            //getById
-        }
+        return $this->categoryRepository->findAll();
+    }
+
+    /**
+     * @param string $siteId
+     * @return Website|null
+     */
+    public function getReviewSite(string $siteId): ?Website
+    {
+        return $this->websiteRepository->find($siteId);
     }
 }

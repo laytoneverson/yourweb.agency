@@ -3,9 +3,7 @@
 {% block title %}Home {{ parent() }}{% endblock %}
 
 {% block pageTitle %}Welcome to Digital Cash @ YourWeb.Agency{% endblock %}
-{% block sectionPageBody %}
-    <p>We are here to cover all things cryptocurrency related! </p>
-{% endblock %}
+
 {% block pageCssHref %}
     <link href="{{ asset('/assets/pages/css/components.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/pages/css/slider.css') }}" rel="stylesheet">
@@ -16,14 +14,6 @@
 {% block bodyHero %}{% endblock bodyHero %}
 
 {% block bodyContent %}
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
- var js, fjs = d.getElementsByTagName(s)[0];
- if (d.getElementById(id)) return;
- js = d.createElement(s); js.id = id;
- js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12';
- fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 <div class="main">
     <div class="container">
 

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block preHeader %}{% endblock %}
+
+{% block bodyContent %}
+
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>We're undergoing heavy construction!</h1>
+                <p>
+                    We wouldn't even have included this section of the site in our navigation but the site
+                would look so with empty spaces.
+                </p>
+                <p>
+                    Plus its important for you to see whats coming in the future! Make sure to follow us on twitter
+                    and like our page on facebook to receive updates as new content is added to the site!
+                    <br><br>
+
+                    {% include 'includes/facebook-like-page-banner.html.twig' %}
+                </p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

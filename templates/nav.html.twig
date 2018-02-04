@@ -1,11 +1,48 @@
-<li><a href="{{ path('home') }}">Home</a></li>
 
-<li><a href="{{ path('websiteReviewCategory', {'slug':'free-coin-faucets'}) }}">Free Coins</a></li>
-<li><a href="{{ path('websiteReviewCategory', {'slug':'purchase-coins-with-cash-or-credit'}) }}">Purchase Coins</a></li>
-<li><a href="{{ path('websiteReviewCategory', {'slug':'currency-exchanges'}) }}">Exchanges</a></li>
-<li><a href="{{ path('websiteReviewCategory', {'slug':'high-yield-investment-programs'}) }}">HYIP Investing</a></li>
-<li><a href="{{ path('websiteReviewCategory', {'slug':'recommended-wallets'}) }}">Wallets</a></li>
-<li><a href="{{ path('websiteReviewCategory', {'slug':'contract-mining-services'}) }}">Mining</a></li>
+
+<li><a href="{{ path('home') }}">Home</a></li>
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+        Crypto-Services
+    </a>
+    <ul class="dropdown-menu">
+        {% set categories = review_site_service.reviewSiteCategories %}
+        {% for cat in categories %}
+            <li><a
+                        href="{{ path('websiteReviewCategory', {'slug':cat.categorySlug}) }}"
+                        data-tootilp="{{ cat.categorySummary }}"
+                >{{ cat.categoryName }}</a></li>
+        {% endfor %}
+    </ul>
+</li>
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="{{ path('coming-soon') }}">
+        Guides
+    </a>
+    <ul class="dropdown-menu">
+        <li>Coming Soon...</li>
+        <li><a href="{{ path('coming-soon') }}">Video Library</a></li>
+        <li><a href="{{ path('coming-soon') }}">How-To Guides</a></li>
+        <li><a href="{{ path('coming-soon') }}">Cryptocurrency Explained</a></li>
+    </ul>
+</li>
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="{{ path('coming-soon') }}">
+        Coins
+    </a>
+</li>
+<li><a href="{{ path('coming-soon') }}">Blockchain Projects</a></li>
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="{{ path('coming-soon') }}">
+        Mining
+    </a>
+    <ul class="dropdown-menu">
+        <li>Coming Soon...</li>
+        <li><a href="{{ path('coming-soon') }}">Mining Hardware</a></li>
+        <li><a href="{{ path('coming-soon') }}">Mining Pools</a></li>
+        <li><a href="{{ path('coming-soon') }}">Mining Contracts</a></li>
+    </ul>
+</li>
 
 {#
 <li><a href="{{ path('websiteReviewCategory', {'slug':'best-exchanges'}) }}">Business Services</a></li>
