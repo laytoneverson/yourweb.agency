@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  php:
+    image: "registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/php"
+    build:
+      args:
+        - CONFIGPATH=./docker/prod
+        - APP_ENV=prod
+    environment:
+      - "DATABASE_URL=mysql://yourwebdb:JHL789KL45689@db:3306/yourwebdb"
+      - APP_ENV=prod
+
+  migration-util:
+    image: "registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/migration-util"
+    environment:
+      - "DATABASE_URL=mysql://yourwebdb:JHL789KL45689@db:3306/yourwebdb"
+      - APP_ENV=prod
+
+  web:
+    image: "registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/web"
+    build:
+        args:
+          - APP_ENV=prod
+          - CONFIGPATH=./docker/prod
+          - DBURL=mysql://yourwebdb:JHL789KL45689@db:3306/yourwebdb
+          - PHP_UPSTREAM_CONTAINER=php
+          - PHP_UPSTREAM_PORT=9000
+    labels:
+        aliyun.routing.port_80: nginx
+        online.yourweb.site: cryptocurrency
+    ports:
+      - 8181:80
+      - 444:443
+    volumes:
+      - ./var/logs/nginx:/var/log/nginx/viral-fb-profits
+    environment:
+      - DEVELOPMENT_MODE=false
+      - WEB_HTTP=true
+
+  db:
+    image: "registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/db"
+    environment:
+      - MYSQL_ROOT_PASSWORD=JHL789KL45689
+      - MYSQL_DATABASE=yourwebdb
+      - MYSQL_USER=yourwebdb
+      - MYSQL_PASSWORD=Jldl0Ppop3L45689
+    volumes:
+      - mysqlprod:/var/lib/mysql

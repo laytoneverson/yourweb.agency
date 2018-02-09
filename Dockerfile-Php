@@ -1,0 +1,101 @@
+ARG PHP_VERSION=7.1-fpm
+
+### Build PHP & Nginx Server
+FROM php:${PHP_VERSION}
+
+ENV COMPOSER_HOME /var/www/.composer
+
+ARG APP_DEBUG=false
+ARG APP_ENV=prod
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    curl \
+    g++ \
+    gifsicle \
+    imagemagick \
+    jpegoptim \
+    libfreetype6-dev \
+    libicu-dev \
+    libjpeg-dev \
+    libmagickwand-dev \
+    libmcrypt-dev \
+    libmemcached-dev \
+    libpng12-dev \
+    libpq-dev \
+    libssl-dev \
+    libz-dev \
+    optipng \
+    pngquant \
+    zlib1g-dev \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN docker-php-ext-configure gd \
+    --enable-gd-native-ttf \
+    --with-jpeg-dir=/usr/lib \
+    --with-freetype-dir=/usr/include/freetype2 \
+  && docker-php-ext-configure \
+    intl \
+  && docker-php-ext-install \
+    pdo_mysql \
+    gd \
+    zip \
+    bcmath \
+    exif \
+    intl \
+    mcrypt \
+  && docker-php-ext-enable \
+    intl \
+    exif
+
+RUN pecl install -o -f redis \
+    && pecl install imagick \
+    && pecl install xdebug \
+    && pecl install mongodb \
+    && docker-php-ext-enable \
+        redis \
+        imagick \
+        xdebug \
+        mongodb \
+    && rm -rf /tmp/pear
+
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
+     && chown www-data:www-data /var/www/.composer -R
+
+RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
+
+ARG CONFIGPATH
+COPY "./${CONFIGPATH}/" /config/
+
+RUN cp /config/php-fpm/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini \
+  && cp /config/php-fpm/laravel.ini /usr/local/etc/php/conf.d \
+  && cp /config/php-fpm/xlaravel.pool.conf /usr/local/etc/php-fpm.d/ \
+  && cp /config/php-fpm/php71.ini /usr/local/etc/php/php.ini \
+  && rm -Rf /config
+
+RUN usermod -u 1000 www-data
+
+# Copy Application & build to container
+COPY . /var/www/app/
+
+# Build Backend
+WORKDIR /var/www/app
+
+ENV APP_ENV=$APP_ENV
+
+RUN if [ "${APP_ENV}" -eq "prod" ]; then \
+      composer install \
+        --no-dev --no-suggest \
+        --optimize-autoloader --classmap-authoritative \
+        --no-interaction --no-progress \
+;else \
+        composer install --no-interaction --no-progress \
+;fi
+
+RUN mkdir -p var/cache/prod/sessions \
+    && chown www-data var -R
+
+CMD ["php-fpm"]
+
+EXPOSE 9000

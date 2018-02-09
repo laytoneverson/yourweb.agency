@@ -1,0 +1,5 @@
+FROM yourweb-dev-php:latest
+
+WORKDIR /var/www/app
+
+ENTRYPOINT php bin/console doctrine:migrations:migrate -n && php bin/console doctrine:fixtures:load -n --append

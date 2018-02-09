@@ -1,0 +1,48 @@
+db:
+  image: registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/db
+  environment:
+    - MYSQL_DATABASE=yourwebdb
+    - MYSQL_PASSWORD=Jldl0Ppop3L45689
+    - MYSQL_ROOT_PASSWORD=JHL789KL45689
+    - MYSQL_USER=yourwebdb
+  labels:
+    aliyun.log_store_dbstdout: stdout   #Note here
+  ports:
+    - 3306:3306/tcp
+  volumes:
+    - mysqlprod:/var/lib/mysql:rw
+
+migration-util:
+  image: registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/migration-util
+  environment:
+    - APP_ENV=prod
+    - DATABASE_URL=mysql://yourwebdb:JHL789KL45689@db:3306/yourwebdb
+  labels:
+    aliyun.depends: php,db
+
+php:
+  environment:
+    - APP_ENV=prod
+    - DATABASE_URL=mysql://yourwebdb:JHL789KL45689@db:3306/yourwebdb
+    - APP_SECRET=B1Yl3btHpeVEC5XHRDdLVGXJrrm8GVzJOMivXgiN-
+  image: registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/php
+  labels:
+    aliyun.depends: db
+    aliyun.probe.initial_delay_seconds: '30'
+    aliyun.log_store_dbstdout: stdout
+
+web:
+  image: registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/web
+  environment:
+    - DEVELOPMENT_MODE=false
+    - WEB_HTTP=true
+    - APP_SECRET=B1Yl3btHpeVEC5XHRDdLVGXJrrm8GVzJOMivXgiN
+  labels:
+    online.yourweb.site: cryptocurrency
+    aliyun.depends: php
+    aliyun.routing.port_80: nginx;http://cryptocurrency.yourweb.online/
+    aliyun.log_store_dbstdout: stdout   #Note here
+    aliyun.probe.initial_delay_seconds: '30'
+  ports:
+    - 80:80/tcp
+    - 444:443/tcp

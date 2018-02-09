@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  php:
+    image: yourweb-dev-php
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - APP_ENV=${APP_ENV}
+    build:
+      args:
+        - CONFIGPATH=./docker/dev
+        - APP_ENV=${APP_ENV}
+    volumes:
+      - ./:/var/www/app
+
+  migration-util:
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - APP_ENV=${APP_ENV}
+
+  web:
+    image: yourweb-dev-web
+    build:
+      args:
+        - CONFIGPATH=./docker/prod
+        - APP_ENV=${APP_ENV}
+        - PHP_UPSTREAM_CONTAINER=php
+        - PHP_UPSTREAM_PORT=9000
+    ports:
+      - 80:80
+      - 444:443
+    volumes:
+      - ./:/var/www/app
+      - ./var/logs/nginx:/var/log/nginx
+    environment:
+      - DEVELOPMENT_MODE=false
+      - WEB_HTTP=true
+
+  db:
+    image: yourweb-dev-db:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - mysqldev:/var/lib/mysql
+      - ./docker/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
