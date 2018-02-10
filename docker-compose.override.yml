@@ -26,6 +26,11 @@ services:
         - APP_ENV=${APP_ENV}
         - PHP_UPSTREAM_CONTAINER=php
         - PHP_UPSTREAM_PORT=9000
+        - APP_SECRET=${APP_SECRET}
+        - MYSQL_USER=yourweb
+        - MYSQL_PASSWORD=yourweb
+        - MYSQL_HOST=db
+        - MYSQL_DATABASE=yourweb
     ports:
       - 80:80
       - 444:443

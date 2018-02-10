@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class HomeController
- * #Route(host="%domain_cryptocurrency%")
  * @package App\Controller\CryptoCurrency
  */
 class HomeController extends AbstractController

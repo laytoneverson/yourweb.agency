@@ -8,13 +8,13 @@ services:
         - CONFIGPATH=./docker/prod
         - APP_ENV=prod
     environment:
-      - "DATABASE_URL=mysql://yourwebdb:JHL789KL45689@db:3306/yourwebdb"
+      - "DATABASE_URL=mysql://yourwebdb:Jldl0Ppop3L45689@db:3306/yourwebdb"
       - APP_ENV=prod
 
   migration-util:
     image: "registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/migration-util"
     environment:
-      - "DATABASE_URL=mysql://yourwebdb:JHL789KL45689@db:3306/yourwebdb"
+      - "DATABASE_URL=mysql://yourwebdb:Jldl0Ppop3L45689@db:3306/yourwebdb"
       - APP_ENV=prod
 
   web:
@@ -23,9 +23,13 @@ services:
         args:
           - APP_ENV=prod
           - CONFIGPATH=./docker/prod
-          - DBURL=mysql://yourwebdb:JHL789KL45689@db:3306/yourwebdb
           - PHP_UPSTREAM_CONTAINER=php
           - PHP_UPSTREAM_PORT=9000
+          - APP_SECRET
+          - MYSQL_USER
+          - MYSQL_PASSWORD
+          - MYSQL_HOST
+          - MYSQL_DATABASE
     labels:
         aliyun.routing.port_80: nginx
         online.yourweb.site: cryptocurrency

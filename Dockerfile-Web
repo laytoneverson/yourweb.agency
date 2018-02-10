@@ -13,18 +13,26 @@ RUN cp /config/nginx/nginx.conf /etc/nginx/nginx.conf \
   && cp -a /config/nginx/sites/. /etc/nginx/sites-available/ \
   && rm -Rf /config
 
-ARG APP_ENV
-ARG DBURL
+ARG APP_ENV=prod
+ARG APP_SECRET
+ARG MYSQL_USER
+ARG MYSQL_PASSWORD
+ARG MYSQL_HOST=db
+ARG MYSQL_DATABASE=yourwebdb
 ARG PHP_UPSTREAM_CONTAINER=php
 ARG PHP_UPSTREAM_PORT=9000
-RUN sed -i "s|__DATABASE_URL__|${DBURL}|g" /etc/nginx/sites-available/default.conf \
-    && sed -i "s|__APP_ENV__|${APP_ENV}|g" /etc/nginx/sites-available/default.conf \
-  && apk update && apk upgrade \
-    && apk add --no-cache bash \
-    && adduser -D -H -u 1000 -s /bin/bash www-data \
-  && echo "upstream php-upstream { server ${PHP_UPSTREAM_CONTAINER}:${PHP_UPSTREAM_PORT}; }" > /etc/nginx/conf.d/upstream.conf \
-    && rm /etc/nginx/conf.d/default.conf \
-    && chown -R www-data:www-data /var/www/app/var
+RUN sed -i "s|__APP_ENV__|${APP_ENV}|g" /etc/nginx/sites-available/default.conf \
+  && sed -i "s|__APP_SECRET__|${APP_SECRET}|g" /etc/nginx/sites-available/default.conf \
+  && sed -i "s|__MYSQL_USER__|${MYSQL_USER}|g" /etc/nginx/sites-available/default.conf \
+  && sed -i "s|__MYSQL_PASSWORD__|${MYSQL_PASSWORD}|g" /etc/nginx/sites-available/default.conf \
+  && sed -i "s|__MYSQL_HOST__|${MYSQL_HOST}|g" /etc/nginx/sites-available/default.conf \
+  && sed -i "s|__MYSQL_DATABASE__|${MYSQL_DATABASE}|g" /etc/nginx/sites-available/default.conf \
+ && apk update && apk upgrade \
+  && apk add --no-cache bash \
+  && adduser -D -H -u 1000 -s /bin/bash www-data \
+ && echo "upstream php-upstream { server ${PHP_UPSTREAM_CONTAINER}:${PHP_UPSTREAM_PORT}; }" > /etc/nginx/conf.d/upstream.conf \
+  && rm /etc/nginx/conf.d/default.conf \
+  && chown -R www-data:www-data /var/www/app/var
 
 CMD ["nginx"]
 
