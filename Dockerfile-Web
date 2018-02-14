@@ -13,14 +13,17 @@ RUN cp /config/nginx/nginx.conf /etc/nginx/nginx.conf \
   && cp -a /config/nginx/sites/. /etc/nginx/sites-available/ \
   && rm -Rf /config
 
-ARG APP_ENV=prod
+ARG APP_ENV
 ARG APP_SECRET
 ARG MYSQL_USER
 ARG MYSQL_PASSWORD
+
 ARG MYSQL_HOST=db
-ARG MYSQL_DATABASE=yourwebdb
+ARG MYSQL_DATABASE
+
 ARG PHP_UPSTREAM_CONTAINER=php
 ARG PHP_UPSTREAM_PORT=9000
+
 RUN sed -i "s|__APP_ENV__|${APP_ENV}|g" /etc/nginx/sites-available/default.conf \
   && sed -i "s|__APP_SECRET__|${APP_SECRET}|g" /etc/nginx/sites-available/default.conf \
   && sed -i "s|__MYSQL_USER__|${MYSQL_USER}|g" /etc/nginx/sites-available/default.conf \

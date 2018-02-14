@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% import "macros.html.twig" as macros %}
+
 {% block title %}Home {{ parent() }}{% endblock %}
 
 {% block pageTitle %}Welcome to Digital Cash @ YourWeb.Agency{% endblock %}
@@ -17,61 +19,33 @@
 <div class="main">
     <div class="container">
 
-        <div class="row margin-bottom-40" style="padding: 25px">
-            <h1>Everything CryptoCurrency <small>By YourWeb</small></h1>
-        </div>
-
         <div class="row margin-bottom-50">
-            <div class="col-md-9 col-sm-12">
-                <div class="col-md-4 service-box">
-                    <div class="service-box-heading">
-                        <em><i class="fa fa-bitcoin grey"></i></em>
-                        <span>Free Coins!</span>
+            <div class="col-md-9 col-sm-9">
+                <div class="row">
+                    <div class="col-md-4">
+                    {{ macros.serviceBox('col-md-12', 'bitcoin', 'Free Coins!', 'Use our list of faucets to find the highest paying, obstruction free claim faucets. We sift through the junk for you to make your introduction to cryptocurrency easy.') }}
+                    {{ macros.serviceBox('col-md-12', 'line-chart', 'Looking to Invest?', 'Find the HYIP that pays from our reviewed services. High Yield Investment Programs can be profitable as well as risky! Find out who pays and who doesn\'t. Don\'t try one until we have!') }}
                     </div>
-                    <p>Use our list of faucets to find the highest paying, obstruction free
-                        claim faucets. We sift through the junk for you to make your introduction
-                        to cryptocurrency easy.</p>
-                    <div class="service-box-heading">
-                        <em><i class="fa fa-line-chart grey"></i></em>
-                        <span>Looking to Invest?</span>
+                    <div class="col-md-8">
+                        <h1>CryptoCurrency <small>By YourWeb</small></h1>
+                        <div class="row card card-white margin-bottom-20">
+                            {% include 'home/new-sites-card.html.twig' with { 'sites' : newSites } %}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <iframe data-aa='839960' src='//ad.a-ads.com/839960?size=468x60' scrolling='no' style='width:468px; height:60px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
+                            </div>
+                        </div>
                     </div>
-                    <p>Find the HYIP that pays from our reviewed services. High Yield Investment Programs
-                        can be profitable as well as risky! Find out who pays and who doesn't. Don't try
-                        one until we have!</p>
                 </div>
 
-                <div class="col-md-8 col-sm-12">
-                    <h3 class="text-center">Something to bring attention to!</h3>
+                <div class="row">
+                    {{ macros.serviceBox('col-md-6', 'credit-card','Need a Wallet?','There are so many wallets available and choosing the right one is important. Pick from our list of easy to use wallets to identify one with the features you need.') }}
+                    {{ macros.serviceBox('col-md-6', 'motorcycle','Bring LasVegas Home','We have a one-stop-shop for all your gaming needs. It\'s like Las Vegas Blvd at your desk. The kids can play in the arcade and you can kick back with a drink and pursue your quest to conquer the odds.') }}
                 </div>
-
             </div>
-
-            <div class="col-md-3 col-sm-12 service-box">
-                <div class="service-box-heading">
-                    <em><i class="fa fa-credit-card grey"></i></em>
-                    <span>Need a Wallet?</span>
-                </div>
-                <p>There are so many wallets available and choosing the right one is important. Pick
-                    from our list of easy to use wallets to identify one with the features you need.</p>
-
-                <div class="service-box-heading">
-                    <em><i class="fa fa-motorcycle grey"></i></em>
-                    <span>Game Gamble Online</span>
-                </div>
-                <p>We have a one-stop-shop for all your gaming needs. It's like Las Vegas Blvd
-                    at your desk. The kids can play in the arcade and you can kick back with a
-                    drink and pursue your quest to conquer the odds.</p>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row" >
-            <div class="col-md-3">
-                <iframe data-aa='836203' src='//ad.a-ads.com/836203?size=200x200' scrolling='no' style='width:200px; height:200px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
-            </div>
-            <div class="col-md-6"></div>
-            <div class="col-md-3">
-                <iframe src="https://coinmedia.co/new_code_site90065.js" scrolling="no" frameborder="0" width="200px" height="230px"></iframe>
+            <div class="col-md-3 sidebar service-box">
+               {% include 'home/service-categories.html.twig' with {'categories':categories} %}
             </div>
         </div>
     </div>

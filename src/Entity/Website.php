@@ -7,12 +7,15 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
+use const PUBLIC_DIR;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WebsiteRepository")
  */
 class Website
 {
+    public const CLIP_BASE_URL = '/website-captures/';
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -249,7 +252,7 @@ class Website
     /**
      * @return string
      */
-    public function getWebsiteSummary(): string
+    public function getWebsiteSummary(): ?string
     {
         return $this->websiteSummary;
     }
@@ -268,7 +271,7 @@ class Website
     /**
      * @return string
      */
-    public function getWebsiteReview(): string
+    public function getWebsiteReview(): ?string
     {
         return $this->websiteReview;
     }
@@ -306,7 +309,7 @@ class Website
     /**
      * @return int
      */
-    public function getMyRecommendation(): int
+    public function getMyRecommendation(): ?int
     {
         return $this->myRecommendation;
     }
@@ -324,38 +327,44 @@ class Website
 
     /**
      * @param mixed $websiteCategory
-     * @return Void
+     * @return Website
      */
-    public function addWebsiteCategory($websiteCategory): Void
+    public function addWebsiteCategory($websiteCategory): Website
     {
         $this->websiteCategories->add($websiteCategory);
         // uncomment if you want to update other side
         $websiteCategory->setWebsite($this);
+
+        return $this;
     }
 
     /**
      * @param mixed $websiteCategory
-     * @return Void
+     * @return Website
      */
-    public function removeWebsiteCategory($websiteCategory): Void
+    public function removeWebsiteCategory($websiteCategory): ?Website
     {
         $this->websiteCategories->removeElement($websiteCategory);
         $websiteCategory->setWebsite(null);
+
+        return $this;
     }
 
     /**
      * @param mixed $websiteRating
-     * @return Void
+     * @return Website
      */
-    public function addWebsiteRating($websiteRating): Void
+    public function addWebsiteRating($websiteRating): Website
     {
         $this->websiteRatings->add($websiteRating);
         $websiteRating->setWebsite($this);
+
+        return $this;
     }
 
     /**
      * @param mixed $websiteRating
-     */
+     +*/
     public function removeWebsiteRating($websiteRating): void
     {
         $this->websiteRatings->removeElement($websiteRating);
@@ -365,7 +374,7 @@ class Website
     /**
      * @return float
      */
-    public function getWebsiteFriendlyRating(): float
+    public function getWebsiteFriendlyRating(): ?float
     {
         return $this->websiteFriendlyRating;
     }
@@ -384,7 +393,7 @@ class Website
     /**
      * @return float
      */
-    public function getWebsiteSafetyRating(): float
+    public function getWebsiteSafetyRating(): ?float
     {
         return $this->websiteSafetyRating;
     }

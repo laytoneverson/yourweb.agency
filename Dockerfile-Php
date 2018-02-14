@@ -15,9 +15,11 @@ RUN apt-get update \
     gifsicle \
     imagemagick \
     jpegoptim \
+    libfreetype6 \
     libfreetype6-dev \
     libicu-dev \
     libjpeg-dev \
+    libfontconfig1-dev \
     libmagickwand-dev \
     libmcrypt-dev \
     libmemcached-dev \

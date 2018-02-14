@@ -1,0 +1,9 @@
+{% macro serviceBox(boxClass, faicon, boxTitle, boxContent) %}
+<div class="{{ boxClass }} service-box">
+    <div class="service-box-heading">
+        <em><i class="fa fa-{{ faicon }} grey"></i></em>
+        <span>{{ boxTitle }}</span>
+    </div>
+    <p>{{ boxContent }}</p>
+</div>
+{% endmacro serviceBox %}

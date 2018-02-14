@@ -42,3 +42,8 @@ services:
             - { name: doctrine.event_subscriber, connection: default }
         calls:
             - [ setAnnotationReader, [ "@annotation_reader" ] ]
+
+    app.website-clipper:
+        class: App\Service\WebsiteScreenShotClipper
+        calls:
+            - [ setSaveDir, ['%kernel.project_dir%']]

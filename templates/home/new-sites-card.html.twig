@@ -1,0 +1,33 @@
+    <p>YourWeb is committed to providing our visitors with high quality, trustworthy resources.</p>
+<div class="home-page-feature">
+    <h2 class="">Recent Additions</h2>
+    <div class="front-carousel card inner-card card-black">
+        <div class="carousel slide" id="myCarousel">
+            <div class="carousel-inner card-black" style="">
+                {% set onFirst = true %}
+                {% for website in sites %}
+                    <div class="item  {{ (onFirst) ? 'active' : '' }}">
+                        <div class="col-md-3 col-sm-3">
+                            <img src="{{ website.websiteImageUrl }}" width="100%" alt="{{ website.websiteName }}">
+                        </div>
+                        <div class="col-md-9 col-sm-9">
+                            <h4>
+                                {{ website.websiteName }}
+                                <small><a href="{{ website.websiteUrl }}">Visit Site</a></small>
+                            </h4>
+                            <p>{{ website.websiteSummary }}</p>
+                        </div>
+                    </div>
+                    {% set onFirst = false %}
+                {% endfor %}
+            </div>
+
+            <a data-slide="prev" href="#myCarousel" class="carousel-control left">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            <a data-slide="next" href="#myCarousel" class="carousel-control right">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>

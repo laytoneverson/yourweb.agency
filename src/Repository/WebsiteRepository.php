@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\DBAL\Types\ReviewSiteStatusType;
 use App\Entity\Website;
 use App\Entity\WebsiteCategory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -16,6 +17,15 @@ class WebsiteRepository extends ServiceEntityRepository
         parent::__construct($registry, Website::class);
     }
 
+    public function findSitesNeedingCaptured()
+    {
+        return $this->createQueryBuilder('w')
+            ->where('w.websiteImageUrl = \'\'')
+            ->orWhere('w.websiteImageUrl IS NULL')
+            ->getQuery()
+            ->getResult();
+    }
+
     /**
      * @param $slug
      * @return Collection
@@ -23,12 +33,24 @@ class WebsiteRepository extends ServiceEntityRepository
     public function findSitesInCategoryBySlug($slug)
     {
         $qb = $this->createQueryBuilder('s')
+            ->select('s, c')
             ->join(
                 WebsiteCategory::class,
                 "c",
                 Expr\Join::WITH,
                 "c.categorySlug = :slug"
             )->setParameter("slug", $slug);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getRecentAdditions($resultCount = 10)
+    {
+        $qb = $this->createQueryBuilder('s')
+//            ->join(WebsiteCategory::class,"c")
+//            ->where('s.websiteStatus = :goodStanding')
+//            ->setParameter('goodStanding', ReviewSiteStatusType::GOOD_STANDING)
+            ->setMaxResults($resultCount);
 
         return $qb->getQuery()->getResult();
     }

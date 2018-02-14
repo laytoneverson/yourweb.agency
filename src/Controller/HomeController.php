@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Website;
+
+use App\Entity\WebsiteCategory;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,12 +18,24 @@ class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
-     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function homePageAction(Request $request)
+    public function homePageAction(EntityManagerInterface $entityManager)
     {
-        return $this->render('home/home.html.twig');
+        $newSites = $entityManager
+            ->getRepository(Website::class)
+            ->getRecentAdditions(8);
+
+        $siteCategories = $entityManager
+            ->getRepository(WebsiteCategory::class)
+            ->findAll();
+
+        return $this->render('home/home.html.twig', [
+            'newSites' => $newSites,
+            'categories' => $siteCategories,
+        ]);
     }
 
     /**

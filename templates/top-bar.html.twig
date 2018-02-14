@@ -1,0 +1,28 @@
+<div class="pre-header">
+    <div class="container">
+        <div class="row">
+
+            {% block topBarLeft %}
+                <div class="col-md-6 col-sm-6 additional-shop-info">
+                    <ul class="list-unstyled list-inline">
+                        {% block topBarLeftItems %}
+                            <li><i class="fa fa-envelope-o"></i><span>info@yourweb.online</span></li>
+                        {% endblock topBarLeftItems %}
+                    </ul>
+                </div>
+            {% endblock topBarLeft %}
+
+            {% block topBarRight %}
+                <div class="col-md-6 col-sm-6 additional-nav">
+                    <ul class="list-unstyled list-inline pull-right">
+                        {% block topBarRightItems %}
+                            {# <li><a href="page-login.html">Log In</a></li> #}
+                            {# <li><a href="page-reg-page.html">Registration</a></li> #}
+                        {% endblock topBarRightItems %}
+                    </ul>
+                </div>
+            {% endblock topBarRight %}
+
+        </div>
+    </div>
+</div>

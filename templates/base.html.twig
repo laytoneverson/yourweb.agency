@@ -18,7 +18,7 @@
 
         <meta charset="utf-8">
         <title>{% block title %}Cryptocurrency Resources by YourWeb!{% endblock %}</title>
-        <meta name="maValidation" content="6fad9d3a1e9c3223a3070706bb4e2345" />
+        <meta name="maValidation" content="5bce1d9b4ed9487bbe086f1d319e128c" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="{% block metaDescription %}Welcome to the CryptoCurrency by YourWeb Agency. Find the best bitcoin services in one place.{% endblock %}">
@@ -46,6 +46,7 @@
         {% block themeStyleSheets %}
             <link href="{{ asset('/assets/pages/css/animate.css') }}" rel="stylesheet">
             <link href="{{ asset('/assets/corporate/css/style.css') }}" rel="stylesheet">
+            <link href="{{ asset('/assets/custom.css') }}" rel="stylesheet">
             <link href="{{ asset('/assets/corporate/css/style-responsive.css') }}" rel="stylesheet">
             <link href="{{ asset('/assets/corporate/css/themes/green.css') }}" rel="stylesheet" id="style-color">
             <link href="{{ asset('/assets/plugins/fancybox/source/jquery.fancybox.css') }}" rel="stylesheet">
@@ -54,80 +55,49 @@
     </head>
     <body class="{% block bodyClass %} corporate {% endblock %}">
         {% include 'includes/facebook-sdk-include.html.twig' %}
+
         {% block preHeader %}{% endblock preHeader%}
-        {% block topBar %}
-        <div class="pre-header">
-            <div class="container">
-                <div class="row">
-
-                    {% block topBarLeft %}
-                    <div class="col-md-6 col-sm-6 additional-shop-info">
-                        <ul class="list-unstyled list-inline">
-                            {% block topBarLeftItems %}
-                            <li><i class="fa fa-envelope-o"></i><span>info@yourweb.online</span></li>
-                            {% endblock topBarLeftItems %}
-                        </ul>
-                    </div>
-                    {% endblock topBarLeft %}
-
-                    {% block topBarRight %}
-                    <div class="col-md-6 col-sm-6 additional-nav">
-                        <ul class="list-unstyled list-inline pull-right">
-                            {% block topBarRightItems %}
-                            {# <li><a href="page-login.html">Log In</a></li> #}
-                            {# <li><a href="page-reg-page.html">Registration</a></li> #}
-                            {% endblock topBarRightItems %}
-                        </ul>
-                    </div>
-                    {% endblock topBarRight %}
-
-                </div>
-            </div>
-        </div>
-        {% endblock topBar %}
+        {% block topBar %}{% endblock topBar %}
         {% block pageHeader %}
         <div class="header">
             <div class="container">
-
                 {% block siteLogo %}
-                <a class="site-logo"
-                  href="{% block logoLinkUrl %} https://CryptoCurrency.yourweb.online/ {% endblock %}"
-                  style="padding: 12px 0">
-                    <img src="{% block logoImageSrc %}/assets/logo/logo-small-dark.png{% endblock %}"
-                         alt="{% block logoAltText %}CryptoCurrency By YourWeb.Online Logo{% endblock %}"
-                         style="height: 55px">
-                </a>
+                    <a class="site-logo"href="{% block logoLinkUrl %} https://CryptoCurrency.yourweb.online/ {% endblock %}">
+                        <img src="{% block logoImageSrc %}/assets/logo/logo-small-dark.png{% endblock %}"
+                             alt="{% block logoAltText %}CryptoCurrency By YourWeb.Online Logo{% endblock %}"
+                             style="height: 55px">
+                    </a>
                 {% endblock siteLogo %}
 
                 <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
                 {% block siteNavigation %}
-                <div class="header-navigation pull-right font-transform-inherit">
-                    <ul>
+                    <div class="header-navigation font-transform-inherit">
+                        <ul>
 
-                        {% block headerNav %}
-                            {% include 'nav.html.twig' %}
-                        {% endblock %}
+                            {% block headerNav %}
+                                {% include 'nav.html.twig' %}
+                            {% endblock %}
 
-                        {% block search %}
-                        <li class="menu-search">
-                            <span class="sep"></span>
-                            <i class="fa fa-search search-btn"></i>
-                            <div class="search-box">
-                                <form action="#">
-                                    <div class="input-group">
-                                        <input type="text" placeholder="Search" class="form-control">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-primary" type="submit">Search</button>
-                                        </span>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-                        {% endblock search %}
+                            {% block search %}
+                            <li class="menu-search">
+                                <span class="sep"></span>
+                                <i class="fa fa-search search-btn"></i>
+                                <div class="search-box">
+                                    <form action="#">
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Search" class="form-control">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-primary" type="submit">Search</button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            {% endblock search %}
 
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
                 {% endblock siteNavigation %}
 
             </div>
