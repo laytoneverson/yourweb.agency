@@ -2,7 +2,7 @@ version: '3'
 
 services:
   php:
-    image: "registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/php"
+    image: "registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/php:1.07"
     env_file: .env-prod
     build:
       args:
@@ -21,7 +21,7 @@ services:
       - APP_ENV=prod
 
   web:
-    image: "registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/web"
+    image: "registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/web:1.07"
     env_file: .env-prod
     build:
         args:

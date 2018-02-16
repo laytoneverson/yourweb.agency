@@ -48,8 +48,8 @@ class WebsiteRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('s')
 //            ->join(WebsiteCategory::class,"c")
-//            ->where('s.websiteStatus = :goodStanding')
-//            ->setParameter('goodStanding', ReviewSiteStatusType::GOOD_STANDING)
+            ->where('s.websiteStatus = :goodStanding')
+            ->setParameter('goodStanding', ReviewSiteStatusType::GOOD_STANDING)
             ->setMaxResults($resultCount);
 
         return $qb->getQuery()->getResult();

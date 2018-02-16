@@ -34,17 +34,17 @@ class WebsiteScreenShotClipper
 
     }
 
-    public function setSaveDir($kernelDir)
+    public function setSaveDir($kernelDir): string
     {
         $this->saveDir = $kernelDir . "/../public" . Website::CLIP_BASE_URL;
     }
 
-    private function getSaveDir($fileName)
+    private function getSaveDir($fileName): string
     {
         return $this->saveDir . $this->savePublicDir . $fileName;
     }
 
-    private function getPublicPath($fileName)
+    private function getPublicPath($fileName): string
     {
         return $this->savePublicDir . $fileName;
     }

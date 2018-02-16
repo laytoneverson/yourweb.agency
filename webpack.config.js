@@ -5,24 +5,19 @@ Encore
     .setPublicPath('/build')
 
     .addEntry('js/app', './assets/js/app.js')
-    .addEntry('js/cryptocurrency/home-page', './assets/js/cryptocurrency/home-page.js')
-    .addEntry('theme/metronic', './assets/js/cryptocurrency/theme/metronic.js')
-
-    .createSharedEntry('global/app-global', [
-        './assets/Metronic/plugins/jquery.min.js',
-        './assets/Metronic/plugins/jquery-migrate.min.js',
-        './assets/Metronic/plugins/bootstrap/js/bootstrap.min.js',
-        './assets/Metronic/corporate/scripts/back-to-top.js',
-        './assets/Metronic/plugins/bootstrap/css/bootstrap.min.css',
-        './assets/Metronic/plugins/font-awesome/css/font-awesome.min.css'
-    ])
+    .addEntry('js/home-page', './assets/js/home-page.js')
+    .addEntry('global/app', './assets/css/app.scss')
+    .addEntry('global/global-custom', './assets/css/global-custom.css')
+    .addEntry('global/metronic', './assets/js/metronic.js')
+    .addEntry('global/layout', './assets/js/layout.js')
+    .addEntry('global/back-to-top', './assets/js/back-to-top.js')
 
     .enableSassLoader()
-    // .autoProvidejQuery()
-    // .enableSourceMaps(!Encore.isProduction())
+    .autoProvidejQuery()
+    .enableSourceMaps(!Encore.isProduction())
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
-    // .enableVersioning(Encore.isProduction())
+    .enableVersioning(Encore.isProduction())
 ;
 
 module.exports = Encore.getWebpackConfig();

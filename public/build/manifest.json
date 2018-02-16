@@ -1,18 +1,11 @@
 {
-  "build/fonts/fontawesome-webfont.eot": "/build/fonts/fontawesome-webfont.f7c2b4b7.eot",
-  "build/fonts/fontawesome-webfont.ttf?v=4.3.0": "/build/fonts/fontawesome-webfont.706450d7.ttf",
-  "build/fonts/fontawesome-webfont.woff2?v=4.3.0": "/build/fonts/fontawesome-webfont.97493d3f.woff2",
-  "build/fonts/fontawesome-webfont.woff?v=4.3.0": "/build/fonts/fontawesome-webfont.d9ee23d5.woff",
-  "build/fonts/glyphicons-halflings-regular.eot": "/build/fonts/glyphicons-halflings-regular.f4769f9b.eot",
-  "build/fonts/glyphicons-halflings-regular.ttf": "/build/fonts/glyphicons-halflings-regular.e18bbf61.ttf",
-  "build/fonts/glyphicons-halflings-regular.woff": "/build/fonts/glyphicons-halflings-regular.fa277232.woff",
-  "build/fonts/glyphicons-halflings-regular.woff2": "/build/fonts/glyphicons-halflings-regular.448c34a5.woff2",
-  "build/global/app-global.css": "/build/global/app-global.css",
-  "build/global/app-global.js": "/build/global/app-global.js",
-  "build/images/fontawesome-webfont.svg?v=4.3.0": "/build/images/fontawesome-webfont.29800836.svg",
-  "build/images/glyphicons-halflings-regular.svg": "/build/images/glyphicons-halflings-regular.89889688.svg",
-  "build/js/app.js": "/build/js/app.js",
-  "build/js/cryptocurrency/home-page.js": "/build/js/cryptocurrency/home-page.js",
-  "build/manifest.js": "/build/manifest.js",
-  "build/theme/metronic.js": "/build/theme/metronic.js"
+  "build/global/app.css": "/build/global/app.d41d8cd98f00b204e9800998ecf8427e.css",
+  "build/global/app.js": "/build/global/app.a7aa2c59d3147c731d37.js",
+  "build/global/back-to-top.js": "/build/global/back-to-top.78b8f03daa621cf55782.js",
+  "build/global/global-custom.css": "/build/global/global-custom.ead0720ed3f354a9bfe5ecff1db126cf.css",
+  "build/global/global-custom.js": "/build/global/global-custom.e831736a28a5d621be3b.js",
+  "build/global/layout.js": "/build/global/layout.0fdd28aba5011dd4572d.js",
+  "build/global/metronic.js": "/build/global/metronic.c342491f182b35920a80.js",
+  "build/js/app.js": "/build/js/app.3133cfdff322112b473b.js",
+  "build/js/home-page.js": "/build/js/home-page.1f2ee1f5330fc92b183a.js"
 }
