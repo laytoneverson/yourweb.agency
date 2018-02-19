@@ -27,11 +27,12 @@
                         {{ website.websiteStatus|readable_enum("ReviewSiteStatusType") }}
                     </span>
                 </p>
-                <h3>{{ website.websiteName }} </h3>
+                <h3 class="pull-left">{{ website.websiteName }} </h3>
+                <p class="pull-right padding-right-30">Our Rating: {{ website.myRecommendation }} / 5</p>
             </div>
-            <p class="card-summary">{{ website.websiteSummary }}</p>
+            <p class="card-summary">{{ website.websiteSummary|markdown }}</p>
             <p class="text-right .bottom-align-text">
-                <a href="{{ website.websiteUrl }}" class="btn btn-link">Visit Website</a>
+                <a href="{{ website.websiteUrl }}" class="btn btn-link" target="_blank">Visit Website</a>
             </p>
         </div>
     </div>

@@ -86,7 +86,7 @@ WORKDIR /var/www/app
 
 ENV APP_ENV=$APP_ENV
 
-RUN if [ "${APP_ENV}" -eq "prod" ]; then \
+RUN if [[ "${APP_ENV}" == "prod" ]]; then \
       composer install \
         --no-dev --no-suggest \
         --optimize-autoloader --classmap-authoritative \
@@ -97,6 +97,8 @@ RUN if [ "${APP_ENV}" -eq "prod" ]; then \
 
 RUN mkdir -p var/cache/prod/sessions \
     && chown www-data var -R
+
+COPY ./public/build /var/www/app/public/build/
 
 CMD ["php-fpm"]
 

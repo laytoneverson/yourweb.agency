@@ -72,7 +72,7 @@ class Website
      * @ORM\Column(type="text", nullable=true)
      * @var string
      */
-    private $websiteReview ;
+    private $websiteReview;
 
     /**
      * @ORM\Column(type="integer")
@@ -103,6 +103,11 @@ class Website
      */
     private $currenciesAccepted;
 
+    /**
+     * @ORM\Column(type="boolean")
+     * @var bool
+     */
+    private $featured = false;
 
     public function __toString()
     {
@@ -426,6 +431,21 @@ class Website
         $this->currenciesAccepted = $currenciesAccepted;
 
         return $this;
+      }
+
+    /**
+     * @return bool
+     */
+    public function isFeatured(): bool
+    {
+        return $this->featured;
     }
 
+    /**
+     * @param bool $featured
+     */
+    public function setFeatured(bool $featured): void
+    {
+        $this->featured = $featured;
+    }
 }

@@ -1,9 +1,18 @@
-{% macro serviceBox(boxClass, faicon, boxTitle, boxContent) %}
+{% macro serviceBox(boxClass, faicon, boxTitle, boxContent, linkPath) %}
 <div class="{{ boxClass }} service-box">
     <div class="service-box-heading">
         <em><i class="fa fa-{{ faicon }} grey"></i></em>
         <span>{{ boxTitle }}</span>
     </div>
-    <p>{{ boxContent }}</p>
+    <p>{{ boxContent }} - <a href="{{ linkPath }}">View Page</a></p>
 </div>
 {% endmacro serviceBox %}
+
+{% macro pageMeta(pageTitle, description, keywords) %}
+    <title>{% block title %} {{ pageTitle }} | CryptoCoin Service Directory {% endblock %}</title>
+    <meta name="description" content="{% block metaDescription %}{{ description }}{% endblock %}">
+    <meta name="keywords" content="{% block metaKeywords %}{{ keywords }}{% endblock %}">
+    <meta property="og:title" content="{% block socialTitle %}{{ pageTitle }}{% endblock %}">
+    <meta property="og:description" content="{% block socialDescription %}{{ description }}{% endblock %}">
+    <meta property="og:url" content="{% block socialUrl %}{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}{% endblock %}">
+{% endmacro %}

@@ -47,7 +47,6 @@ class WebsiteRepository extends ServiceEntityRepository
     public function getRecentAdditions($resultCount = 10)
     {
         $qb = $this->createQueryBuilder('s')
-//            ->join(WebsiteCategory::class,"c")
             ->where('s.websiteStatus = :goodStanding')
             ->setParameter('goodStanding', ReviewSiteStatusType::GOOD_STANDING)
             ->setMaxResults($resultCount);
@@ -59,17 +58,4 @@ class WebsiteRepository extends ServiceEntityRepository
     {
 
     }
-
-    /*
-    public function findBySomething($value)
-    {
-        return $this->createQueryBuilder('w')
-            ->where('w.something = :value')->setParameter('value', $value)
-            ->orderBy('w.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
 }

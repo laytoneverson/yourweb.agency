@@ -500,7 +500,7 @@ body.page-header-fixed {
 .header-navigation > ul > li > a {
 	color: #333;
 	display: block;	
-	padding: 29px 12px 30px;
+	padding: 49px 12px 30px;
 }
 .header-navigation ul > li.active > a,
 .header-navigation ul > li > a:hover,
@@ -691,7 +691,7 @@ body.page-header-fixed {
 /* Top Search */
 .header-navigation li.menu-search {
 	position: relative;
-	top: 26px;
+	top: 17px;
 }
 .header-navigation li.menu-search span.sep {
 	top: 0;
@@ -767,7 +767,7 @@ body.page-header-fixed {
 }
 @media (min-width: 1025px) {
 	.reduce-header .header-navigation > ul > li > a {
-		padding: 16px 12px 17px;
+		padding: 37px 12px 17px;
 	}
 	.ecommerce .reduce-header .header-navigation > ul > li > a {
 		padding: 23px 12px 20px;
@@ -812,16 +812,16 @@ body.page-header-fixed {
 	text-indent: -100000px;
 }
 .owl-buttons .owl-prev {
-    background: #fff url(../../pages/img/fa-angles.png) no-repeat 8px 8px;
+    background: #fff url(../img/fa-angles.png) no-repeat 8px 8px;
 }
 .owl-buttons .owl-next {
-    background: #fff url(../../pages/img/fa-angles.png) no-repeat -33px 8px;
+    background: #fff url(../img/fa-angles.png) no-repeat -33px 8px;
 }
 .owl-buttons .owl-prev:hover {
-    background: #e84d1c url(../../pages/img/fa-angles.png) no-repeat 8px -31px;
+    background: #e84d1c url(../img/fa-angles.png) no-repeat 8px -31px;
 }
 .owl-buttons .owl-next:hover {
-    background: #e84d1c url(../../pages/img/fa-angles.png) no-repeat -33px -31px;
+    background: #e84d1c url(../img/fa-angles.png) no-repeat -33px -31px;
 }
 
 /*  */
@@ -1003,20 +1003,20 @@ Brands
 }
 .brands .owl-buttons .owl-prev {
     left: 0;
-    background: #fff url(../../pages/img/fa-angle-brands.png) no-repeat 18px 18px;
+    background: #fff url(../img/fa-angle-brands.png) no-repeat 18px 18px;
     margin-left: 0;
 }
 .brands .owl-buttons .owl-prev:hover {
-    background: #fff url(../../pages/img/fa-angle-brands.png) no-repeat 18px -217px;
+    background: #fff url(../img/fa-angle-brands.png) no-repeat 18px -217px;
 }
 .brands .owl-buttons .owl-next {
     left: auto;
     right: 0;
-    background: #fff url(../../pages/img/fa-angle-brands.png) no-repeat -249px 18px;
+    background: #fff url(../img/fa-angle-brands.png) no-repeat -249px 18px;
     margin-right: 0;
 }
 .brands .owl-buttons .owl-next:hover {
-    background: #fff url(../../pages/img/fa-angle-brands.png) no-repeat -249px -217px;
+    background: #fff url(../img/fa-angle-brands.png) no-repeat -249px -217px;
 }
 
 /***
@@ -1049,7 +1049,7 @@ steps block and steps block elements
 	display: block;
 	width: 36px;
 	height: 71px;
-	background: url(../../pages/img/step3-angle-right.png) no-repeat 100% 50%;
+	background: url(../img/step3-angle-right.png) no-repeat 100% 50%;
 	position: absolute;
 	top: 0;
 	right: 10px;
@@ -1106,7 +1106,7 @@ steps block and steps block elements
 	margin: -23px 0 23px;
 	position: relative;
 	overflow: hidden;
-	background: #72c2ff url(../../pages/img/title-bg/man.jpg) no-repeat 100% 100%;
+	background: #72c2ff url(../img/title-bg/man.jpg) no-repeat 100% 100%;
 	min-height: 280px;
 	padding-top: 79px;
 	width: 100%;
@@ -2266,16 +2266,16 @@ Demo Utils
 }
 .testimonials-v1 .left-btn {
 	right: 30px;
-    background: url(../../pages/img/fa-angles.png) no-repeat 8px 8px;
+    background: url(../img/fa-angles.png) no-repeat 8px 8px;
 }
 .testimonials-v1 .right-btn {
-    background: url(../../pages/img/fa-angles.png) no-repeat -33px 8px;
+    background: url(../img/fa-angles.png) no-repeat -33px 8px;
 }
 .testimonials-v1 .left-btn:hover {
-    background: #e84d1c url(../../pages/img/fa-angles.png) no-repeat 8px -31px;
+    background: #e84d1c url(../img/fa-angles.png) no-repeat 8px -31px;
 }
 .testimonials-v1 .right-btn:hover {
-    background: #e84d1c url(../../pages/img/fa-angles.png) no-repeat -33px -31px;
+    background: #e84d1c url(../img/fa-angles.png) no-repeat -33px -31px;
 }
 
 /* our clients */
@@ -2982,14 +2982,14 @@ Styler Panel
   margin: 0;
 }
 .color-panel .icon-color {
-  background: #c9c9c9 url(../../pages/img/icon-color.png) center no-repeat;
+  background: #c9c9c9 url(../img/icon-color.png) center no-repeat;
 }
 .color-panel .icon-color:hover {
   background-color: #3d3d3d;
 }
 .color-panel .icon-color-close {
   display: none;
-  background: #3d3d3d url(../../pages/img/icon-color-close.png) center no-repeat;
+  background: #3d3d3d url(../img/icon-color-close.png) center no-repeat;
 }
 .color-panel .icon-color-close:hover {
   background-color: #222;

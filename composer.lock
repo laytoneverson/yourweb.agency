@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cfffeb320718c94f6e308884a138d09f",
+    "content-hash": "9bb80661f31b34085093872a21c3ee32",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1425,16 +1425,16 @@
         },
         {
             "name": "javiereguiluz/easyadmin-bundle",
-            "version": "v1.17.10",
+            "version": "v1.17.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/javiereguiluz/EasyAdminBundle.git",
-                "reference": "a5ff0977b03963d3d47a3a4cf4fcdefe21b30e85"
+                "reference": "828308c3bb8c564c51419318e64ce9b290e45aca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/a5ff0977b03963d3d47a3a4cf4fcdefe21b30e85",
-                "reference": "a5ff0977b03963d3d47a3a4cf4fcdefe21b30e85",
+                "url": "https://api.github.com/repos/javiereguiluz/EasyAdminBundle/zipball/828308c3bb8c564c51419318e64ce9b290e45aca",
+                "reference": "828308c3bb8c564c51419318e64ce9b290e45aca",
                 "shasum": ""
             },
             "require": {
@@ -1509,7 +1509,7 @@
                 "backend",
                 "generator"
             ],
-            "time": "2018-02-05T19:02:55+00:00"
+            "time": "2018-02-10T11:44:58+00:00"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -1669,57 +1669,6 @@
                 "markdown"
             ],
             "time": "2018-01-15T00:49:33+00:00"
-        },
-        {
-            "name": "microweber/screen",
-            "version": "v1.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/microweber/screen.git",
-                "reference": "a7865099d2fbb8960052cfb408b4cbe463b31774"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/microweber/screen/zipball/a7865099d2fbb8960052cfb408b4cbe463b31774",
-                "reference": "a7865099d2fbb8960052cfb408b4cbe463b31774",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3"
-            },
-            "require-dev": {
-                "symfony/var-dumper": "~3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Screen\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Peter Ivanov",
-                    "email": "peter@microweber.com",
-                    "homepage": "http://microweber.com"
-                },
-                {
-                    "name": "André Filipe",
-                    "email": "andre.r.flip@gmail.com",
-                    "homepage": "http://masnathan.com"
-                }
-            ],
-            "description": "A PHP Class to interact with PhantomJs and capture screenshot of a webpage",
-            "keywords": [
-                "capture",
-                "phantomjs",
-                "print-screen",
-                "screen"
-            ],
-            "time": "2017-01-20T15:21:43+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -2150,16 +2099,16 @@
         },
         {
             "name": "sensio/framework-extra-bundle",
-            "version": "v5.1.4",
+            "version": "v5.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-                "reference": "072c00c52b947e88a1e619e9ff426cee6c8c482b"
+                "reference": "bf4940572e43af679aaa13be98f3446a1c237bd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/072c00c52b947e88a1e619e9ff426cee6c8c482b",
-                "reference": "072c00c52b947e88a1e619e9ff426cee6c8c482b",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/bf4940572e43af679aaa13be98f3446a1c237bd8",
+                "reference": "bf4940572e43af679aaa13be98f3446a1c237bd8",
                 "shasum": ""
             },
             "require": {
@@ -2215,7 +2164,7 @@
                 "annotations",
                 "controllers"
             ],
-            "time": "2018-01-12T13:08:16+00:00"
+            "time": "2018-02-14T08:40:54+00:00"
         },
         {
             "name": "stof/doctrine-extensions-bundle",

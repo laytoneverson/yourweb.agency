@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% import "macros.html.twig" as macros %}
+
+{% block title %}Home {{ parent() }}{% endblock %}
+
+{% block pageTitle %}Welcome to Digital Cash @ YourWeb.Agency{% endblock %}
+
+{% block pageCssHref %}
+    <link href="{{ asset('/assets/pages/css/components.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/pages/css/slider.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/plugins/owl.carousel/assets/owl.carousel.css') }}" rel="stylesheet" >
+{% endblock %}
+
+{% block bodyHero %}{% endblock bodyHero %}
+
+{% block bodyContent %}
+<div class="main">
+    <div class="container">
+
+        <div class="row margin-bottom-50">
+            <div class="col-md-9 col-sm-9">
+                <div class="row">
+                    <div class="col-md-4">
+                    {{ macros.serviceBox('col-md-12', 'bitcoin', 'Free Coins!', 'Use our list of faucets to find the highest paying, obstruction free claim faucets. We sift through the junk for you to make your introduction to cryptocurrency easy.') }}
+                    {{ macros.serviceBox('col-md-12', 'line-chart', 'Looking to Invest?', 'Find the HYIP that pays from our reviewed services. High Yield Investment Programs can be profitable as well as risky! Find out who pays and who doesn\'t. Don\'t try one until we have!') }}
+                    </div>
+                    <div class="col-md-8">
+                        <h1>CryptoCurrency <small>By YourWeb</small></h1>
+                        <div class="row card card-white margin-bottom-20">
+                            {% include 'home/new-sites-card.html.twig' with { 'sites' : newSites } %}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <iframe data-aa='839960' src='//ad.a-ads.com/839960?size=468x60' scrolling='no' style='width:468px; margin-left: auto; margin-right: auto; height:60px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    {{ macros.serviceBox('col-md-6', 'credit-card','Need a Wallet?','There are so many wallets available and choosing the right one is important. Pick from our list of easy to use wallets to identify one with the features you need.') }}
+                    {{ macros.serviceBox('col-md-6', 'motorcycle','Bring LasVegas Home','We have a one-stop-shop for all your gaming needs. It\'s like Las Vegas Blvd at your desk. The kids can play in the arcade and you can kick back with a drink and pursue your quest to conquer the odds.') }}
+                </div>
+            </div>
+            <div class="col-md-3 sidebar service-box">
+               {% include 'home/service-categories.html.twig' with {'categories':categories} %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock bodyContent %}
+
+{% block pageJavascripts %}
+
+    <script src="{{ asset('/assets/plugins/fancybox/source/jquery.fancybox.pack.js') }}" type="text/javascript"></script><!-- pop up -->
+    <script src="{{ asset('/assets/plugins/owl.carousel/owl.carousel.min.js') }}" type="text/javascript"></script><!-- slider for products -->
+    <script src="{{ asset('/assets/pages/scripts/bs-carousel.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('build/js/home-page.js') }}" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            Layout.initOWL();
+        });
+    </script>
+{% endblock %}

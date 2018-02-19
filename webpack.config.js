@@ -3,21 +3,21 @@ var Encore = require('@symfony/webpack-encore');
 Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
-
-    .addEntry('js/app', './assets/js/app.js')
-    .addEntry('js/home-page', './assets/js/home-page.js')
-    .addEntry('global/app', './assets/css/app.scss')
-    .addEntry('global/global-custom', './assets/css/global-custom.css')
-    .addEntry('global/metronic', './assets/js/metronic.js')
-    .addEntry('global/layout', './assets/js/layout.js')
-    .addEntry('global/back-to-top', './assets/js/back-to-top.js')
+    .cleanupOutputBeforeBuild()
 
     .enableSassLoader()
     .autoProvidejQuery()
+    .addEntry('js/app', './assets/js/app.js')
+    .addEntry('js/home-page', './assets/js/home-page.js')
+    .addEntry('js/owl-carousel', './node_modules/owl.carousel/src/js/owl.carousel.js')
+    .addEntry('global/app', './assets/css/app.scss')
+    .addEntry('global/style', './assets/css/style.css')
+    .addEntry('global/global-custom', './assets/css/global-custom.css')
+    .addEntry('global/back-to-top', './assets/js/back-to-top.js')
+
     .enableSourceMaps(!Encore.isProduction())
-    .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
-    .enableVersioning(Encore.isProduction())
+    //.enableVersioning(false)
 ;
 
 module.exports = Encore.getWebpackConfig();

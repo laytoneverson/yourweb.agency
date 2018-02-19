@@ -1,6 +1,15 @@
 {% extends 'section-index.html.twig' %}
 
-{% block title %} Top {{ category.categoryName }} Services | Crypto-Coin Service Directory {% endblock %}
+{% import "macros.html.twig" as macros %}
+
+{% block socialMetaData %}
+    {{ macros.pageMeta(
+        category.categoryName ~ "| CryptoCoin Service Directory",
+        category.categorySummary,
+        "bitcoin, cryptocurrency"
+    ) }}
+{% endblock socialMetaData %}
+
 
 {% block pageCssHref %}
     {{  parent() }}

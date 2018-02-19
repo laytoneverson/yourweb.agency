@@ -9,7 +9,6 @@
 {% block pageCssHref %}
     <link href="{{ asset('/assets/pages/css/components.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/pages/css/slider.css') }}" rel="stylesheet">
-    <link href="{{ asset('/build/css/home-page.css') }}" rel="stylesheet" >
     <link href="{{ asset('assets/plugins/owl.carousel/assets/owl.carousel.css') }}" rel="stylesheet" >
 {% endblock %}
 
@@ -18,34 +17,41 @@
 {% block bodyContent %}
 <div class="main">
     <div class="container">
-
+        <h1 class="page-header margin-bottom-25">CryptoCurrency <small>By YourWeb</small></h1>
         <div class="row margin-bottom-50">
-            <div class="col-md-9 col-sm-9">
-                <div class="row">
-                    <div class="col-md-4">
-                    {{ macros.serviceBox('col-md-12', 'bitcoin', 'Free Coins!', 'Use our list of faucets to find the highest paying, obstruction free claim faucets. We sift through the junk for you to make your introduction to cryptocurrency easy.') }}
-                    {{ macros.serviceBox('col-md-12', 'line-chart', 'Looking to Invest?', 'Find the HYIP that pays from our reviewed services. High Yield Investment Programs can be profitable as well as risky! Find out who pays and who doesn\'t. Don\'t try one until we have!') }}
-                    </div>
-                    <div class="col-md-8">
-                        <h1>CryptoCurrency <small>By YourWeb</small></h1>
-                        <div class="row card card-white margin-bottom-20">
-                            {% include 'home/new-sites-card.html.twig' with { 'sites' : newSites } %}
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <iframe data-aa='839960' src='//ad.a-ads.com/839960?size=468x60' scrolling='no' style='width:468px; margin-left: auto; margin-right: auto; height:60px; border:0px; padding:0;overflow:hidden' allowtransparency='true'></iframe>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="row card margin-bottom-25">
+                    {% include 'home/new-sites-card.html.twig' with { 'sites' : newSites } %}
                 </div>
-
-                <div class="row">
-                    {{ macros.serviceBox('col-md-6', 'credit-card','Need a Wallet?','There are so many wallets available and choosing the right one is important. Pick from our list of easy to use wallets to identify one with the features you need.') }}
-                    {{ macros.serviceBox('col-md-6', 'motorcycle','Bring LasVegas Home','We have a one-stop-shop for all your gaming needs. It\'s like Las Vegas Blvd at your desk. The kids can play in the arcade and you can kick back with a drink and pursue your quest to conquer the odds.') }}
+                <div class="row margin-bottom-25">
+                    <p>YourWeb is committed to providing our visitors with high quality, trustworthy resources.</p>
                 </div>
+                {{ macros.serviceBox('col-md-6 col-sm-12', 'bitcoin', 'Free Coins!', 'Use our list of faucets to find the highest paying, obstruction free claim faucets. We sift through the junk for you to make your introduction to cryptocurrency easy.', path('websiteReviewCategory', {'slug':'coin-faucets'})) }}
+                {{ macros.serviceBox('col-md-6 col-sm-12', 'line-chart', 'Looking to Invest?', 'Find the HYIP that pays from our reviewed services. High Yield Investment Programs can be profitable as well as risky! Find out who pays and who doesn\'t.', path('websiteReviewCategory', {'slug':'high-yeild-investments'})) }}
+                {{ macros.serviceBox('col-md-6 col-sm-12', 'credit-card','Need a Wallet?','There are so many wallets available and choosing the right one is important. Pick from our list of easy to use wallets to identify one with the features you need.', path('websiteReviewCategory', {'slug':'wallets'})) }}
+                {{ macros.serviceBox('col-md-6 col-sm-12', 'motorcycle','Gaming','Entertain yourself and even earn free bittcoins. The best gaming sites are listed here.', path('websiteReviewCategory', {'slug':'gaming-sites'})) }}
             </div>
-            <div class="col-md-3 sidebar service-box">
-               {% include 'home/service-categories.html.twig' with {'categories':categories} %}
+
+            <div class="col-md-3 col-sm-6 sidebar service-box">
+                {% include 'home/service-categories.html.twig' with {'categories':categories} %}
+            </div>
+
+            <div class="col-md-3 col-sm-6 sidebar service-box">
+                {% include 'home/social-sites.html.twig' %}
+            </div>
+
+            <div class="col-md-3 col-sm-6 sidebar service-box">
+                {% include 'home/crypto-guides.html.twig' %}
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    {% if date().timestamp is even %}
+                        {{ include('adverts/banner-468x60-coinhits.html.twig') }}
+                    {% else %}
+                        {{ include('adverts/banner-468x60-a-ads.html.twig') }}
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>

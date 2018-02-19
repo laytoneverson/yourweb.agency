@@ -22,7 +22,20 @@ class ReviewController extends AbstractController
     public function viewCategoryAction(CryptoCurrencySiteService $siteService, $slug, $siteStatus = null)
     {
         return $this->render('service-directory/index.html.twig', [
-            'category' => $siteService->getReviewSitesCategory($slug)
+            'category' => $siteService->getReviewSitesCategory($slug, $siteStatus)
+        ]);
+    }
+    /**
+     * @Route("/cryptocoin-service-directory/{id}", name="websiteReview")
+     * @param CryptoCurrencySiteService $siteService
+     * @param $slug
+     * @param $siteStatus
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function view(CryptoCurrencySiteService $siteService, $id)
+    {
+        return $this->render('service-directory/service-review.html.twig', [
+            'category' => $siteService->getReviewSite($id)
         ]);
     }
 }

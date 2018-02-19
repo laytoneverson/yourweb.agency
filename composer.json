@@ -55,7 +55,8 @@
         "auto-scripts": {
             "assets:install --relative %PUBLIC_DIR%": "symfony-cmd",
             "cache:clear": "symfony-cmd",
-            "cache:warm": "symfony-cmd"
+            "cache:warm": "symfony-cmd",
+            "doctrine:migrations:migrate --no-interaction": "symfony-cmd"
         },
         "post-install-cmd": [
             "chmod -R ug+w var",

@@ -27,8 +27,8 @@ services:
         - PHP_UPSTREAM_CONTAINER=php
         - PHP_UPSTREAM_PORT=9000
         - APP_SECRET=${APP_SECRET}
-        - MYSQL_USER=yourwebdb
-        - MYSQL_PASSWORD=yourwebdb
+        - MYSQL_USER=yourweb
+        - MYSQL_PASSWORD=yourweb
         - MYSQL_HOST=db
         - MYSQL_DATABASE=yourwebdb
     ports:

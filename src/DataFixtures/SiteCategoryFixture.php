@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\WebsiteCategory;
+use const CUBRID_AUTOCOMMIT_FALSE;
 use Doctrine\Common\Persistence\ObjectManager;
 
 class SiteCategoryFixture extends AbstractUpdateableFixture
@@ -13,15 +14,15 @@ class SiteCategoryFixture extends AbstractUpdateableFixture
             [
                 "id" => 1,
                 "CategoryName" => 'Coin Faucets',
-                "CategorySummary" => 'Free coins through faucets.',
+                "CategorySummary" => 'Earn Free cryptocurrency through the best coin faucets on the web.',
             ],[
                 "id" => 2,
-                "CategoryName" => 'Buy Coins',
-                "CategorySummary" => 'Places to exchange coins for fiat currency or credit cards.',
+                "CategoryName" => 'Buy / Sell Coins',
+                "CategorySummary" => 'Purchase or sell cryptocurrency using cash or credit cards.',
             ],[
                 "id" => 3,
-                "CategoryName" => 'Trading Exchanges',
-                "CategorySummary" => 'Recommended currency exchange sites.',
+                "CategoryName" => 'Currency Trade Exchanges',
+                "CategorySummary" => 'Trade your way to the top with currency exchanges.',
             ],[
                 "id" => 4,
                 "CategoryName" => 'Wallets',
@@ -30,37 +31,42 @@ class SiteCategoryFixture extends AbstractUpdateableFixture
             [
                 "id" => 5,
                 "CategoryName" => 'High Yield Investments',
-                "CategorySummary" => 'Best places to put your skills to work for coins.',
+                "CategorySummary" => 'Put your skills to work and get paid with cryptocurrency.',
             ],
             [
                 "id" => 6,
-                "CategoryName" => 'Coin Market Data',
-                "CategorySummary" => 'Best sites to track coin values',
+                "CategoryName" => 'Coin Portfolio\'s and Market Data',
+                "CategorySummary" => 'Research coin values and keep track of your portfolio',
             ],
             [
                 "id" => 7,
                 "CategoryName" => 'Mining Pools',
-                "CategorySummary" => 'Best contract mining companies',
+                "CategorySummary" => 'Find a trustworthy, high paying mining pool.',
             ],
             [
                 "id" => 8,
                 "CategoryName" => 'Instant Exchanges',
-                "CategorySummary" => 'Instantly exchange coins for other coins or cash',
+                "CategorySummary" => 'Quickly and conveniently exchange one cryptocoin for another.',
             ],
             [
                 "id" => 9,
                 "CategoryName" => 'Advertising Networks',
-                "CategorySummary" => 'Coin related advertising networks.',
+                "CategorySummary" => 'CryptoCurrency related advertising networks.',
             ],
             [
                 "id" => 10,
                 "CategoryName" => 'Gaming Sites',
-                "CategorySummary" => 'Have fun with your coins. Earn and spend fye.',
+                "CategorySummary" => 'Have fun with your coins and find a new addiction.',
             ],
             [
                 "id" => 11,
-                "CategoryName" => 'Casinos and Betting',
-                "CategorySummary" => 'Bringing vegas to your living room with top casino and gambline sites.',
+                "CategoryName" => 'Casinos & Betting',
+                "CategorySummary" => 'Bringing vegas to your living room! View the internets bitcoin casinos and betting sites.',
+            ],
+            [
+                "id" => 12,
+                "CategoryName" => 'Shop With CryptoCurrency',
+                "CategorySummary" => 'Retailers and service providers that accept cryptocurrency.',
             ],
         ];
     }
@@ -77,6 +83,6 @@ class SiteCategoryFixture extends AbstractUpdateableFixture
 
     public function getDeleteAbsentEntities()
     {
-        return true;
+        return false;
     }
 }

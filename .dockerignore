@@ -1,7 +1,11 @@
 var/log/**
+var/logs/**
 var/cache/**
 node_modules/**
 docs/*
 .idea
 .env
 vendor/**
+assets
+!public/assets
+

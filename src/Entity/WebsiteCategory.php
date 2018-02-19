@@ -44,6 +44,12 @@ class WebsiteCategory
      */
     private $categorySummary;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     * @var string
+     */
+    private $categoryKeyWords;
+
     public function __construct()
     {
         $this->websites = new ArrayCollection();

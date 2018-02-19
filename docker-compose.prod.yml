@@ -2,12 +2,16 @@ version: '3'
 
 services:
   php:
-    image: "registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/php:1.07"
-    env_file: .env-prod
+    #image: "registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/php:${VERSION}"
+    image: "yourweb-prod-php:${VERSION}"
+    env_file:
+      - .env-prod
+      - .version
     build:
       args:
         - CONFIGPATH=./docker/prod
         - APP_ENV=prod
+        - VERSION
     environment:
       - "DATABASE_URL=mysql://yourwebdb:Jldl0Ppop3L45689@db:3306/yourwebdb"
       - APP_ENV=prod
@@ -21,8 +25,11 @@ services:
       - APP_ENV=prod
 
   web:
-    image: "registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/web:1.07"
-    env_file: .env-prod
+    #image: "registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/web:${VERSION}"
+    image: "yourweb-prod-web:${VERSION}"
+    env_file:
+      - .env-prod
+      - .version
     build:
         args:
           - APP_ENV=prod
@@ -34,6 +41,7 @@ services:
           - MYSQL_PASSWORD=Jldl0Ppop3L45689
           - MYSQL_HOST=db
           - MYSQL_DATABASE=yourwebdb
+          - VERSION
     labels:
         aliyun.routing.port_80: nginx
         online.yourweb.site: cryptocurrency
@@ -49,7 +57,8 @@ services:
   db:
     env_file:
       - .env-prod
-    image: "registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/db"
+    #image: "registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/db"
+    image: "yourweb-prod-db:${VERSION}"
     environment:
       - MYSQL_ROOT_PASSWORD=JHL789KL45689
       - MYSQL_DATABASE=yourwebdb

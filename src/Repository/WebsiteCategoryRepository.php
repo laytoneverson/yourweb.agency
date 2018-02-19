@@ -26,20 +26,10 @@ class WebsiteCategoryRepository extends ServiceEntityRepository
             $qb->join('c.websites', 'w');
         }
 
+        $qb->orderBy('w.websiteStatus', "ASC");
+
         return $qb
             ->getQuery()
             ->getOneOrNullResult();
     }
-    /*
-    public function findBySomething($value)
-    {
-        return $this->createQueryBuilder('w')
-            ->where('w.something = :value')->setParameter('value', $value)
-            ->orderBy('w.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
 }

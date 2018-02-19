@@ -1,4 +1,7 @@
-var Layout = function () {
+
+var owlCarousel = require("owl.carousel");
+
+module.exports = function () {
 
      // IE mode
     var isRTL = false;
@@ -118,8 +121,9 @@ var Layout = function () {
         });
     }
 
-    var handleSearch = function() {    
-        $('.search-btn').click(function () {            
+    var handleSearch = function() {
+        return;
+        $('.search-btn').click(function () {
             if($('.search-btn').hasClass('show-search-icon')){
                 if ($(window).width()>767) {
                     $('.search-box').fadeOut(300);
@@ -134,8 +138,8 @@ var Layout = function () {
                     $('.search-box').fadeIn(0);
                 }
                 $('.search-btn').addClass('show-search-icon');
-            } 
-        }); 
+            }
+        });
 
         // close search box on body click
         if($('.search-btn').size() != 0) {

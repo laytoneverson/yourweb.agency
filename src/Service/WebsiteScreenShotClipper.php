@@ -15,7 +15,7 @@ class WebsiteScreenShotClipper
 
     public function __construct()
     {
-        $this->clipper = new Capture();
+        //$this->clipper = new Capture();
     }
 
     public function clipWebsite(Website $website)

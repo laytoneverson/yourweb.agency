@@ -1,5 +1,6 @@
 ARG APP_ENV
-FROM yourweb-${APP_ENV}-php:latest as php
+ARG VERSION
+FROM yourweb-${APP_ENV}-php:${VERSION} as php
 
 FROM nginx:alpine
 
@@ -7,18 +8,10 @@ LABEL maintainer = "Layton Everson <layton.everson@gmail.com>"
 
 ARG CONFIGPATH
 COPY "./${CONFIGPATH}/" /config/
-COPY --from=php /var/www/app/public/ /var/www/app/public/
+COPY --from=php /var/www/app/ /var/www/app/
 
 RUN cp /config/nginx/nginx.conf /etc/nginx/nginx.conf \
   && cp -a /config/nginx/sites/. /etc/nginx/sites-available/ \
-  && mkdir /var/www/app/var \
-  && mkdir /var/www/app/var/cache \
-  && mkdir /var/www/app/var/cache/prod \
-  && mkdir /var/www/app/var/cache/dev \
-  && mkdir /var/www/app/var/cache/log \
-  && mkdir /var/www/app/var/cache/logs \
-  && mkdir /var/www/app/var/cache/log/nginx \
-  && mkdir /var/www/app/var/cache/logs/nginx \
   && rm -Rf /config
 
 ARG APP_ENV

@@ -1,4 +1,3 @@
-    <p>YourWeb is committed to providing our visitors with high quality, trustworthy resources.</p>
 <div class="home-page-feature">
     <h2 class="">Recent Additions</h2>
     <div class="front-carousel card inner-card card-black">
@@ -7,13 +6,13 @@
                 {% set onFirst = true %}
                 {% for website in sites %}
                     <div class="item  {{ (onFirst) ? 'active' : '' }}">
-                        <div class="col-md-3 col-sm-3">
-                            <img src="{{ website.websiteImageUrl }}" width="100%" alt="{{ website.websiteName }}">
+                        <div class="col-xs-3">
+                            <img src="{{ website.websiteImageUrl }}" alt="{{ website.websiteName }}" style="width: 100%">
                         </div>
-                        <div class="col-md-9 col-sm-9">
+                        <div class="col-xs-9">
                             <h4>
                                 {{ website.websiteName }}
-                                <small><a href="{{ website.websiteUrl }}">Visit Site</a></small>
+                                <small><a href="{{ website.websiteUrl }}" target="_blank">Visit Site</a></small>
                             </h4>
                             <p>{{ website.websiteSummary }}</p>
                         </div>

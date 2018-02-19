@@ -95,9 +95,7 @@ abstract class AbstractUpdateableFixture extends Fixture
             }
 
             foreach ($newData as $rec) {
-                if (!$manager->contains($rec)) {
-                    $manager->persist($rec);
-                }
+               $manager->persist($rec);
             }
 
             $manager->flush();
