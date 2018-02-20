@@ -1,11 +1,11 @@
 {% macro serviceBox(boxClass, faicon, boxTitle, boxContent, linkPath) %}
-<div class="{{ boxClass }} service-box">
-    <div class="service-box-heading">
-        <em><i class="fa fa-{{ faicon }} grey"></i></em>
-        <span>{{ boxTitle }}</span>
+    <div class="{{ boxClass }} service-box">
+        <div class="service-box-heading">
+            <em><i class="fa fa-{{ faicon }} grey"></i></em>
+            <span>{{ boxTitle }}</span>
+        </div>
+        <p>{{ boxContent }} - <a href="{{ linkPath }}">View Page</a></p>
     </div>
-    <p>{{ boxContent }} - <a href="{{ linkPath }}">View Page</a></p>
-</div>
 {% endmacro serviceBox %}
 
 {% macro pageMeta(pageTitle, description, keywords) %}
@@ -15,4 +15,67 @@
     <meta property="og:title" content="{% block socialTitle %}{{ pageTitle }}{% endblock %}">
     <meta property="og:description" content="{% block socialDescription %}{{ description }}{% endblock %}">
     <meta property="og:url" content="{% block socialUrl %}{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}{% endblock %}">
+{% endmacro %}
+
+{% macro googleTagManagerHead(gaCode) %}
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','{{ gaCode }}');</script>
+    <!-- End Google Tag Manager -->
+{% endmacro %}
+
+{% macro googleTagManagerBody(gaCode) %}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ gaCode }}"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+{% endmacro %}
+
+{% macro displayRegularBanner() %}
+    {% set randomNumber = random(1000) %}
+    {% if randomNumber <= 334 %}
+        {% include 'adverts/banner-468x60-a-ads.html.twig' %}
+    {% elseif randomNumber <= 666 %}
+        {% include 'adverts/banner-468x60-coinhits.html.twig' %}
+    {% else %}
+        {% include 'adverts/banner-468x60-google.html.twig' %}
+    {% endif %}
+{% endmacro %}
+
+{% macro displayHalfBanner() %}
+    {% set randomNumber = random(1000) %}
+    {% if randomNumber <= 334 %}
+        {% include 'adverts/banner-234x60-localbitcoins.html.twig' %}
+    {% elseif randomNumber <= 666 %}
+        {% include 'adverts/banner-234x60-coinhits.html.twig' %}
+    {% else %}
+        {% include 'adverts/banner-234x60-aads.html.twig' %}
+    {% endif %}
+{% endmacro %}
+
+{% macro displayMediumRectangle() %}
+    {% set randomNumber = random(1000) %}
+    {% if randomNumber <= 250 %}
+        {% include 'adverts/medium-rectangle-300x250-coinhits.html.twig' %}
+    {% elseif randomNumber <= 500 %}
+        {% include 'adverts/medium-rectangle-300x250-coin-media.html.twig' %}
+    {% elseif randomNumber <= 750 %}
+        {% include 'adverts/medium-rectangle-300x250-aads.html.twig' %}
+    {% else %}
+        {% include 'adverts/medium-rectangle-300x250-google.html.twig' %}
+    {% endif %}
+{% endmacro %}
+
+{% macro displaySquare() %}
+    {% set randomNumber = random(1000) %}
+    {% if randomNumber <= 334 %}
+        {% include 'adverts/square-200x200-aads.html.twig' %}
+    {% elseif randomNumber <= 666 %}
+        {% include 'adverts/square-200x200-coinmedia.html.twig' %}
+    {% else %}
+        {% include 'adverts/square-200x200-utcoinbilders.html.twig' %}
+    {% endif %}
 {% endmacro %}

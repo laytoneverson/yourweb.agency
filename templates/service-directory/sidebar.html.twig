@@ -1,0 +1,42 @@
+{% import 'macros.html.twig' as macros %}
+
+<div class="row margin-bottom-15">
+    <div class="col-md-12 margin-left-20 blog-sidebar">
+            <h2 class="no-top-space">Service Categories</h2>
+            <ul class="nav sidebar-categories margin-bottom-40">
+                {% for cat in categories %}
+                    <li class="">
+                        <a href="{{ path('websiteReviewCategory', {'slug':cat.categorySlug} ) }}">
+                            {{ cat.categoryName }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+    </div>
+</div>
+
+<div class="col-md-12 margin-bottom-15 center-align">
+    {{ macros.displayHalfBanner() }}
+</div>
+
+<div class="row margin-bottom-15">
+    <div class="col-md-12 margin-left-20">
+        <div class="panel panel-primary shadow-info" style="">
+            <div class="panel-heading">
+                <h3 class="panel-heading">Featured Sites</h3>
+            </div>
+            {% for site in featuredSites %}
+                <div class="panel-body">
+                   <p><strong>{{ site.websiteName }}</strong><br>
+                   {{ site.websiteSummary }}<br>
+                   <a href="{{ site.websiteUrl }}">Visit Site</a>
+                   </p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+    {{ macros.displayMediumRectangle() }}
+</div>

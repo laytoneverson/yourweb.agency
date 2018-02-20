@@ -1,3 +1,5 @@
+{% import 'macros.html.twig' as macros %}
+
 <!DOCTYPE html>
 
 {% block preHead %}
@@ -8,13 +10,7 @@
 <!--<![endif]-->
 {% endblock preHead %}
     <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113142152-1"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-113142152-1');
-        </script>
+        {{ macros.googleTagManagerHead('GTM-MT9WZXQ') }}
 
         <meta charset="utf-8">
         <meta name="maValidation" content="5bce1d9b4ed9487bbe086f1d319e128c" />
@@ -54,6 +50,7 @@
         {% include 'includes/favicon.html.twig' %}
     </head>
     <body class="{% block bodyClass %} corporate {% endblock %}">
+        {{ macros.googleTagManagerBody("GTM-MT9WZXQ") }}
         {% include 'includes/facebook-sdk-include.html.twig' %}
 
         {% block preHeader %}{% endblock preHeader%}

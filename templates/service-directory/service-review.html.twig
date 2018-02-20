@@ -1,2 +1,26 @@
-{% extends 'item-view.html.twig' %}
+{% extends 'base.html.twig' %}
+{% import 'macros.html.twig' as macros %}
 
+{% block socialMetaData %}
+    {{ macros.pageMeta(
+        "Review of " ~ site.websiteName,
+        "Review of " ~ site.websiteName ~ ". Yourweb is dedicated to providing our visitors with quality content. "
+        ~ "You can expect honest and fair descriptions of services. Our reviews cannot be bought!",
+        "CryptoCurrency Service Reviews, " ~ site.websiteName ~ " Review, About " ~ site.websiteName
+        ~ " Scam " ~ site.WebsiteName
+    ) }}
+{% endblock socialMetaData %}
+{% block bodyContent %}
+    <div class="main">
+        <div class="container">
+            <h1 class="page-header">{{ site.websiteName }} Service Review</h1>
+            <ul class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="javascript:;">CryptoCoin Service Directory</a></li>
+                <li>Website Reviews</li>
+                <li class="active">{{ site.websiteName }}</li>
+            </ul>
+
+        </div>
+    </div>
+{% endblock bodyContent %}

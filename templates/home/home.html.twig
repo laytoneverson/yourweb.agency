@@ -30,10 +30,16 @@
                 {{ macros.serviceBox('col-md-6 col-sm-12', 'line-chart', 'Looking to Invest?', 'Find the HYIP that pays from our reviewed services. High Yield Investment Programs can be profitable as well as risky! Find out who pays and who doesn\'t.', path('websiteReviewCategory', {'slug':'high-yeild-investments'})) }}
                 {{ macros.serviceBox('col-md-6 col-sm-12', 'credit-card','Need a Wallet?','There are so many wallets available and choosing the right one is important. Pick from our list of easy to use wallets to identify one with the features you need.', path('websiteReviewCategory', {'slug':'wallets'})) }}
                 {{ macros.serviceBox('col-md-6 col-sm-12', 'motorcycle','Gaming','Entertain yourself and even earn free bittcoins. The best gaming sites are listed here.', path('websiteReviewCategory', {'slug':'gaming-sites'})) }}
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        {{ macros.displayRegularBanner() }}
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-3 col-sm-6 sidebar service-box">
                 {% include 'home/service-categories.html.twig' with {'categories':categories} %}
+                {{ macros.displayHalfBanner() }}
             </div>
 
             <div class="col-md-3 col-sm-6 sidebar service-box">
@@ -42,17 +48,10 @@
 
             <div class="col-md-3 col-sm-6 sidebar service-box">
                 {% include 'home/crypto-guides.html.twig' %}
+                {{ macros.displayMediumRectangle() }}
             </div>
 
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    {% if date().timestamp is even %}
-                        {{ include('adverts/banner-468x60-coinhits.html.twig') }}
-                    {% else %}
-                        {{ include('adverts/banner-468x60-a-ads.html.twig') }}
-                    {% endif %}
-                </div>
-            </div>
+
         </div>
     </div>
 </div>

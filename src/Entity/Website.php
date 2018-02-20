@@ -45,6 +45,18 @@ class Website
     private $websiteRatings;
 
     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\WebsiteFeature", mappedBy="websites")
+     * @var Collection
+     */
+    private $websiteFeatures;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\WebsiteInvestmentTerm", mappedBy="website")
+     * @var Collection
+     */
+    private $investmentTerms;
+
+    /**
      * @ORM\Column(type="string", length=255)
      * @var string
      */
@@ -111,7 +123,7 @@ class Website
 
     public function __toString()
     {
-        return $this->getWebsiteUrl();
+        return $this->getWebsiteName();
     }
 
     public function __construct()
@@ -119,6 +131,8 @@ class Website
         $this->websiteRatings = new ArrayCollection();
         $this->websiteCategories = new ArrayCollection();
         $this->currenciesAccepted = new ArrayCollection();
+        $this->websiteFeatures = new ArrayCollection();
+        $this->investmentTerms = new ArrayCollection();
     }
 
     /**
@@ -447,5 +461,79 @@ class Website
     public function setFeatured(bool $featured): void
     {
         $this->featured = $featured;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getWebsiteFeatures(): Collection
+    {
+        return $this->websiteFeatures;
+    }
+
+    /**
+     * @param Collection $websiteFeatures
+     * @return Website
+     */
+    public function setWebsiteFeatures(Collection $websiteFeatures): Website
+    {
+        $this->websiteFeatures = $websiteFeatures;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getInvestmentTerms(): Collection
+    {
+        return $this->investmentTerms;
+    }
+
+    /**
+     * @param Collection $investmentTerms
+     * @return Website
+     */
+    public function setInvestmentTerms(Collection $investmentTerms): Website
+    {
+        $this->investmentTerms = $investmentTerms;
+
+        return $this;
+    }
+
+    /**
+     * @param mixed $websiteFeature
+     */
+    public function addWebsiteFeature($websiteFeature)
+    {
+        $this->websiteFeatures->add($websiteFeature);
+        $websiteFeature->setWebsite($this);
+    }
+
+    /**
+     * @param mixed $websiteFeature
+     */
+    public function removeWebsiteFeature($websiteFeature)
+    {
+        $this->websiteFeatures->removeElement($websiteFeature);
+        $websiteFeature->setWebsite(null);
+    }
+
+    /**
+     * @param mixed $investmentTerm
+     */
+    public function addInvestmentTerm(WebsiteInvestmentTerm $investmentTerm)
+    {
+        $this->investmentTerms->add($investmentTerm);
+        $investmentTerm->setWebsite($this);
+    }
+
+    /**
+     * @param mixed $investmentTerm
+     */
+    public function removeInvestmentTerm(WebsiteInvestmentTerm $investmentTerm)
+    {
+        $this->investmentTerms->removeElement($investmentTerm);
+        $investmentTerm->setWebsite(null);
     }
 }

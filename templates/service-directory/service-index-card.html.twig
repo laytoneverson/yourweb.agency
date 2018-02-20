@@ -32,7 +32,10 @@
             </div>
             <p class="card-summary">{{ website.websiteSummary|markdown }}</p>
             <p class="text-right .bottom-align-text">
-                <a href="{{ website.websiteUrl }}" class="btn btn-link" target="_blank">Visit Website</a>
+                <a href="{{ website.websiteUrl }}" class="btn btn-link service-directory-link" target="_blank">Visit Website</a>
+                {#{% if website.websiteReview is not empty %}#}
+                    {#<a href="{{ path("websiteReview", {"id":website.id}) }}" class="btn btn-link service-directory-link">Site Review</a>#}
+                {#{% endif %}#}
             </p>
         </div>
     </div>

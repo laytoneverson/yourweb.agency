@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -21,7 +22,7 @@ class WebsiteCategory
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Website", mappedBy="websiteCategories")
-     * @var ArrayCollection
+     * @var Collection
      */
     private $websites;
 
@@ -57,7 +58,7 @@ class WebsiteCategory
 
     public function __toString()
     {
-        return $this->getCategoryName();
+        return ''. $this->getCategoryName();
     }
 
     /**
@@ -101,7 +102,7 @@ class WebsiteCategory
     /**
      * @return string
      */
-    public function getCategoryName()
+    public function getCategoryName(): ?string
     {
         return $this->categoryName;
     }
@@ -136,7 +137,7 @@ class WebsiteCategory
     /**
      * @return string
      */
-    public function getCategorySummary(): string
+    public function getCategorySummary(): ?string
     {
         return $this->categorySummary;
     }
@@ -154,7 +155,7 @@ class WebsiteCategory
     /**
      * @return string
      */
-    public function getCategorySlug(): string
+    public function getCategorySlug(): ?string
     {
         return $this->categorySlug;
     }
@@ -168,5 +169,21 @@ class WebsiteCategory
         $this->categorySlug = $categorySlug;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategoryKeyWords(): ?string
+    {
+        return $this->categoryKeyWords;
+    }
+
+    /**
+     * @param string $categoryKeyWords
+     */
+    public function setCategoryKeyWords(string $categoryKeyWords): void
+    {
+        $this->categoryKeyWords = $categoryKeyWords;
     }
 }

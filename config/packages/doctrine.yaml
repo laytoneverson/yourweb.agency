@@ -12,6 +12,7 @@ doctrine:
         types:
             CurrencyType: App\DBAL\Types\CurrencyType
             ReviewSiteStatusType: App\DBAL\Types\ReviewSiteStatusType
+            AdDisplayType: App\DBAL\Types\AdDisplayType
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore

@@ -55,4 +55,9 @@ class CryptoCurrencySiteService
     {
         return $this->websiteRepository->find($siteId);
     }
+
+    public function getFeaturedSites($count = 10)
+    {
+        return $this->websiteRepository->getFeaturedSites($count);
+    }
 }

@@ -10,11 +10,6 @@
     ) }}
 {% endblock socialMetaData %}
 
-
-{% block pageCssHref %}
-    {{  parent() }}
-    <link rel="stylesheet" href="{{ asset('/assets/custom.css') }}">
-{% endblock %}
 {% block breadCrumbItems %}
     <li><a href="javascript:;">CryptoCoin Service Directory</a></li>
     <li class="active">{{ category.categoryName }}</li>
@@ -46,20 +41,13 @@
                 <div class="row margin-bottom-25 padding-top-25">
                     <div class="col-md-8 col-md-offset-3">
                         <p>Advertisement</p>
-
-                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <!-- CryptoCurrencyBanner -->
-                        <ins class="adsbygoogle"
-                             style="display:inline-block;width:468px;height:60px"
-                             data-ad-client="ca-pub-6979594208465691"
-                             data-ad-slot="3172986111"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
+                        {{ macros.displayRegularBanner() }}
                     </div>
                 </div>
             {% endif %}
         {% endfor %}
     </div>
 {% endblock %}
-{% block indexAdverts %}{{ parent() }}{% endblock %}
+{% block sideBar %}
+    {{ include('service-directory/sidebar.html.twig') }}
+{% endblock sideBar %}
