@@ -17,7 +17,9 @@ use Symfony\Component\HttpFoundation\Request;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/", name="home", options={
+     *     "sitemap" = {"priority" = 0.5, "changefreq" = "daily", "section" = "home" }
+     *     })
      * @param EntityManagerInterface $entityManager
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -39,7 +41,9 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/coming-soon", name="coming-soon")
+     * @Route("/coming-soon", name="coming-soon", options={
+     *     "sitemap" = {"priority" = 0.5, "changefreq" = "never", "section" = "home" }
+     *     })
      */
     public function comingSoonAction()
     {

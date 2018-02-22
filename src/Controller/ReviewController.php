@@ -21,8 +21,10 @@ class ReviewController extends AbstractController
      */
     public function viewCategoryAction(CryptoCurrencySiteService $siteService, $slug, $siteStatus = null)
     {
+        $category = $siteService->getReviewSitesCategory($slug, $siteStatus);
+
         return $this->render('service-directory/index.html.twig', [
-            'category' => $siteService->getReviewSitesCategory($slug, $siteStatus),
+            'category' => $category,
             'categories' => $siteService->getReviewSiteCategories(),
             'featuredSites' => $siteService->getFeaturedSites(6),
         ]);

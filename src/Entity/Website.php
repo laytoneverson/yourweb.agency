@@ -118,6 +118,13 @@ class Website
      */
     private $featured = false;
 
+    /**
+     * @Gedmo\Slug(fields={"websiteName"}, )
+     * @ORM\Column(type="string", length=255, nullable=true, unique=true)
+     * @var string
+     */
+    private $slug;
+
     public function __toString()
     {
         return $this->getWebsiteName();
@@ -388,44 +395,6 @@ class Website
     }
 
     /**
-     * @return float
-     */
-    public function getWebsiteFriendlyRating(): ?float
-    {
-        return $this->websiteFriendlyRating;
-    }
-
-    /**
-     * @param float $websiteFriendlyRating
-     * @return Website
-     */
-    public function setWebsiteFriendlyRating(float $websiteFriendlyRating): Website
-    {
-        $this->websiteFriendlyRating = $websiteFriendlyRating;
-
-        return $this;
-    }
-
-    /**
-     * @return float
-     */
-    public function getWebsiteSafetyRating(): ?float
-    {
-        return $this->websiteSafetyRating;
-    }
-
-    /**
-     * @param float $websiteSafetyRating
-     * @return Website
-     */
-    public function setWebsiteSafetyRating(float $websiteSafetyRating): Website
-    {
-        $this->websiteSafetyRating = $websiteSafetyRating;
-
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getCurrenciesAccepted()
@@ -532,5 +501,43 @@ class Website
     {
         $this->investmentTerms->removeElement($investmentTerm);
         $investmentTerm->setWebsite(null);
+    }
+
+    /**
+     * @return WebsiteSnapshot
+     */
+    public function getSnapshot(): ?WebsiteSnapshot
+    {
+        return $this->snapshot;
+    }
+
+    /**
+     * @param WebsiteSnapshot $snapshot
+     * @return Website
+     */
+    public function setSnapshot(WebsiteSnapshot $snapshot): Website
+    {
+        $this->snapshot = $snapshot;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     * @return Website
+     */
+    public function setSlug(string $slug): Website
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 }

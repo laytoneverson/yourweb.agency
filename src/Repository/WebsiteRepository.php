@@ -7,6 +7,7 @@ use App\Entity\Website;
 use App\Entity\WebsiteCategory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\Collection;
+use function is_numeric;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Doctrine\ORM\Query\Expr;
 
@@ -17,13 +18,14 @@ class WebsiteRepository extends ServiceEntityRepository
         parent::__construct($registry, Website::class);
     }
 
-    public function findSite($id, $lockMode = null, $lockVersion = null)
+    public function findSite($id)
     {
-        return $this->createQueryBuilder('s')
-            ->where('s.id = :siteId')->setParameter('siteId', $id)
-            ->join('s.websiteCategories', 'c')
-            ->getQuery()
-            ->getOneOrNullResult();
+        $field = (is_numeric($id)) ? 's.id' : 's.slug';
+
+        $qb = $this->createQueryBuilder('s')
+            ->where($field . ' = :siteId')->setParameter('siteId', $id)
+            ->join('s.websiteCategories', 'c');
+        return $qb->getQuery()->getOneOrNullResult();
     }
 
     public function findSitesNeedingCaptured()

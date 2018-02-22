@@ -21,9 +21,9 @@ class WebsiteCategoryRepository extends ServiceEntityRepository
             ->where('c.categorySlug = :slug')->setParameter('slug', $slug);
 
         if ($status) {
-            $qb->join('c.websites', 'w', Expr\Join::WITH, 'w.websiteStatus = :status');
+            $qb->leftJoin('c.websites', 'w', Expr\Join::WITH, 'w.websiteStatus = :status');
         } else {
-            $qb->join('c.websites', 'w');
+            $qb->leftJoin('c.websites', 'w');
         }
 
         $qb->orderBy('w.websiteStatus', "ASC");

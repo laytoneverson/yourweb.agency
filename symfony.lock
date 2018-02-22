@@ -1,4 +1,7 @@
 {
+    "aliyuncs/oss-sdk-php": {
+        "version": "v2.3.0"
+    },
     "behat/transliterator": {
         "version": "v1.2.0"
     },
@@ -118,6 +121,9 @@
     },
     "pagerfanta/pagerfanta": {
         "version": "v1.0.5"
+    },
+    "presta/sitemap-bundle": {
+        "version": "1.5.x-dev"
     },
     "psr/cache": {
         "version": "1.0.1"

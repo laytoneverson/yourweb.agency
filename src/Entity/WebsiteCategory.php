@@ -81,9 +81,9 @@ class WebsiteCategory
     }
 
     /**
-     * @return string
+     * @return Collection
      */
-    public function getWebsites()
+    public function getWebsites(): Collection
     {
         return $this->websites;
     }
