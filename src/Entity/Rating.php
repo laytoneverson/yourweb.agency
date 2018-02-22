@@ -3,12 +3,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation\SoftDeleteable;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RatingRepository")
+ * @SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
 class Rating
 {
+    use TimeStampableTrait, SoftDeletableTrait;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -134,7 +138,7 @@ class Rating
     /**
      * @return AppUser
      */
-    public function getAppUser(): AppUser
+    public function getAppUser(): ?AppUser
     {
         return $this->appUser;
     }

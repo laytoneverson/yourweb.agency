@@ -10,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class AppUser
 {
+    use TimeStampableTrait;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

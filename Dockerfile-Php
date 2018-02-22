@@ -61,7 +61,6 @@ RUN pecl install -o -f redis \
         mongodb \
     && rm -rf /tmp/pear
 
-
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
      && chown www-data:www-data /var/www/.composer -R
 
@@ -78,20 +77,17 @@ RUN cp /config/php-fpm/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini \
 
 RUN usermod -u 1000 www-data
 
-# Copy Application & build to container
 COPY . /var/www/app/
-
-# Build Backend
 WORKDIR /var/www/app
 
 ENV APP_ENV=$APP_ENV
 
-RUN if [[ "${APP_ENV}" == "prod" ]]; then \
+RUN if [ ${APP_ENV} = "prod" ]; then \
       composer install \
         --no-dev --no-suggest \
         --optimize-autoloader --classmap-authoritative \
-        --no-interaction --no-progress \
-;else \
+        --no-interaction --no-progress; \
+     else \
         composer install --no-interaction --no-progress \
 ;fi
 

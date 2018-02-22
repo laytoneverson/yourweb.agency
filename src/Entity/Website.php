@@ -3,17 +3,20 @@
 namespace App\Entity;
 
 use App;
+use DateTime;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
-use const PUBLIC_DIR;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WebsiteRepository")
  */
 class Website
 {
+    use TimeStampableTrait;
+
     public const CLIP_BASE_URL = '/website-captures/';
 
     /**
@@ -37,6 +40,12 @@ class Website
      * @var string
      */
     private $websiteStatus;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\WebsiteSnapshot", inversedBy="website")
+     * @var WebsiteSnapshot
+     */
+    private $snapshot;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Rating", mappedBy="website")
@@ -96,18 +105,6 @@ class Website
      * @ORM\Column(type="decimal", scale=2)
      */
     private $averageRating = 2.5;
-
-    /**
-     * @ORM\Column(type="decimal", scale=2)
-     * @var float
-     */
-    private $websiteFriendlyRating = 2.5;
-
-    /**
-     * @ORM\Column(type="decimal", scale=2)
-     * @var float
-     */
-    private $websiteSafetyRating = 2.5;
 
     /**
      *

@@ -1,5 +1,10 @@
 easy_admin:
     site_name: 'CryptoCurrency Site Management'
+    design:
+        brand_color: '#b3d334'
+        form_theme: 'vertical'
+    list:
+        max_results: 10
     entities:
 #        # List the entity class name you want to manage
         Website:
