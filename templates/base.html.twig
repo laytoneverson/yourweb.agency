@@ -14,6 +14,7 @@
 
         <meta charset="utf-8">
         <meta name="maValidation" content="5bce1d9b4ed9487bbe086f1d319e128c" />
+        <meta name="msvalidate.01" content="CCD69401F7767E81522A49DFD169A497" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta  name="author" content="YourWeb.online, Layton Everson <layton.everson@gmail.com>">
@@ -47,6 +48,7 @@
             <link href="{{ asset('/assets/plugins/fancybox/source/jquery.fancybox.css') }}" rel="stylesheet">
         {% endblock %}
         {% block pageCssHref %}{% endblock %}
+        {% include 'adverts/adsense_autoads.html.twig' %}
         {% include 'includes/favicon.html.twig' %}
     </head>
     <body class="{% block bodyClass %} corporate {% endblock %}">

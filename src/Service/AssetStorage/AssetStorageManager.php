@@ -2,22 +2,65 @@
 
 namespace App\Service\AssetStorage;
 
-
-use function sem_acquire;
+use App\DBAL\Types\FileFormatType;
+use App\Entity\StorageAsset;
+use Doctrine\ORM\EntityManagerInterface;
+use function in_array;
 use function sys_get_temp_dir;
 
 class AssetStorageManager
 {
+    private  $storageInterface;
 
+    /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
 
-    public function storeAsset($filePath, $fileName, $assetType)
+    /**
+     * AssetStorageManager constructor.
+     *
+     * @param FileStorageInterface $storageInterface
+     * @param EntityManagerInterface $entityManager
+     */
+    public function __construct(FileStorageInterface $storageInterface, EntityManagerInterface $entityManager)
     {
-
+        $this->storageInterface = $storageInterface;
+        $this->entityManager = $entityManager;
     }
 
-    public function writeTempFile($fileData, $fileName, $assetType)
+    /**
+     * @param $filePath
+     * @param $fileName
+     * @param $fileType
+     * @return StorageAsset
+     * @throws \Exception
+     */
+    public function storeAsset($filePath, $fileName, $fileType): StorageAsset
     {
-        $tempDir = sys_get_temp_dir();
+        $storageAsset = new StorageAsset($filePath, $fileName, $fileType);
+
+        try {
+
+            $result = $this->storageInterface->putAsset($storageAsset);
+
+            if (!$result) {
+                throw new \Exception("Asset didn't store correctly for an unknown reason");
+            }
+
+            $this->entityManager->persist($storageAsset);
+            $this->entityManager->flush();
+
+        } catch (\Exception $e) {
+            dump($e);
+            throw $e;
+        }
+
+        return $storageAsset;
+    }
+
+    public function removeAsset(StorageAsset $storageAsset)
+    {
 
     }
 }

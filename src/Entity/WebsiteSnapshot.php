@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\AppConstantsInterface;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,22 +19,35 @@ class WebsiteSnapshot
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\StorageAsset", inversedBy="websiteSnapshotFull")
+     * @ORM\OneToOne(targetEntity="App\Entity\Website", mappedBy="snapshot")
+     * @var Website
+     */
+    private $website;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\StorageAsset", inversedBy="websiteSnapshotFull", cascade={"persist"})
      * @var StorageAsset
      */
     private $fullSizeImageAsset;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\StorageAsset", inversedBy="websiteSnapshotThumb")
+     * @ORM\OneToOne(targetEntity="App\Entity\StorageAsset", inversedBy="websiteSnapshotThumb", cascade={"persist"})
      * @var StorageAsset
      */
     private $thumbnailImageAsset;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Website", mappedBy="snapshot")
-     * @var Website
+     * @ORM\Column(type="boolean")
+     * @var DateTime
      */
-    private $website;
+    private $snapshotComplete = false;
+
+
+    public function __construct(Website $website)
+    {
+        $this->website = $website;
+        $website->setSnapshot($this);
+    }
 
     /**
      * @return mixed
@@ -65,9 +80,10 @@ class WebsiteSnapshot
      * @param StorageAsset $fullSizeImageAsset
      * @return WebsiteSnapshot
      */
-    public function setFullSizeImageAsset(StorageAsset $fullSizeImageAsset): WebsiteSnapshot
+    public function setFullSizeImageAsset(StorageAsset $fullSizeImageAsset): ?WebsiteSnapshot
     {
         $this->fullSizeImageAsset = $fullSizeImageAsset;
+        $fullSizeImageAsset->setWebsiteSnapshotFull($this);
 
         return $this;
     }
@@ -84,9 +100,10 @@ class WebsiteSnapshot
      * @param StorageAsset $thumbnailImageAsset
      * @return WebsiteSnapshot
      */
-    public function setThumbnailImageAsset(StorageAsset $thumbnailImageAsset): WebsiteSnapshot
+    public function setThumbnailImageAsset(StorageAsset $thumbnailImageAsset): ?WebsiteSnapshot
     {
         $this->thumbnailImageAsset = $thumbnailImageAsset;
+        $thumbnailImageAsset->setWebsiteSnapshotThumb($this);
 
         return $this;
     }
@@ -106,6 +123,25 @@ class WebsiteSnapshot
     public function setWebsite(Website $website): WebsiteSnapshot
     {
         $this->website = $website;
+
+        return $this;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getSnapshotComplete(): DateTime
+    {
+        return $this->snapshotComplete;
+    }
+
+    /**
+     * @param DateTime $snapshotComplete
+     * @return WebsiteSnapshot
+     */
+    public function setSnapshotComplete(DateTime $snapshotComplete): WebsiteSnapshot
+    {
+        $this->snapshotComplete = $snapshotComplete;
 
         return $this;
     }

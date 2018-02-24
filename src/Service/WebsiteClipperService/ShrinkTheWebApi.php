@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Service;
+namespace App\Service\WebsiteClipperService;
 
+use App\DBAL\Types\FileFormatType;
+use App\Service\WebsiteClipperService\WebsiteClipperInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use GuzzleHttp\Client;
 
-class ShrinkTheWebApi
+class ShrinkTheWebApi #implements WebsiteClipperInterface
 {
     public const SIZE_75X56 = 'mcr';
     public const SIZE_90X68 = 'tny';
@@ -41,6 +43,47 @@ class ShrinkTheWebApi
         $this->entityManager = $entityManager;
         $this->client = new Client();
     }
+
+    public function clipWebsite($url, $format = FileFormatType::TYPE_IMG_PNG): bool
+    {
+        // TODO: Implement clipWebsite() method.
+    }
+
+    public function setImageWidth(int $width)
+    {
+        // TODO: Implement setImageWidth() method.
+    }
+
+    public function setImageHeight(int $height)
+    {
+        // TODO: Implement setImageHeight() method.
+    }
+
+    public function setViewPortWidth(int $width)
+    {
+        // TODO: Implement setViewPortWidth() method.
+    }
+
+    public function setViewPortHeight(int $height)
+    {
+        // TODO: Implement setViewPortHeight() method.
+    }
+
+    public function setFormat(string $format = FileFormatType::TYPE_IMG_PNG)
+    {
+        // TODO: Implement setFormat() method.
+    }
+
+    public function getScreenshotUrl(): string
+    {
+        // TODO: Implement getScreenshotUrl() method.
+    }
+
+    public function getApiErrorMessage(): string
+    {
+        // TODO: Implement getApiErrorMessage() method.
+    }
+
 
     public function getImage($captureUrl, $options = [])
     {

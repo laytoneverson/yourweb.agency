@@ -3,7 +3,7 @@
 namespace App\Command;
 
 use App\Entity\Website;
-use App\Service\WebsiteScreenShotClipper;
+use App\Service\WebsiteClipperService\WebsiteScreenShotClipper;
 use Doctrine\ORM\EntityManagerInterface;
 use function is_numeric;
 use Symfony\Component\Console\Command\Command;
@@ -21,7 +21,7 @@ class ClipWebsitesCommand extends Command
     /**
      * @var WebsiteScreenShotClipper
      */
-    private $clipper;
+    private $clipperService;
 
     public function __construct(
         ?string $name = null,
@@ -29,7 +29,7 @@ class ClipWebsitesCommand extends Command
         WebsiteScreenShotClipper $clipper
     )   {
         $this->entityManager = $entityManager;
-        $this->clipper = $clipper;
+        $this->clipperService = $clipper;
 
         parent::__construct($name);
     }
@@ -46,6 +46,11 @@ class ClipWebsitesCommand extends Command
                 InputOption::VALUE_OPTIONAL,
                 'Website Entity ID. Blank for all',
                 null
+            )->addOption(
+                'num',
+                'num',
+                InputOption::VALUE_OPTIONAL,
+                'Number of records to process'
             )->setHelp('This command allows you to create a website screen shot')
         ;
     }
@@ -53,30 +58,43 @@ class ClipWebsitesCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $entity = $input->getOption('eid');
+        $numRecords = $input->getOption('num');
+
         $output->writeln(print_r($entity, true));
 
         if ( is_numeric($entity)) {
+
             $output->writeln("---- Loading ". $entity . " for capture.");
             $entities = [];
             $entities[] = $this->entityManager->getRepository(Website::class)->find($entity);
         } else {
-            $output->writeln("---- Loading all sites without a screenshot for capture.");
+
+            $output->writeln("Loading all sites without a screenshot for capture.");
+            $output->writeln('');
             $entities = $this->entityManager
                 ->getRepository(Website::class)
-                ->findSitesNeedingCaptured();
+                ->findSitesNeedingCaptured($numRecords);
         }
 
-        $output->writeln("-> Beginning to capture ". count($entities) . "Websites.");
+        $output->writeln("Attempting to capture ". count($entities) . " Websites.");
+
         /** @var Website $website */
         foreach ($entities as $website) {
+
             $url = $website->getWebsiteUrl();
-            $output->writeln("Loading screenshot for $url");
+            $output->writeln("Grabbing screenshot of $url");
+
             try {
-                $this->clipper->clipWebsite($website);
+
+                $this->clipperService->clipWebsite($website);
+
             } catch (\Exception $e) {
+
                 $output->writeln("An exception was thrown while clipping the website");
                 $output->write($e->getMessage());
             }
+
+            $output->writeln("Webshot clipped for ". $website->getWebsiteName());
         }
     }
 }

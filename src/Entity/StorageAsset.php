@@ -24,13 +24,13 @@ class StorageAsset
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\WebsiteSnapshot", mappedBy="fullSizeImageAsset")
+     * @ORM\OneToOne(targetEntity="App\Entity\WebsiteSnapshot", mappedBy="thumbnailImageAsset")
      * @var WebsiteSnapshot
      */
     private $websiteSnapshotThumb;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\WebsiteSnapshot", mappedBy="WebsiteSnapshot")
+     * @ORM\OneToOne(targetEntity="App\Entity\WebsiteSnapshot", mappedBy="fullSizeImageAsset")
      * @var WebsiteSnapshot
      */
     private $websiteSnapshotFull;
@@ -80,6 +80,13 @@ class StorageAsset
      */
     protected $publicUrl;
 
+    public function __construct($tempFilePath, $fileName, $fileType)
+    {
+        $this->tempFilePath = $tempFilePath;
+        $this->fileType = $fileType;
+        $this->fileName = $fileName;
+    }
+
     /**
      * @return int
      */
@@ -127,17 +134,6 @@ class StorageAsset
     }
 
     /**
-     * @param string $tempFilePath
-     * @return StorageAsset
-     */
-    public function setTempFilePath(string $tempFilePath): StorageAsset
-    {
-        $this->tempFilePath = $tempFilePath;
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getFileType(): ?string
@@ -146,33 +142,11 @@ class StorageAsset
     }
 
     /**
-     * @param string $fileType
-     * @return StorageAsset
-     */
-    public function setFileType(string $fileType): StorageAsset
-    {
-        $this->fileType = $fileType;
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getFileName(): ?string
     {
         return $this->fileName;
-    }
-
-    /**
-     * @param string $fileName
-     * @return StorageAsset
-     */
-    public function setFileName(string $fileName): StorageAsset
-    {
-        $this->fileName = $fileName;
-
-        return $this;
     }
 
     /**

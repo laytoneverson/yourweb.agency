@@ -3,7 +3,10 @@
 namespace App\Service\AssetStorage;
 
 use App\AppConstantsInterface;
+use App\DBAL\Types\FileFormatType;
 use App\Entity\StorageAsset;
+use Cocur\Slugify\Slugify;
+use Cocur\Slugify\SlugifyInterface;
 use OSS\OssClient;
 use OSS\Core\OssException;
 
@@ -14,12 +17,19 @@ class AlibabaBucketStorage implements FileStorageInterface
     private $endpointUrl = '';
     private $client;
     private $bucket;
+    
+    /**
+     * @var SlugifyInterface
+     */
+    private $slugify;
 
-    public function __construct()
+    public function __construct(SlugifyInterface $slugify)
     {
         $this->accessKeyId = AppConstantsInterface::ALIBABA_BUCKET_KEY;
         $this->accessKeySecret = AppConstantsInterface::ALIBABA_BUCKET_SECRET;
         $this->endpointUrl = AppConstantsInterface::ALIBABA_BUCKET_ENDPOINT;
+        $this->bucket = AppConstantsInterface::ALIBABA_BUCKET_NAME;
+        $this->slugify = $slugify;
     }
 
     private function getClient()
@@ -31,9 +41,29 @@ class AlibabaBucketStorage implements FileStorageInterface
         return $this->client;
     }
 
-    public function putAsset(StorageAsset $storageAsset)
+    /**
+     * @param StorageAsset $storageAsset
+     * @return bool
+     * @throws \Exception
+     */
+    public function putAsset(StorageAsset $storageAsset): bool
     {
+        $fileExt = ".". FileFormatType::getExtensions()[$storageAsset->getFileType()];
+        $key = "assets/". $this->slugify->slugify($storageAsset->getFileName()). $fileExt;
 
+        try {
+            $this->getClient()->uploadFile($this->bucket, $key, $storageAsset->getTempFilePath());
+        } catch (\Exception $e) {
+            dump($e);
+
+            throw $e;
+        }
+        
+        $storageAsset->setStorageKey($key)
+            ->setUploadDate(new \DateTime())
+            ->setPublicUrl($this->endpointUrl. "/" . $key);
+
+        return true;
     }
 
     public function removeAsset(StorageAsset $storageAsset)

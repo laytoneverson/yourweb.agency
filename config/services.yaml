@@ -31,6 +31,11 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
+    App\Service\AssetStorage\AlibabaBucketStorage: ~
+    App\Service\AssetStorage\FileStorageInterface: '@App\Service\AssetStorage\AlibabaBucketStorage'
+
+    App\Service\WebsiteClipperService\ScreenshotLayerApi: ~
+    App\Service\WebsiteClipperService\WebsiteClipperInterface: '@App\Service\WebsiteClipperService\ScreenshotLayerApi'
 
     gedmo.listener.sluggable:
         class: Gedmo\Sluggable\SluggableListener
@@ -59,11 +64,6 @@ services:
             - { name: doctrine.event_subscriber, connection: default }
         calls:
             - [ setAnnotationReader, [ "@annotation_reader" ] ]
-
-    app.website-clipper:
-        class: App\Service\WebsiteScreenShotClipper
-        calls:
-            - [ setSaveDir, ['%kernel.project_dir%']]
 
     app.sitemap.blog_post_subscriber:
         class: App\EventSubscriber\SitemapSubscriber

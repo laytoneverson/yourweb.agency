@@ -42,7 +42,7 @@ class Website
     private $websiteStatus;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\WebsiteSnapshot", inversedBy="website")
+     * @ORM\OneToOne(targetEntity="App\Entity\WebsiteSnapshot", inversedBy="website", cascade={"persist"})
      * @var WebsiteSnapshot
      */
     private $snapshot;

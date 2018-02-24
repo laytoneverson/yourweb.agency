@@ -28,11 +28,11 @@ class WebsiteRepository extends ServiceEntityRepository
         return $qb->getQuery()->getOneOrNullResult();
     }
 
-    public function findSitesNeedingCaptured()
+    public function findSitesNeedingCaptured($limitResults = null)
     {
         return $this->createQueryBuilder('w')
-            ->where('w.websiteImageUrl = \'\'')
-            ->orWhere('w.websiteImageUrl IS NULL')
+            ->where('w.snapshot IS NULL')
+            ->setMaxResults($limitResults)
             ->getQuery()
             ->getResult();
     }
