@@ -1,10 +1,12 @@
 parameters:
-    env(DATABASE_URL): ''
+    env(DB_VERSION): 5.6
+    env(DATABASE_URL): mysql://yourwebdb:yourwebdb@db:3306/yourwebdb
+    db_version: '%env(DB_VERSION)%'
 
 doctrine:
     dbal:
         driver: 'pdo_mysql'
-        server_version: '5.7'
+        server_version: '%db_version%'
         charset: utf8mb4
         url: '%env(resolve:DATABASE_URL)%'
         mapping_types:

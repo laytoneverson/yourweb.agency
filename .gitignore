@@ -4,9 +4,9 @@
 
 ###> symfony/framework-bundle ###
 .env
-app.yaml
-#app.yaml.dist
-#/public/bundles/
+.env-prod
+docker-compose.prod.yml
+secrets
 /var/
 /vendor/
 ###< symfony/framework-bundle ###

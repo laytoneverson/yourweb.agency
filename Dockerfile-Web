@@ -1,6 +1,5 @@
-!nWithN3wARG APP_ENV
-ARG VERSION
-FROM yourweb-${APP_ENV}-php:${VERSION} as php
+ARG APP_ENV
+FROM yourweb-${APP_ENV}-php:latest as php
 
 FROM nginx:alpine
 
@@ -18,10 +17,10 @@ ARG APP_ENV
 ARG APP_SECRET
 ARG MYSQL_USER
 ARG MYSQL_PASSWORD
-
 ARG MYSQL_HOST=db
 ARG MYSQL_DATABASE
-
+ARG MYSQL_PORT=3306
+ARG DB_VERSION=5.6
 ARG PHP_UPSTREAM_CONTAINER=php
 ARG PHP_UPSTREAM_PORT=9000
 
@@ -31,6 +30,8 @@ RUN sed -i "s|__APP_ENV__|${APP_ENV}|g" /etc/nginx/sites-available/default.conf 
   && sed -i "s|__MYSQL_PASSWORD__|${MYSQL_PASSWORD}|g" /etc/nginx/sites-available/default.conf \
   && sed -i "s|__MYSQL_HOST__|${MYSQL_HOST}|g" /etc/nginx/sites-available/default.conf \
   && sed -i "s|__MYSQL_DATABASE__|${MYSQL_DATABASE}|g" /etc/nginx/sites-available/default.conf \
+  && sed -i "s|__MYSQL_PORT__|${MYSQL_PORT}|g" /etc/nginx/sites-available/default.conf \
+  && sed -i "s|__DB_VERSION__|${DB_VERSION}|g" /etc/nginx/sites-available/default.conf \
 # && apk update && apk upgrade \
 #  && apk add --no-cache bash \
   && adduser -D -H -u 1000 -s /bin/bash www-data \

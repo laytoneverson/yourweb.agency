@@ -1,0 +1,70 @@
+ARG PHP_VERSION=7.1-fpm
+
+### Build PHP & Nginx Server
+FROM php:${PHP_VERSION}
+
+ENV COMPOSER_HOME /var/www/.composer
+
+ARG APP_DEBUG=false
+ARG APP_ENV=prod
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+    curl \
+    g++ \
+    libicu-dev \
+    libmcrypt-dev \
+    libpq-dev \
+    libssl-dev \
+    libz-dev \
+    zlib1g-dev \
+  && docker-php-ext-configure \
+    intl \
+  && docker-php-ext-install \
+    zip \
+    bcmath \
+    exif \
+    intl \
+    mcrypt \
+  && docker-php-ext-enable \
+    intl \
+    exif \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
+     && chown www-data:www-data /var/www/.composer -R
+
+RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
+
+ARG CONFIGPATH
+COPY "./${CONFIGPATH}/" /config/
+
+RUN cp /config/php-fpm/laravel.ini /usr/local/etc/php/conf.d \
+  && cp /config/php-fpm/xlaravel.pool.conf /usr/local/etc/php-fpm.d/ \
+  && cp /config/php-fpm/php71.ini /usr/local/etc/php/php.ini \
+  && rm -Rf /config
+
+RUN usermod -u 1000 www-data
+
+COPY . /app/
+WORKDIR /app
+
+ENV APP_ENV=$APP_ENV
+
+RUN if [ ${APP_ENV} = "prod" ]; then \
+      composer install \
+        --no-dev --no-suggest \
+        --optimize-autoloader --classmap-authoritative \
+        --no-interaction --no-progress; \
+     else \
+        composer install --no-interaction --no-progress \
+;fi
+
+RUN mkdir -p var/cache/prod/sessions \
+    && chown www-data var -R
+
+COPY ./public/build /app/public/build/
+
+RUN tar cvzf /app.tar.gz /app
+
+CMD ["echo", "Build is complete and your tar is ready at /app.tar.gz"]

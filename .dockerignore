@@ -1,11 +1,15 @@
-var/log/**
-var/logs/**
-var/cache/**
-node_modules/**
-docs/*
-.idea
-.env
-vendor/**
-assets
+.*
+!.version
+assets/**
 !public/assets
+bin
+!bin/console
+docs
+var/cache/dev/**
+var/cache/prod/**
+var/log/nginx/**
+var/logs/**
+secrets
+node_modules/**
+vendor/**
 

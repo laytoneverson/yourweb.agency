@@ -5,7 +5,6 @@ parameters:
     env(DOMAIN_CRYPTOCURRENCY): cryptocurrency.yourweb.online
     env(DOMAIN_HOME): yourweb.online
     env(DOMAIN_STORAGE): cloudstorage.yourweb.online
-    env(DATABASE_URL): mysql://yourweb-db:8!93a27B3135@unix_socket(/cloudsql/yourweb-192700:us-central1:yourwebdb)/yourwebdb
 
     domain_cryptocurrency: '%env(DOMAIN_CRYPTOCURRENCY)%'
     domain_home: '%env(DOMAIN_HOME)%'

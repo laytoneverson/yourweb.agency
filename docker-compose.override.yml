@@ -13,11 +13,6 @@ services:
     volumes:
       - ./:/var/www/app
 
-  migration-util:
-    environment:
-      - DATABASE_URL=${DATABASE_URL}
-      - APP_ENV=${APP_ENV}
-
   web:
     image: yourweb-dev-web
     build:
@@ -43,6 +38,11 @@ services:
 
   db:
     image: yourweb-dev-db:latest
+    build:
+      context: ./docker/mysql
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
@@ -51,3 +51,5 @@ services:
     volumes:
       - mysqldev:/var/lib/mysql
       - ./docker/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    networks:
+      - backend

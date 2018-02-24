@@ -34,9 +34,11 @@ trait TimeStampableTrait
      * @param DateTime $createdAt
      * @return TimeStampableTrait
      */
-    public function setCreatedAt(DateTime $createdAt)
+    public function setCreatedAt(DateTime $createdAt = null)
     {
-        $this->createdAt = $createdAt;
+        if ($createdAt) {
+            $this->createdAt = $createdAt;
+        }
 
         return $this;
     }
@@ -53,9 +55,11 @@ trait TimeStampableTrait
      * @param DateTime $updatedAt
      * @return TimeStampableTrait
      */
-    public function setUpdatedAt(DateTime $updatedAt)
+    public function setUpdatedAt(DateTime $updatedAt = null)
     {
-        $this->updatedAt = $updatedAt;
+        if ($updatedAt) {
+            $this->updatedAt = $updatedAt;
+        }
 
         return $this;
     }

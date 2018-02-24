@@ -42,6 +42,13 @@ class WebsiteSnapshot
      */
     private $snapshotComplete = false;
 
+    public function __toString()
+    {
+        if ($this->getId() >= 1) {
+            return $this->getWebsite()->getWebsiteName();
+        }
+        return "Not Complete";
+    }
 
     public function __construct(Website $website)
     {
