@@ -1,46 +1,75 @@
-
-
 <li><a href="{{ path('home') }}">Home</a></li>
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
-        Crypto-Services
+        Service Directory
     </a>
     <ul class="dropdown-menu">
         {% set categories = review_site_service.reviewSiteCategories %}
         {% for cat in categories %}
-            <li><a
-                        href="{{ path('websiteReviewCategory', {'slug':cat.categorySlug}) }}"
-                        data-tootilp="{{ cat.categorySummary }}"
-                >{{ cat.categoryName }}</a></li>
+            <li><a data-tootilp="{{ cat.categorySummary }}"
+                   href="{{path('websiteReviewCategory', {'slug':cat.categorySlug}) }}">
+                    {{ cat.categoryName }}
+                </a>
+            </li>
         {% endfor %}
     </ul>
 </li>
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="{{ path('coming-soon') }}">
-        Guides
+        Information Center
     </a>
     <ul class="dropdown-menu">
-        <li>Coming Soon...</li>
-        <li><a href="{{ path('coming-soon') }}">Video Library</a></li>
-        <li><a href="{{ path('coming-soon') }}">How-To Guides</a></li>
-        <li><a href="{{ path('coming-soon') }}">Cryptocurrency Explained</a></li>
+        <li>
+            <div class="header-navigation-content">
+                <div class="row">
+                    <div class="col-md-4 header-navigation-col">
+                        <h4 class="header-navigation-col">Bitcoin Basics</h4>
+                        <ul>
+                            <li><a href="#"></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 header-navigation-col">
+                        <h4 class="header-navigation-col">Mining Center</h4>
+                        <ul>
+                            <li><a href="#"></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 header-navigation-col">
+                        <h4 class="header-navigation-col">Blockchain Projects</h4>
+                        <ul>
+                            <li><a href="#"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
     </ul>
 </li>
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="{{ path('coming-soon') }}">
-        Coins
+        Coin Database
     </a>
 </li>
-<li><a href="{{ path('coming-soon') }}">Blockchain Projects</a></li>
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="{{ path('coming-soon') }}">
-        Mining
+        Tools
     </a>
     <ul class="dropdown-menu">
-        <li>Coming Soon...</li>
-        <li><a href="{{ path('coming-soon') }}">Mining Hardware</a></li>
-        <li><a href="{{ path('coming-soon') }}">Mining Pools</a></li>
-        <li><a href="{{ path('coming-soon') }}">Mining Contracts</a></li>
+        <li><b>Laying the Path...</b></li>
+        <li>Instant Exchange</li>
+        <li>Currency Converter</li>
+    </ul>
+</li>
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="{{ path('coming-soon') }}">
+        Shop
+    </a>
+    <ul class="dropdown-menu">
+        <li><b>Laying the Path...</b></li>
+        <li>Mining Hardware</li>
+        <li>Hardware Wallets</li>
+        <li>Apparel</li>
+        <li>Digital Media</li>
     </ul>
 </li>
 

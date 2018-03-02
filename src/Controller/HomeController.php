@@ -41,6 +41,28 @@ class HomeController extends AbstractController
     }
 
     /**
+     * @Route("/legal-stuff/terms-of-use", name="terms-of-use", options={
+     *     "sitemap" = {"priority" = 0.1, "changefreq" = "yearly", "section" = "home" }
+     *     })
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function termsOfUseAction()
+    {
+        return $this->render('pages/terms-of-service.html.twig');
+    }
+
+    /**
+     * @Route("/legal-stuff/privacy-policy", name="privacy-policy", options={
+     *     "sitemap" = {"priority" = 0.1, "changefreq" = "yearly", "section" = "home" }
+     *     })
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function privacyAction()
+    {
+        return $this->render('pages/terms-of-service.html.twig');
+    }
+
+    /**
      * @Route("/coming-soon", name="coming-soon", options={
      *     "sitemap" = {"priority" = 0.5, "changefreq" = "never", "section" = "home" }
      *     })

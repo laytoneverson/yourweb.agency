@@ -1,0 +1,7 @@
+easy_admin:
+    list:
+        max_results: 10
+        actions:
+            - { name: 'show', icon: 'search', label: '', title: 'View' }
+            - { name: 'edit', icon: 'pencil', label: '', title: 'Edit' }
+            - { name: 'delete', icon: 'minus-circle', label: '', title: 'delete' }

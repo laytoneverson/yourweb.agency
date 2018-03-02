@@ -4,13 +4,13 @@
             <!-- BEGIN COPYRIGHT -->
             <div class="col-md-4 col-sm-4 padding-top-10">
                 2018 © YourWeb.Agency & Layton Everson - ALL Rights Reserved. 
-                <a href="javascript:;">Privacy Policy</a> | 
-                <a href="javascript:;">Terms of Service</a>
+                <a href="{{ path('privacy-policy') }}">Privacy Policy</a> |
+                <a href="{{ path('terms-of-use') }}">Terms of Service</a>
             </div>
             <!-- END COPYRIGHT -->
             <!-- BEGIN PAYMENTS -->
             <div class="col-md-4 col-sm-4">
-                {% include 'social-links.html.twig' with {"SocialLinkslistClass":"social-footer list-unstyled list-inline pull-right"} %}
+                {% include 'includes/social-links.html.twig' with {"SocialLinkslistClass":"social-footer list-unstyled list-inline pull-right"} %}
             </div>
             <!-- END PAYMENTS -->
             <!-- BEGIN POWERED -->

@@ -1,20 +1,22 @@
 {% macro serviceBox(boxClass, faicon, boxTitle, boxContent, linkPath) %}
     <div class="{{ boxClass }} service-box">
-        <div class="service-box-heading">
-            <em><i class="fa fa-{{ faicon }} grey"></i></em>
+        <div class="service-box-heading" >
+            <em><i class="fa fa-{{ faicon }} grey" ></i></em>
             <span>{{ boxTitle }}</span>
         </div>
         <p>{{ boxContent }} - <a href="{{ linkPath }}">View Page</a></p>
     </div>
 {% endmacro serviceBox %}
 
-{% macro pageMeta(pageTitle, description, keywords) %}
+{% macro pageMeta(pageTitle, description, keywords, ogType, ogImage ) %}
     <title>{% block title %} {{ pageTitle }} | CryptoCoin Service Directory {% endblock %}</title>
     <meta name="description" content="{% block metaDescription %}{{ description }}{% endblock %}">
     <meta name="keywords" content="{% block metaKeywords %}{{ keywords }}{% endblock %}">
     <meta property="og:title" content="{% block socialTitle %}{{ pageTitle }}{% endblock %}">
     <meta property="og:description" content="{% block socialDescription %}{{ description }}{% endblock %}">
     <meta property="og:url" content="{% block socialUrl %}{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}{% endblock %}">
+    <meta property="og:image" content="{% block socialImageUrl %}{{ ogImage ?? 'http://cryptocurrency-db.oss-us-east-1.aliyuncs.com/LogoSquare.png' }}{% endblock %}">
+    <meta property="og:type" content="website">
 {% endmacro %}
 
 {% macro googleTagManagerHead(gaCode) %}
@@ -78,4 +80,24 @@
     {% else %}
         {% include 'adverts/square-200x200-utcoinbilders.html.twig' %}
     {% endif %}
+{% endmacro %}
+
+{% macro writeStatusClass(statusEnum) %}
+    {% spaceless %}
+        {% if statusEnum == 1 %}
+            success
+        {% elseif statusEnum == 6 %}
+            danger
+        {% elseif statusEnum == 4 %}
+            info
+        {% else %}
+            warning
+        {% endif %}
+    {% endspaceless %}
+{% endmacro %}
+
+{% macro browserImageFrame(imageUrl, imageAlt, linkUrl, displayUrl) %}
+    {% include 'service-directory/browser-frame-screenshot.html.twig' with {
+        imageUrl: imageUrl, imageAlt:imageAlt, linkUrl:linkUrl, displayUrl:displayUrl
+    } %}
 {% endmacro %}

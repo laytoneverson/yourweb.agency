@@ -44,10 +44,19 @@ class WebsiteSnapshot
 
     public function __toString()
     {
-        if ($this->getId() >= 1) {
+        if ($this->getWebsite()) {
             return $this->getWebsite()->getWebsiteName();
         }
-        return "Not Complete";
+
+        if ($this->getThumbnailImageAsset()) {
+            return (string)$this->getThumbnailImageAsset()->getPublicUrl();
+        }
+
+        if ($this->getFullSizeImageAsset()) {
+            return (string)$this->getFullSizeImageAsset()->getPublicUrl();
+        }
+
+        return "Unknown website";
     }
 
     public function __construct(Website $website)
@@ -78,7 +87,7 @@ class WebsiteSnapshot
     /**
      * @return StorageAsset
      */
-    public function getFullSizeImageAsset(): StorageAsset
+    public function getFullSizeImageAsset(): ?StorageAsset
     {
         return $this->fullSizeImageAsset;
     }
@@ -98,7 +107,7 @@ class WebsiteSnapshot
     /**
      * @return StorageAsset
      */
-    public function getThumbnailImageAsset(): StorageAsset
+    public function getThumbnailImageAsset(): ?StorageAsset
     {
         return $this->thumbnailImageAsset;
     }
@@ -118,7 +127,7 @@ class WebsiteSnapshot
     /**
      * @return Website
      */
-    public function getWebsite(): Website
+    public function getWebsite(): ?Website
     {
         return $this->website;
     }

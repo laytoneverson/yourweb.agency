@@ -1,0 +1,48 @@
+{% import 'macros.html.twig' as macros %}
+{% set contextColor = macros.writeStatusClass(website.websiteStatus) %}
+
+<article class="row margin-bottom-30">
+    <div class="service-directory-card col-xs-12">
+        <div class="hidden-xs col-sm-5 col-md-4 col-lg-3">
+            <div class="website-icon">
+                {% if website.snapshot is not null %}
+                    {% set thumNailAsset = website.snapshot.thumbnailImageAsset %}
+                        <img src="/assets/images/website-small.png" class="background-screen">
+                        {% set imgSrc = app.request.scheme ~'://' ~ thumNailAsset.publicUrl %}
+                        <img src="{{ imgSrc }}" itemprop="thumbnailUrl" class="site-thumb" alt="{{ website.websiteName }}">
+                {% else %}
+                    {% set imgSrc = "/assets/images/icon-website.png" %}
+                    <img src="{{ imgSrc }}" class="background-screen" alt="{{ website.websiteName }}">
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-7 col-md-8 col-lg-9">
+            <header class="row">
+                <p class="pull-right">
+                    Status:
+                    <span style="font-weight: bold" class="text-{{- contextColor -}}">
+                        {{ website.websiteStatus|readable_enum("ReviewSiteStatusType") }}
+                    </span>
+                </p>
+                <h2 class="pull-left">
+                    {% if (website.slug is not empty) %}
+                        <a href="{{path(
+                                    'categoryWebsiteReview',
+                                    {'categorySlug':category.categorySlug, 'siteSlug':website.slug}
+                                )}}">
+                            {{ website.websiteName }}
+                        </a>
+                    {% else %}
+                        {{ website.websiteName }}
+                    {% endif %}
+                </h2>
+                <p class="pull-right padding-right-30">Our Rating: {{ website.myRecommendation }} / 5</p>
+            </header>
+            <p itemprop="description" itemprop="review" class="card-summary">{{ website.websiteSummary|markdown }}</p>
+            <p class="text-right .bottom-align-text">
+                <a href="{{ website.websiteUrl }}" itemprop="url" class="btn btn-link service-directory-link" target="_blank">Visit Website</a>
+            </p>
+        </div>
+    </div>
+    <hr>
+</article>

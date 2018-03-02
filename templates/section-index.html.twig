@@ -3,7 +3,6 @@
 {% block bodyContent %}
     <div class="main">
         <div class="container">
-            <h1 class="pageTitle">{% block indexPageTitle %}ADD ME block indexPageTitle{% endblock %}</h1>
             {% block breadCrumb %}
                 <ul class="breadcrumb">
                     <li><a href="/">Home</a></li>
@@ -17,6 +16,7 @@
             <div class="row margin-bottom-40">
                 <div class="col-md-12 col-sm-12">
                     <div class="content-page">
+                        <h1 class="pageTitle">{% block indexPageTitle %}ADD ME block indexPageTitle{% endblock %}</h1>
                         <div class="row">
                             <div class="col-sm-9 col-xs-12">
                                 {% block indexBody %}

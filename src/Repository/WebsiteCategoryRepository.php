@@ -14,6 +14,15 @@ class WebsiteCategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, WebsiteCategory::class);
     }
 
+    public function findCategoriesAndSites()
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->select('c, w')
+            ->leftJoin('c.websites', 'w');
+
+        return $qb->getQuery()->getResult();
+    }
+
     public function findCategoryWithSitesBySlug($slug, $status = null)
     {
         $qb =  $this->createQueryBuilder('c')

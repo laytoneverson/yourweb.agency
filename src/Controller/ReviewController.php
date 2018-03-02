@@ -29,17 +29,30 @@ class ReviewController extends AbstractController
             'featuredSites' => $siteService->getFeaturedSites(6),
         ]);
     }
+
     /**
-     * @Route("/cryptocoin-service-directory/website_review/{id}", name="websiteReview")
+     * @Route("/cryptocoin-service-directory/{categorySlug}/{siteSlug}", name="categoryWebsiteReview")
+     * @param CryptoCurrencySiteService $siteService
+     * @param $categorySlug
+     * @param $siteSlug
+     */
+    public function categoryServiceReview(
+        CryptoCurrencySiteService $siteService,$categorySlug, $siteSlug
+    ) {
+        return $this->serviceReviewAction($siteService, $siteSlug);
+    }
+
+    /**
+     * @Route("/cryptocoin-service-directory/website_review/{slug}", name="websiteReview")
      * @param CryptoCurrencySiteService $siteService
      * @param $slug
      * @param $siteStatus
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function serviceReviewAction(CryptoCurrencySiteService $siteService, $id)
+    public function serviceReviewAction(CryptoCurrencySiteService $siteService, $slug)
     {
-        return $this->render('service-directory/service-review.html.twig', [
-            'site' => $siteService->getReviewSite($id),
+        return $this->render('service-directory/view-item.html.twig', [
+            'site' => $siteService->getReviewSite($slug),
         ]);
     }
 }

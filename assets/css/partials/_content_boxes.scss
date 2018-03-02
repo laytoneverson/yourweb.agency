@@ -1,0 +1,7 @@
+
+@mixin light-grey-text-box {
+  background-color: $bg-light-grey-one;
+  border: 1px solid $border-grey-light;
+  color: $text-grey-dark;
+  padding: 15px;
+}

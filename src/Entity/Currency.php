@@ -44,7 +44,6 @@ class Currency
      */
     private $marketSnapshots;
 
-
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Website", mappedBy="currencies")
      * @var HashingAlgorithm
@@ -99,31 +98,6 @@ class Currency
      */
     private $launchDate = "";
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @var string
-     */
-    private $twitter = "";
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @var string
-     */
-    private $twitterWidgetId = "";
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @var string
-     */
-    private $projectWebsiteUrl = "";
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @var string
-     */
-    private $redditPage = "";
-
-
 
     public function __construct()
     {
@@ -151,39 +125,20 @@ class Currency
     }
 
     /**
-     * @return mixed
+     * @return Website
      */
-    public function getCurrencyType()
+    public function getCurrencyType(): Website
     {
         return $this->currencyType;
     }
 
     /**
-     * @param mixed $currencyType
+     * @param Website $currencyType
      * @return Currency
      */
-    public function setCurrencyType($currencyType)
+    public function setCurrencyType(Website $currencyType): Currency
     {
         $this->currencyType = $currencyType;
-
-        return $this;
-    }
-
-    /**
-     * @return CurrencySnapshot[]
-     */
-    public function getSnapshots(): array
-    {
-        return $this->snapshots;
-    }
-
-    /**
-     * @param CurrencySnapshot[] $snapshots
-     * @return Currency
-     */
-    public function setSnapshots(array $snapshots): Currency
-    {
-        $this->snapshots = $snapshots;
 
         return $this;
     }
@@ -227,20 +182,96 @@ class Currency
     }
 
     /**
-     * @return HashingAlgorithm
+     * @return CurrencySnapshot[]
      */
-    public function getWebsitesSupportingMe(): HashingAlgorithm
+    public function getMarketSnapshots(): array
     {
-        return $this->websitesSupportingMe;
+        return $this->marketSnapshots;
     }
 
     /**
-     * @param HashingAlgorithm $websitesSupportingMe
+     * @param CurrencySnapshot[] $marketSnapshots
      * @return Currency
      */
-    public function setWebsitesSupportingMe(HashingAlgorithm $websitesSupportingMe): Currency
+    public function setMarketSnapshots(array $marketSnapshots): Currency
     {
-        $this->websitesSupportingMe = $websitesSupportingMe;
+        $this->marketSnapshots = $marketSnapshots;
+
+        return $this;
+    }
+
+    /**
+     * @return HashingAlgorithm
+     */
+    public function getWebsites(): HashingAlgorithm
+    {
+        return $this->websites;
+    }
+
+    /**
+     * @param HashingAlgorithm $websites
+     * @return Currency
+     */
+    public function setWebsites(HashingAlgorithm $websites): Currency
+    {
+        $this->websites = $websites;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCurrencyRank(): int
+    {
+        return $this->currencyRank;
+    }
+
+    /**
+     * @param int $currencyRank
+     * @return Currency
+     */
+    public function setCurrencyRank(int $currencyRank): Currency
+    {
+        $this->currencyRank = $currencyRank;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrencyCode(): string
+    {
+        return $this->currencyCode;
+    }
+
+    /**
+     * @param string $currencyCode
+     * @return Currency
+     */
+    public function setCurrencyCode(string $currencyCode): Currency
+    {
+        $this->currencyCode = $currencyCode;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrencyDisplayName(): string
+    {
+        return $this->currencyDisplayName;
+    }
+
+    /**
+     * @param string $currencyDisplayName
+     * @return Currency
+     */
+    public function setCurrencyDisplayName(string $currencyDisplayName): Currency
+    {
+        $this->currencyDisplayName = $currencyDisplayName;
 
         return $this;
     }
@@ -260,25 +291,6 @@ class Currency
     public function setImageUrl(string $imageUrl): Currency
     {
         $this->imageUrl = $imageUrl;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCurrencyName(): string
-    {
-        return $this->currencyName;
-    }
-
-    /**
-     * @param string $currencyName
-     * @return Currency
-     */
-    public function setCurrencyName(string $currencyName): Currency
-    {
-        $this->currencyName = $currencyName;
 
         return $this;
     }
@@ -341,78 +353,54 @@ class Currency
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
-    public function getTwitter(): string
+    public function getLaunchDate(): \DateTime
     {
-        return $this->twitter;
+        return $this->launchDate;
     }
 
     /**
-     * @param string $twitter
+     * @param \DateTime $launchDate
      * @return Currency
      */
-    public function setTwitter(string $twitter): Currency
+    public function setLaunchDate(\DateTime $launchDate): Currency
     {
-        $this->twitter = $twitter;
+        $this->launchDate = $launchDate;
 
         return $this;
     }
 
     /**
-     * @return string
+     * @return ArrayCollection
      */
-    public function getTwitterWidgetId(): string
+    public function getSnapshots(): ArrayCollection
     {
-        return $this->twitterWidgetId;
+        return $this->snapshots;
     }
 
     /**
-     * @param string $twitterWidgetId
-     * @return Currency
+     * @param ArrayCollection $snapshots
      */
-    public function setTwitterWidgetId(string $twitterWidgetId): Currency
+    public function setSnapshots(ArrayCollection $snapshots): void
     {
-        $this->twitterWidgetId = $twitterWidgetId;
-
-        return $this;
+        $this->snapshots = $snapshots;
     }
 
     /**
-     * @return string
+     * @return ArrayCollection
      */
-    public function getProjectWebsiteUrl(): string
+    public function getWebsitesSupportingMe(): ArrayCollection
     {
-        return $this->projectWebsiteUrl;
+        return $this->websitesSupportingMe;
     }
 
     /**
-     * @param string $projectWebsiteUrl
-     * @return Currency
+     * @param ArrayCollection $websitesSupportingMe
      */
-    public function setProjectWebsiteUrl(string $projectWebsiteUrl): Currency
+    public function setWebsitesSupportingMe(ArrayCollection $websitesSupportingMe): void
     {
-        $this->projectWebsiteUrl = $projectWebsiteUrl;
-
-        return $this;
-    }
-
-    /**
-     * @param CurrencySnapshot $snapshot
-     */
-    public function addSnapshot(CurrencySnapshot $snapshot)
-    {
-        $this->snapshots[] = $snapshot;
-    }
-
-    /**
-     * @param CurrencySnapshot $snapshot
-     */
-    public function removeSnapshot(CurrencySnapshot $snapshot)
-    {
-        if (false !== $key = array_search($snapshot, $this->snapshots, true)) {
-            array_splice($this->snapshots, $key, 1);
-        }
+        $this->websitesSupportingMe = $websitesSupportingMe;
     }
 
     /**
@@ -430,6 +418,24 @@ class Currency
     {
         if (false !== $key = array_search($proofOfWorkType, $this->proofOfWorkTypes, true)) {
             array_splice($this->proofOfWorkTypes, $key, 1);
+        }
+    }
+
+    /**
+     * @param CurrencySnapshot $marketSnapshot
+     */
+    public function addMarketSnapshot(CurrencySnapshot $marketSnapshot)
+    {
+        $this->marketSnapshots[] = $marketSnapshot;
+    }
+
+    /**
+     * @param CurrencySnapshot $marketSnapshot
+     */
+    public function removeMarketSnapshot(CurrencySnapshot $marketSnapshot)
+    {
+        if (false !== $key = array_search($marketSnapshot, $this->marketSnapshots, true)) {
+            array_splice($this->marketSnapshots, $key, 1);
         }
     }
 }

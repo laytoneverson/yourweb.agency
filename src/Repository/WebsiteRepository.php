@@ -18,13 +18,11 @@ class WebsiteRepository extends ServiceEntityRepository
         parent::__construct($registry, Website::class);
     }
 
-    public function findSite($id)
+    public function findSiteBySlug($slug)
     {
-        $field = (is_numeric($id)) ? 's.id' : 's.slug';
-
         $qb = $this->createQueryBuilder('s')
-            ->where($field . ' = :siteId')->setParameter('siteId', $id)
-            ->join('s.websiteCategories', 'c');
+            ->where('s.slug = :slug')
+            ->setParameter('slug', $slug);
         return $qb->getQuery()->getOneOrNullResult();
     }
 
@@ -61,7 +59,7 @@ class WebsiteRepository extends ServiceEntityRepository
             ->where('s.websiteStatus IN (:statuses)')
             ->setParameter('statuses', [
                 ReviewSiteStatusType::GOOD_STANDING,
-                ReviewSiteStatusType::PENDING_VARIFICATION,
+                ReviewSiteStatusType::PENDING_VERIFICATION,
             ])
             ->orderBy('s.id', 'DESC')
             ->setMaxResults($resultCount);
@@ -76,15 +74,10 @@ class WebsiteRepository extends ServiceEntityRepository
             ->andWhere('s.websiteStatus IN (:statuses)')
             ->setParameter('statuses', [
                 ReviewSiteStatusType::GOOD_STANDING,
-                ReviewSiteStatusType::PENDING_VARIFICATION,
+                ReviewSiteStatusType::PENDING_VERIFICATION,
             ])
             ->setMaxResults($resultCount);
 
         return $qb->getQuery()->getResult();
-    }
-
-    public function findOneBySlug($slug)
-    {
-
     }
 }

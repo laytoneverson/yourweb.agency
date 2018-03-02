@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cryptocurrency Resources by YourWeb!{% endblock %}
+{% block metaDescription %}Welcome to the CryptoCurrency by YourWeb Agency. Find the best bitcoin services in one place.{% endblock %}
+{% block metaKeywords %}{% endblock %}
+{% block socialTitle %}Everything CryptoCurrency By YourWeb.online{% endblock %}
+{% block socialDescription %}CryptoCurrency by YourWeb Agency. Find the best bitcoin services in one place.{% endblock %}
+{% block socialUrl %}https://cryptocurrency.yourweb.online{% endblock %}
+{% block robots %}noindex, noarchive{% endblock robots %}
+
+{% block bodyContent %}
+    <div class="main">
+        <div class="container">
+
+            <ul class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                {% block breadCrumbItems %}
+                    <li><a href="javascript:;">Legal Information</a></li>
+                    <li class="active">{% block breadcrumbTitle %}Legal Information{% endblock %}</li>
+                {% endblock breadCrumbItems %}
+            </ul>
+            <div class="row margin-bottom-40">
+                <div class="col-md-12 col-sm-12">
+                    <h1 class="page-header">
+                        {% block displayHeader %}Add block: displayHeader{%  endblock %}<small>Legal Information</small>
+                    </h1>
+                    <div class="content-page legal-content">
+                        {% block legalContent %}
+
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock bodyContent %}

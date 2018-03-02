@@ -49,7 +49,18 @@ class WebsiteCategory
      * @ORM\Column(type="text", nullable=true)
      * @var string
      */
+    private $categorySummaryExtended;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     * @var string
+     */
     private $categoryKeyWords;
+
+    public function getSlug()
+    {
+        return $this->getCategorySlug();
+    }
 
     public function __construct()
     {
@@ -185,5 +196,24 @@ class WebsiteCategory
     public function setCategoryKeyWords(string $categoryKeyWords): void
     {
         $this->categoryKeyWords = $categoryKeyWords;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategorySummaryExtended(): ?string
+    {
+        return $this->categorySummaryExtended;
+    }
+
+    /**
+     * @param string $categorySummaryExtended
+     * @return WebsiteCategory
+     */
+    public function setCategorySummaryExtended(string $categorySummaryExtended): WebsiteCategory
+    {
+        $this->categorySummaryExtended = $categorySummaryExtended;
+
+        return $this;
     }
 }

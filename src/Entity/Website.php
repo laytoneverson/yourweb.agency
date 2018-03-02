@@ -9,6 +9,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Fresh\DoctrineEnumBundle\Validator\Constraints as DoctrineAssert;
 use Gedmo\Mapping\Annotation as Gedmo;
+use function parse_url;
+use const PHP_URL_HOST;
+use const PHP_URL_PATH;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WebsiteRepository")
@@ -42,7 +45,7 @@ class Website
     private $websiteStatus;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\WebsiteSnapshot", inversedBy="website", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="App\Entity\WebsiteSnapshot", inversedBy="website", cascade={"persist"}, fetch="EAGER")
      * @var WebsiteSnapshot
      */
     private $snapshot;
@@ -119,11 +122,20 @@ class Website
     private $featured = false;
 
     /**
-     * @Gedmo\Slug(fields={"websiteName"}, )
+     * @Gedmo\Slug(fields={"websiteName"}, updatable=false )
      * @ORM\Column(type="string", length=255, nullable=true, unique=true)
      * @var string
      */
     private $slug;
+
+    public function getWebsiteFriendlyUrl($scheme = "http://"): string
+    {
+        $url = $this->getWebsiteUrl();
+        $host = parse_url($url, PHP_URL_HOST);
+        $path = parse_url($url, PHP_URL_PATH);
+
+        return "{$scheme}{$host}/{$path}";
+    }
 
     public function __toString()
     {
@@ -145,6 +157,37 @@ class Website
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getWebsiteImageUrl()
+    {
+        if ($this->getSnapshot()){
+
+            if ($this->getSnapshot()->getFullSizeImageAsset()) {
+                return $this->getSnapshot()->getFullSizeImageAsset()->getPublicUrl();
+            }
+            if ($this->getSnapshot()->getThumbnailImageAsset()) {
+                return $this->getSnapshot()->getThumbnailImageAsset()->getPublicUrl();
+            }
+        }
+
+        return 'http://cryptocurrency-db.oss-us-east-1.aliyuncs.com/LogoSquare.png';
+    }
+
+    public function getWebsiteThumbnailUrl()
+    {
+        if ($this->getSnapshot()){
+
+            if ($this->getSnapshot()->getThumbnailImageAsset()) {
+                return $this->getSnapshot()->getThumbnailImageAsset()->getPublicUrl();
+            }
+
+            if ($this->getSnapshot()->getFullSizeImageAsset()) {
+                return $this->getSnapshot()->getFullSizeImageAsset()->getPublicUrl();
+            }
+        }
+
+        return 'http://cryptocurrency-db.oss-us-east-1.aliyuncs.com/LogoSquare.png';
     }
 
     /**
@@ -251,14 +294,6 @@ class Website
         $this->websiteUrl = $websiteUrl;
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getWebsiteImageUrl(): string
-    {
-        return $this->websiteImageUrl;
     }
 
     /**
@@ -534,7 +569,7 @@ class Website
      * @param string $slug
      * @return Website
      */
-    public function setSlug(string $slug): Website
+    public function setSlug(string $slug = null): Website
     {
         $this->slug = $slug;
 

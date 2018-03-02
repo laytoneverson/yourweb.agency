@@ -67,4 +67,3 @@ COPY ./public/build /app/public/build/
 
 RUN tar cvzf /app.tar.gz /app
 
-CMD ["echo", "Build is complete and your tar is ready at /app.tar.gz"]

@@ -1,0 +1,8 @@
+easy_admin:
+    entities:
+        WebsiteCategory:
+            class: App\Entity\WebsiteCategory
+        WebsiteFeature:
+            class: App\Entity\WebsiteFeature
+        WebsiteInvestmentTerm:
+            class: App\Entity\WebsiteInvestmentTerm

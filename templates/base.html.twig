@@ -19,8 +19,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta  name="author" content="YourWeb.online, Layton Everson <layton.everson@gmail.com>">
         <meta property="og:site_name" content="{% block socialSiteName %}Everything CryptoCurrency by YourWeb{% endblock %}">
-        <meta property="og:image" content="{% block socialImageUrl %}http://cryptocurrency-db.oss-us-east-1.aliyuncs.com/LogoSquare.png{% endblock %}"><!-- link to image for socio -->
-        <meta property="og:type" content="website">
 
         {% block socialMetaData %}
         <title>{% block title %}Cryptocurrency Resources by YourWeb!{% endblock %}</title>
@@ -29,7 +27,14 @@
         <meta property="og:title" content="{% block socialTitle %}Everything CryptoCurrency By YourWeb.online{% endblock %}">
         <meta property="og:description" content="{% block socialDescription %}CryptoCurrency by YourWeb Agency. Find the best bitcoin services in one place.{% endblock %}">
         <meta property="og:url" content="{% block socialUrl %}https://cryptocurrency.yourweb.online{% endblock %}">
+        <meta property="og:image" content="{% block socialImageUrl %}http://cryptocurrency-db.oss-us-east-1.aliyuncs.com/LogoSquare.png{% endblock %}"><!-- link to image for socio -->
+        <meta property="og:type" content="{% block socialType %}website{% endblock socialType %}">
         {% endblock socialMetaData %}
+        <meta name="robots" content="{% block robots %}{% endblock robots %}" />
+
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <![endif]-->
 
         {#{% block manifest %}<script src="{{ asset('/build/manifest.js') }}"></script>{% endblock %}#}
         {% block fontsLink %}
@@ -58,7 +63,7 @@
         {% block preHeader %}{% endblock preHeader%}
         {% block topBar %}{% endblock topBar %}
         {% block pageHeader %}
-        <div class="header">
+        <header class="header">
             <div class="container">
                 {% block siteLogo %}
                     <a class="site-logo" href="{% block logoLinkUrl %} https://CryptoCurrency.yourweb.online/ {% endblock %}">
@@ -71,16 +76,16 @@
                 <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
                 {% block siteNavigation %}
-                    <div class="header-navigation font-transform-inherit">
+                    <nav class="header-navigation font-transform-inherit">
                         <ul>
-
                             {% block headerNav %}
                                 {% include 'nav.html.twig' %}
                             {% endblock %}
 
                             {% block search %}
                             <li class="menu-search">
-                                <a href="https://twitter.com/intent/tweet?screen_name=BuildingYourWeb&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-text="Hi, I have feedback for you: " data-related="BuildingYourWeb" data-show-count="false">Contact Us: @BuildingYourWeb</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                {#<a href="https://twitter.com/intent/tweet?screen_name=BuildingYourWeb&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-text="Hi, I have feedback for you: " data-related="BuildingYourWeb" data-show-count="false">Contact Us: @BuildingYourWeb</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>#}
+                                <a data-sumome-share-id="f2bd7a21-69c4-4f86-beb2-68151474ea3e"></a>
                             </li>
                             {#<li class="menu-search">#}
                                 {#<span class="sep"></span>#}
@@ -99,11 +104,10 @@
                             {% endblock search %}
 
                         </ul>
-                    </div>
+                    </nav>
                 {% endblock siteNavigation %}
-
             </div>
-        </div>
+        </header>
         {% endblock pageHeader %}
         {% block bodyHero %}{% endblock bodyHero %}
         {% block bodyContent %}
@@ -112,8 +116,8 @@
             </div>
         </div>
         {% endblock bodyContent %}
-        {% block pageBigFoot %}{% include 'big-foot.html.twig' %}{% endblock pageBigFoot %}
-        {% block pageFinalFoot %}{% include 'final-foot.html.twig' %}{% endblock pageFinalFoot %}
+        {% block pageBigFoot %}{% include 'includes/big-foot.html.twig' %}{% endblock pageBigFoot %}
+        {% block pageFinalFoot %}{% include 'includes/final-foot.html.twig' %}{% endblock pageFinalFoot %}
         {% block globalJavascripts %}
             {#<script src="{{ asset('build/global/metronic.js') }}"></script>#}
             <script src="{{ asset('build/js/app.js') }}"></script>

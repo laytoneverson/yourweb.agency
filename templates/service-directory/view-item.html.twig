@@ -1,0 +1,69 @@
+{% extends 'section-item.html.twig' %}
+{% import 'macros.html.twig' as macros %}
+
+{% block socialMetaData %}
+    {{ macros.pageMeta(
+        "Review of " ~ site.websiteName,
+        "Review of " ~ site.websiteName ~ ". Yourweb is dedicated to providing our visitors with quality content. "
+        ~ "You can expect honest and fair descriptions of services. Our reviews cannot be bought!",
+        "CryptoCurrency Service Reviews, " ~ site.websiteName ~ " Review, About " ~ site.websiteName
+        ~ " Scam " ~ site.WebsiteName,
+        'article',
+        site.websiteThumbnailUrl
+    ) }}
+{% endblock socialMetaData %}
+
+{% block breadcrumbEntry %}{{ site.websiteName }}{% endblock breadcrumbEntry %}
+
+{% block indexPageTitle %}{{ site.websiteName }} <small>Service Review</small>{% endblock indexPageTitle %}
+{% block sectionSummary %}
+    YourWeb.online reviews cryptocurrency services such as {{ site.websiteName }}. YourWeb nor the author of this
+    article represent {{ site.websiteName }}, and are not responsible or liable for any negative outcome that may
+    result from using any of the services in or directory including {{ site.websiteName }}.
+{% endblock sectionSummary %}
+{% block sectionSummaryRight %}
+    We do commit to providing our visitors with honest and accurate details
+    about the services we review in an effort to arm you, the visitor with
+    the tools you need to make good decisions about the crypto-services you use.
+{% endblock sectionSummaryRight %}
+{% block indexBody %}
+
+<div class="row site-review-article">
+    <div class="col-md-7">
+        <div class="article-content">
+            <h3>{{ site.websiteName }} Details</h3>
+            {{ site.websiteSummary|markdown }}
+            <h3>More Details</h3>
+            {{ site.websiteReview|markdown }}
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-12 website-image">
+                {{ macros.browserImageFrame(
+                    "http://" ~ site.websiteImageUrl,
+                    "Screen Shot Of " ~ site.websiteName,
+                    site.websiteUrl,
+                    site.websiteFriendlyUrl
+                ) }}
+            </div>
+            <ul class="col-md-12 review-site-summary">
+               <li><h6>Is {{ site.websiteName }} a scam?</h6></li>
+                <li><span>Website Rating</span> {{ site.myRecommendation }}</li>
+                <li><span>Website Status</span>
+                   <span class="{{ macros.writeStatusClass(site.websiteStatus) }}">
+                        {{ site.websiteStatus|readable_enum }}
+                   </span>
+               </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block sideBar %}
+
+{% endblock %}

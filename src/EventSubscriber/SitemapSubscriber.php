@@ -65,40 +65,33 @@ class SitemapSubscriber implements EventSubscriberInterface
     {
         /** @var Collection $categories[] */
         $categories = $this->reviewSiteService->getReviewSiteCategories();
+
         /** @var WebsiteCategory $cat */
-        foreach($categories as $cat)
-        {
+        foreach($categories as $cat) {
+
+            //$sectionId = $cat->getCategorySlug()."-section";
             $sectionPath = $this->urlGenerator->generate(
                 'websiteReviewCategory',
                 ['slug' => $cat->getCategorySlug()],
-                UrlGeneratorInterface::ABSOLUTE_URL
-            );
+                UrlGeneratorInterface::ABSOLUTE_URL);
+
             $sectionUrl = new UrlConcrete($sectionPath, new \DateTime('now'), 'daily', 1);
-            $urlContainer->addUrl($sectionUrl, 'Cryptocurrency Services');
+            $urlContainer->addUrl($sectionUrl, 'service-directory');
+            
+            /** @var Website $website */
+            foreach($cat->getWebsites() as $website){
 
-            $categorySites = $this->doctrine
-                ->getRepository('App:Website')
-                ->findSitesInCategoryBySlug($cat->getCategorySlug());
+                if ($websiteSlug = $website->getSlug()) {
 
-            /** @var Website $site */
-            foreach($categorySites as $website){
-                $slug = $website->getSlug();
-                if ($slug) {
-                    $slugPath = $this->urlGenerator->generate(
-                        'websiteReview',
-                        ['id' => $website->getSlug()],
-                        UrlGeneratorInterface::ABSOLUTE_PATH
-                    );
-                    $urlBySlug = new UrlConcrete($slugPath, null, null, .7);
-                    $urlContainer->addUrl($urlBySlug, $cat->getCategorySlug()."-sites");
-                } else {
-                    $idPath = $this->urlGenerator->generate(
-                        'websiteReview',
-                        ['id' => $website->getId()],
-                        UrlGeneratorInterface::ABSOLUTE_PATH
-                    );
-                    $urlById = new UrlConcrete($idPath, new \DateTime('now'), null, '.7');
-                    $urlContainer->addUrl($urlById, $cat->getCategorySlug() . "-sites");
+                    $siteCategoryUrl = $this->urlGenerator->generate(
+                        'categoryWebsiteReview',
+                        ['categorySlug' => $cat->getCategorySlug(), 'siteSlug' => $websiteSlug],
+                        UrlGeneratorInterface::ABSOLUTE_URL);
+                    
+                    $urlBySlug = new UrlConcrete(
+                        $siteCategoryUrl, $website->getUpdatedAt(), null, .5);
+                    $urlContainer->addUrl($urlBySlug, 'service-directory');
+
                 }
             }
         }

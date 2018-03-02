@@ -3,7 +3,7 @@ framework:
     default_locale: en
     csrf_protection: ~
     #http_method_override: true
-
+    ide: 'myide://open?url=file://%%f&line=%%l/var/www/app/>C:\Users\layto\Projects\Yourweb\cryptocurrency\'
     session:
         # With this config, PHP's native session handling is used
         handler_id: ~

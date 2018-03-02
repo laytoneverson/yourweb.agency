@@ -1,0 +1,36 @@
+easy_admin:
+    entities:
+        Website:
+            class: App\Entity\Website
+            label: 'Service Directory Website'
+            list:
+                fields:
+                  - 'websiteName'
+                  - { property: 'websiteStatus', type: 'ReviewSiteStatusType' }
+                  - { property: featured, type: 'toggle'}
+                  - 'websiteCategories'
+                  - { property: 'snapshot', label: 'Thumbnail' }
+
+            form:
+                fields:
+                  # Classification
+                  - { type: group, label: 'Classification', css_class: 'col-md-4 col-sm-12 pull-right', 'icon': 'list'}
+                  - { property: 'websiteStatus', type: 'App\Form\Type\ReviewSiteStatusType', label: 'Status' }
+                  - { property: 'featured' }
+                  - { property: 'myRecommendation', label: 'Our Rating', attr: { min: 1, max: 5 }}
+                  - { property: 'websiteFeatures', type_options: { by_reference: false } }
+                  - 'investmentTerms'
+
+                  # Details
+                  - { type: group, label: 'Website Details', css_class: 'col-md-8 col-sm-12', 'icon': 'edit'}
+                  - 'websiteName'
+                  - 'slug'
+                  - { property: 'websiteUrl', label: 'Url' }
+                  - { property: 'websiteCategories', label: 'Categories'  }
+                  - { property: 'snapshot' }
+
+                  # Review
+                  - { type: group, label: 'Review', css_class: 'col-md-8 col-sm-12', 'icon': 'search'}
+                  - { property: 'websiteSummary' , label: 'Summary' }
+                  - { property: 'websiteReview', label: 'Review' }
+

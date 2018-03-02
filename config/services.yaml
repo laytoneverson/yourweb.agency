@@ -13,6 +13,14 @@ parameters:
     router.request_context.host: cryptocurrency.yourweb.online
     router.request_context.scheme: http
 
+    review-site-statuses:
+        GOOD_STANDING: 'Good Standing'
+        PENDING_VERIFICATION: 'Pending Verification'
+        OFFLINE_TEMPORARY: 'Offline - Temporary '
+        USE_CAUTION: 'Use Caution'
+        OFFLINE_PERMANENT: 'Offline - Indefinite'
+        SCAM_ALERT: 'CONFIRMED_SCAM'
+
 services:
     # default configuration for services in *this* file
     _defaults:

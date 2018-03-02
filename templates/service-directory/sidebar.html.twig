@@ -21,7 +21,7 @@
 
 <div class="row margin-bottom-15">
     <div class="col-md-12 margin-left-20">
-        <div class="panel panel-primary shadow-info" style="">
+        <div class="panel panel-primary shadow-info">
             <div class="panel-heading">
                 <h3 class="panel-heading">Featured Sites</h3>
             </div>
@@ -29,7 +29,7 @@
                 <div class="panel-body">
                    <p><strong>{{ site.websiteName }}</strong><br>
                    {{ site.websiteSummary }}<br>
-                   <a href="{{ site.websiteUrl }}">Visit Site</a>
+                   <a class="btn btn-link green-btn-link" href="{{ site.websiteUrl }}" target="_blank">Visit Site</a>
                    </p>
                 </div>
             {% endfor %}

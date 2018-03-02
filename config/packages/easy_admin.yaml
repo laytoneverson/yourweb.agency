@@ -1,18 +1,5 @@
-easy_admin:
-    site_name: 'CryptoCurrency Site Management'
-    design:
-        brand_color: '#b3d334'
-        form_theme: 'vertical'
-    list:
-        max_results: 10
-    entities:
-#        # List the entity class name you want to manage
-        Website:
-            class: App\Entity\Website
-        WebsiteCategory:
-            class: App\Entity\WebsiteCategory
-        WebsiteFeature:
-            class: App\Entity\WebsiteFeature
-        WebsiteInvestmentTerm:
-            class: App\Entity\WebsiteInvestmentTerm
-
+imports:
+    - { resource: easy_admin/design.yaml }
+    - { resource: easy_admin/list.yaml }
+    - { resource: easy_admin/entities/website.yaml }
+    - { resource: easy_admin/entities/other.yaml }

@@ -1,0 +1,24 @@
+easy_admin:
+    site_name: '<img src="/assets/logo/logo-med-light.png">'
+    design:
+        brand_color: '#313030'
+        form_theme: 'vertical'
+        assets:
+            favicon: '/assets/favicons/favicon-32x32.png'
+        menu:
+          - label: 'Back To Website'
+            icon: 'globe'
+            route: 'home'
+          - label: 'Service Directory'
+            icon: 'map-signs'
+            children:
+              - { label: 'Service Directory', icon: 'map' }
+              - { entity: Website, label: 'Sites', icon: 'tasks' }
+              - { entity: WebsiteCategory, label: 'Categories', icon: 'tag' }
+              - { entity: WebsiteFeature, label: 'Site Features', icon: 'code-branch' }
+              - { entity: WebsiteInvestmentTerm, label: 'Investment Terms', icon: 'handshake' }
+
+    edit:
+        title: 'Edit %%entity_label%%'
+    new:
+        title: 'New %%entity_label%% (%%entity_id%%)'

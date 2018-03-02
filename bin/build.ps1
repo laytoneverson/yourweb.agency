@@ -1,25 +1,18 @@
 
-function BuildProduction() {
+function build($appEnv, $buildFrontEnd) {
+    if (!$appEnv) {
+        $appEnv = "prod"
+    }
 
-    docker-compose.exe -f docker-compose.yml -f docker-compose.prod.yml build php
-    docker-compose.exe -f docker-compose.yml -f docker-compose.prod.yml build web
-}
+    $env:APP_ENV=$appEnv
 
-function tagProduction($ver) {
-    docker tag yourweb-prod-php:latest  registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/php:$ver
-    docker tag yourweb-prod-web:latest  registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/web:$ver
-}
+    if ($appEnv -eq "prod") {
+        yarn encore production
+    } else {
+        yarn encore dev
+    }
 
-function pushProduction($ver) {
-    docker push registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/web:$ver
-    docker push registry-intl.us-west-1.aliyuncs.com/cryptocurrency-yourweb-online/php:$ver
-}
+    docker-compose.exe build builder
+    docker tag yourweb-build  yourweb-build:${appEnv}-latest
 
-function deploy($version)
-{
-    $env:VERSION=$version
-    yarn encore production
-    BuildProduction
-    tagProduction($version)
-    pushProduction($version)
 }

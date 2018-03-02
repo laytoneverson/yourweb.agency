@@ -1,0 +1,35 @@
+
+%button-base {
+  display: block;
+  color: $text-grey-dark;
+  border-radius: 0;
+  box-shadow: 2px 2px 2px #222222;
+}
+
+a {
+
+  .green-button-link {
+    @extend %button-base;
+    background-color: $theme-green;
+
+    :hover {
+      color: $text-blue-light;
+    }
+  }
+
+  .blue-button-link {
+    @extend %button-base;
+    background-color: $bg-light-blue;
+
+    :hover {
+      color: $text-grey-medium-dark;
+    }
+  }
+
+  .orange-button-link {
+    @extend %button-base;
+    background-color: $bg-orange;
+    color: $text-grey-light;
+  }
+}
+

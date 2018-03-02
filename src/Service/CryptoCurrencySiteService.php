@@ -44,16 +44,16 @@ class CryptoCurrencySiteService
      */
     public function getReviewSiteCategories(): array
     {
-        return $this->categoryRepository->findAll();
+        return $this->categoryRepository->findCategoriesAndSites();
     }
 
     /**
-     * @param string $siteId
+     * @param string $slug
      * @return Website|null
      */
-    public function getReviewSite(string $siteId): ?Website
+    public function getReviewSite(string $slug): ?Website
     {
-        return $this->websiteRepository->find($siteId);
+        return $this->websiteRepository->findSiteBySlug($slug);
     }
 
     public function getFeaturedSites($count = 10)
