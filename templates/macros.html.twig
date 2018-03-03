@@ -1,8 +1,8 @@
 {% macro serviceBox(boxClass, faicon, boxTitle, boxContent, linkPath) %}
     <div class="{{ boxClass }} service-box">
         <div class="service-box-heading" >
-            <em><i class="fa fa-{{ faicon }} grey" ></i></em>
-            <span>{{ boxTitle }}</span>
+            <em><i class="fa fa-{{ faicon }} green" ></i></em>
+            <h3>{{ boxTitle }}</h3>
         </div>
         <p>{{ boxContent }} - <a href="{{ linkPath }}">View Page</a></p>
     </div>

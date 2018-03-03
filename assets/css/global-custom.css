@@ -51,47 +51,6 @@
     color: rgb(179, 211, 52);
 }
 
-.service-box {
-    text-align: justify;
-}
-
-.home-page-feature {
-    box-shadow: #97a0b3 3px 3px;
-    border: #b3d334 solid 2px;
-}
-
-.home-page-feature h2 {
-    font-size: medium;
-    padding: 7px;
-    color: #313030;
-    margin-bottom: 0;
-    background-color: #b3d334;
-    font-weight: 700;
-    font-family: "Open Sans",sans-serif;
-}
-
-.service-list hr {
-    color: #eeeeee;
-    padding: 30px 0 0 0;
-}
-
-
-
-.service-directory-card h3 {
-    padding-top: 0;
-}
-
-.service-directory-card a.btn-link {
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-    color: #222222;
-    background-color: rgb(179, 211, 52) ;
-    box-shadow: 2px 2px 2px #222222;
-    bottom: 0;
-    right: 0;
-}
-
 .shadow-danger {
     border: 1px solid rgba(99, 26, 19, 0.42);
     box-shadow: 3px 4px 6px rgba(237, 78, 42, 0.49);

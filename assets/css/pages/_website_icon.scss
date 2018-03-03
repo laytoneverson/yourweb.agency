@@ -1,0 +1,21 @@
+.website-icon {
+  position: relative;
+
+  .background-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 188px;
+    z-index: 50;
+  }
+
+  .site-thumb {
+    position: absolute;
+    top: 14px;
+    left: 11px;
+    width: 165px;
+    height: 101px;
+    z-index: 100;
+    border-radius: 1px;
+  }
+}

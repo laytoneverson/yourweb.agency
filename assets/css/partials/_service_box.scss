@@ -1,0 +1,61 @@
+.service-box {
+  p {
+    color: #656565;
+    font-size: 13px;
+  }
+
+  .service-box-heading {
+    padding: 0;
+
+    i {
+      padding: 0;
+      -webkit-border-radius: 34px;
+      -moz-border-radius: 34px;
+      border-radius: 34px;
+      font-size: 18px;
+      height: 32px;
+      width: 32px;
+      line-height: 32px;
+      text-align: center;
+      vertical-align: baseline;
+
+      .blue {
+        color: $text-blue-light;
+        border: 1px solid $text-blue-light;
+      }
+
+      .red {
+        color: $bg-orange;
+        border: 1px solid $bg-orange;
+      }
+
+      .green {
+        color: $theme-green;
+        border: 1px solid $theme-green;
+      }
+    }
+
+    span, h3 {
+      color: #444;
+      font-size: 21px;
+      line-height: 25px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      margin-left: 10px;
+      display: inline-block;
+    }
+
+    [class^="icon-"],
+    [class*=" icon-"] {
+      display: inline-block;
+      text-align: center;
+    }
+    [class^="icon-"].icon-large,
+    [class*=" icon-"].icon-large {
+      /* increased font size for icon-large */
+      width: 1.5625em;
+    }
+  }
+
+}
+

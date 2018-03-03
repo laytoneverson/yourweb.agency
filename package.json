@@ -13,6 +13,6 @@
     "@symfony/webpack-encore": "^0.17.1"
   },
   "liscense":"Proprietary",
-  "name": "cryptocurrency-by-yourweb",
+  "name": "cryptocurrency-yourweb-money",
   "version": "1.17"
 }

@@ -1,0 +1,74 @@
+#service-directory {
+  .service-directory-intro {
+    blockquote {
+      font-size: 0.9em;
+      color: #666;
+      line-height: 20px;
+      background: #F8F8F8;
+      text-align: justify;
+      margin-right: 25px;
+    }
+
+    h2 {
+      font-size: 1.8em;
+      padding-bottom: 10px;
+    }
+
+    p {
+      font-size: 0.9em;
+      padding: 0 30px 10px 10px;
+      text-align: justify;
+    }
+  }
+
+  #service-directory-list {
+
+    .service-directory-card {
+      padding: 7px 7px 14px 7px;
+      margin-bottom: 25px;
+
+      border: 1px solid rgba(49,48,48,.08);
+      box-shadow: 3px 4px 6px rgba(179,211,52,.49);
+
+      h3 {
+        padding-top: 0;
+
+        a {
+          text-decoration:none;
+
+          :hover {
+            color: rgb(179, 211, 52);
+          }
+        }
+      }
+
+      .card-content {
+        header {
+          padding-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+.service-directory {
+
+  .section-summary {
+    margin: 8px;
+    padding: 8px;
+    font-size: 12px;
+    text-align: justify;
+    background-color: $bg-light-grey-one;
+  }
+}
+
+
+.service-directory-card {
+  min-height: 215px;
+
+  h3 {
+    padding-top: 0;
+  }
+
+
+}

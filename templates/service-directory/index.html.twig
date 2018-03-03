@@ -15,36 +15,43 @@
     <li class="active">{{ category.categoryName }}</li>
 {% endblock breadCrumbItems %}
 
-{% block indexPageTitle %}{{ category.categoryName }} - <small>Service Directory</small>{% endblock %}
+{% block indexPageTitle %}{{ category.categoryName }} -
+    <small>Cryptocurrency Service Directory</small>{% endblock %}
 
 {% block indexBody %}
-    <div class="row">
-        <div class="col-sm-12 col-md-12 service-directory-summary">
+    <div id="service-directory">
+        <div class="col-sm-12 col-md-12 service-directory-intro">
             <blockquote>
-                <strong>Our Promise:</strong> The team at YourWeb is proud of our high morals and integrity. We will never
+                <strong>Our Promise:</strong> The team at YourWeb is proud of our high morals and integrity. We will
+                never
                 intentionally mislead you, lie to you, endorse a site or product we don't personally believe in,
                 or make false claims for a pay check.
+                <footer>YourWeb Founders</footer>
             </blockquote>
 
+            <h2>What you should expect to find in the {{ category.categoryName }} section</h2>
+
             {{ category.categorySummaryExtended|markdown }}
-
         </div>
+
+        <div id="service-directory-list">
+            {% set count=0 %}
+            {% for website in category.websites %}
+                {% include 'service-directory/index-item.html.twig' with {'category':category, 'website': website } %}
+
+                {% set count = count + 1 %}
+                {% if count % 4 == 0 %}
+                    <div class="row margin-bottom-25 padding-top-25">
+                        <div class="col-md-8 col-md-offset-3">
+                            <p>Advertisement</p>
+                            {{ macros.displayRegularBanner() }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
     </div>
-    {% set count=0 %}
-    {% for website in category.websites %}
-        {%  include 'service-directory/index-item.html.twig' with {'category':category, 'website': website } %}
-
-        {% set count = count + 1 %}
-        {% if count % 4 == 0 %}
-            <div class="row margin-bottom-25 padding-top-25">
-                <div class="col-md-8 col-md-offset-3">
-                    <p>Advertisement</p>
-                    {{ macros.displayRegularBanner() }}
-                </div>
-            </div>
-        {% endif %}
-        {% endfor %}
-
 {% endblock %}
 {% block sideBar %}
     {{ include('service-directory/sidebar.html.twig') }}

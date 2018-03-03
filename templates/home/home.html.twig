@@ -17,19 +17,29 @@
 {% block bodyContent %}
 <div class="main">
     <div class="container">
-        <h1 class="page-header margin-bottom-25">CryptoCurrency <small>By YourWeb</small></h1>
+        {#<h1 class="page-header margin-bottom-25">YourWeb.Money <small>A CryptoCurrency Resource Library</small></h1>#}
         <div class="row margin-bottom-50">
             <div class="col-md-6 col-sm-12">
+                <div class="intro">
+                    <h1>YourWeb.Money</h1>
+                    <h2>Welcome to your cryptocurrency wonderland!</h2>
+                    <p>YourWeb is committed to providing our visitors with high quality, trustworthy cryptocurrency
+                        resources. We scour the web for bitcoin and other cryptocurrency related services and list the
+                        best of the best on our site. Our service directory is being built, manually, by had by real
+                        humans doing real research on sites these services.
+                    </p>
+                </div>
                 <div class="row card margin-bottom-25">
                     {% include 'home/new-sites-card.html.twig' with { 'sites' : newSites } %}
                 </div>
-                <div class="row margin-bottom-25">
-                    <p>YourWeb is committed to providing our visitors with high quality, trustworthy resources.</p>
+                <div class="row">
+                    {{ macros.serviceBox('col-md-6 col-sm-12', 'bitcoin', 'Free Coins!', 'Use our list of faucets to find the highest paying, obstruction free claim faucets. We sift through the junk for you to make your introduction to cryptocurrency easy.', path('websiteReviewCategory', {'slug':'coin-faucets'})) }}
+                    {{ macros.serviceBox('col-md-6 col-sm-12', 'line-chart', 'Looking to Invest?', 'Find the HYIP that pays from our reviewed services. High Yield Investment Programs can be profitable as well as risky! Find out who pays and who doesn\'t.', path('websiteReviewCategory', {'slug':'high-yeild-investments'})) }}
                 </div>
-                {{ macros.serviceBox('col-md-6 col-sm-12', 'bitcoin', 'Free Coins!', 'Use our list of faucets to find the highest paying, obstruction free claim faucets. We sift through the junk for you to make your introduction to cryptocurrency easy.', path('websiteReviewCategory', {'slug':'coin-faucets'})) }}
-                {{ macros.serviceBox('col-md-6 col-sm-12', 'line-chart', 'Looking to Invest?', 'Find the HYIP that pays from our reviewed services. High Yield Investment Programs can be profitable as well as risky! Find out who pays and who doesn\'t.', path('websiteReviewCategory', {'slug':'high-yeild-investments'})) }}
-                {{ macros.serviceBox('col-md-6 col-sm-12', 'credit-card','Need a Wallet?','There are so many wallets available and choosing the right one is important. Pick from our list of easy to use wallets to identify one with the features you need.', path('websiteReviewCategory', {'slug':'wallets'})) }}
-                {{ macros.serviceBox('col-md-6 col-sm-12', 'motorcycle','Gaming','Entertain yourself and even earn free bittcoins. The best gaming sites are listed here.', path('websiteReviewCategory', {'slug':'gaming-sites'})) }}
+                <div class="row">
+                    {{ macros.serviceBox('col-md-6 col-sm-12', 'credit-card','Need a Wallet?','There are so many wallets available and choosing the right one is important. Pick from our list of easy to use wallets to identify one with the features you need.', path('websiteReviewCategory', {'slug':'wallets'})) }}
+                    {{ macros.serviceBox('col-md-6 col-sm-12', 'motorcycle','Gaming','Entertain yourself and even earn free bittcoins. The best gaming sites are listed here.', path('websiteReviewCategory', {'slug':'gaming-sites'})) }}
+                </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
                         {{ macros.displayRegularBanner() }}

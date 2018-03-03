@@ -1,7 +1,7 @@
 server {
     listen 80;
-
-    server_name dev.yourweb.money
+    server_name yourweb.money
+                cryptocurrency.yourweb.online
                 default
                 ;
 
@@ -23,16 +23,14 @@ server {
 
         fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
         fastcgi_param DOCUMENT_ROOT $realpath_root;
-        #fastcgi_param APP_ENV __APP_ENV__;
-        #fastcgi_param APP_SECRET __APP_SECRET__;
-        #fastcgi_param DATABASE_URL "mysql://__MYSQL_USER__:__MYSQL_PASSWORD__@__MYSQL_HOST__:3306/__MYSQL_DATABASE__";
+        fastcgi_param APP_ENV __APP_ENV__;
+        fastcgi_param APP_SECRET __APP_SECRET__;
+        fastcgi_param DB_VERSION __DB_VERSION__;
+        fastcgi_param DATABASE_URL "mysql://__MYSQL_USER__:__MYSQL_PASSWORD__@__MYSQL_HOST__:__MYSQL_PORT__/__MYSQL_DATABASE__";
         internal;
     }
 
     location ~ \.php$ {
         return 404;
     }
-
-    error_log /var/log/nginx/yourweb.log;
-    access_log /var/log/nginx/yourweb.log;
 }

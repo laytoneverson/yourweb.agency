@@ -1,0 +1,22 @@
+
+/* General body settings */
+body {
+  color: #3e4d5c;
+  direction: ltr;
+  font: 400 13px 'Open Sans', Arial, sans-serif;
+  background: #fff;
+}
+
+/***
+General typography
+***/
+h1, h2, h3, h4, h5, h6 {
+  font: 300 'Open Sans', sans-serif;
+  margin: 0 0 10px;
+}
+h1 {
+  margin-bottom: 15px;
+}
+.main h1 {
+  margin-top: -6px;
+}

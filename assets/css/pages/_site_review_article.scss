@@ -1,0 +1,39 @@
+.site-review-article {
+
+  h3 {
+    size: 18px;
+    color: $theme-green;
+  }
+
+  ul.review-site-summary {
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      margin-bottom: 3px;
+      color: #888;
+      font-size: 10px;
+      padding: 7px 15px;
+      border-bottom: solid 1px #f5f9e7;
+
+      span {
+        font-weight: bold;
+        font-size: 12px;
+      }
+
+      i {
+        top: 2px;
+        color: $theme-green;
+        font-size: 16px;
+        margin-right: 5px;
+        position: relative;
+      }
+    }
+  }
+  .article-content {
+
+  }
+
+  .website-image {
+  }
+}
