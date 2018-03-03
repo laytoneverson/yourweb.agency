@@ -1,44 +1,30 @@
+ARG APP_ENV
+FROM yourweb-build:${APP_ENV}-latest as AppCode
+
 ARG PHP_VERSION=7.1-fpm
-
-### Build PHP & Nginx Server
-FROM php:${PHP_VERSION}
-
-ENV COMPOSER_HOME /var/www/.composer
-
-ARG APP_DEBUG=false
-ARG APP_ENV=prod
+FROM php:7.1-fpm
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-    curl \
-    g++ \
-    gifsicle \
-    imagemagick \
-    jpegoptim \
-    libfreetype6 \
-    libfreetype6-dev \
-    libicu-dev \
-    libjpeg-dev \
-    libfontconfig1-dev \
-    libmagickwand-dev \
+    #For mcrypt
     libmcrypt-dev \
-    libmemcached-dev \
-    libpng12-dev \
-    libpq-dev \
-    libssl-dev \
-    libz-dev \
-    optipng \
-    pngquant \
-    zlib1g-dev \
+    #For Intl Extension
+    zlib1g-dev libicu-dev g++ \
+    #For image optimizers
+    jpegoptim optipng pngquant gifsicle \
+    #For GD
+    libfreetype6-dev libjpeg62-turbo-dev libpng12-dev \
   && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-configure gd \
-    --enable-gd-native-ttf \
-    --with-jpeg-dir=/usr/lib \
-    --with-freetype-dir=/usr/include/freetype2 \
+      --enable-gd-native-ttf \
+      --with-freetype-dir=/usr/include/freetype2 \
+      --with-png-dir=/usr/include \
+      --with-jpeg-dir=/usr/include \
   && docker-php-ext-configure \
     intl \
   && docker-php-ext-install \
+    opcache \
     pdo_mysql \
     gd \
     zip \
@@ -50,51 +36,42 @@ RUN docker-php-ext-configure gd \
     intl \
     exif
 
-RUN pecl install -o -f redis \
-    && pecl install imagick \
-    && pecl install xdebug \
-    && pecl install mongodb \
-    && docker-php-ext-enable \
-        redis \
-        imagick \
-        xdebug \
-        mongodb \
-    && rm -rf /tmp/pear
+RUN pecl install -o -f \
+     xdebug \
+  && docker-php-ext-enable \
+     xdebug \
+  && rm -rf /tmp/pear
 
+ENV COMPOSER_HOME /var/www/.composer
+
+ARG APP_DEBUG=false
+ARG APP_ENV
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
      && chown www-data:www-data /var/www/.composer -R
 
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 
-ARG CONFIGPATH
-COPY "./${CONFIGPATH}/" /config/
+#ARG CONFIGPATH
+COPY "./${APP_ENV}/" /config/
+COPY --from=AppCode /app.tar.gz/ /var/www/
 
+WORKDIR /var/www
 RUN cp /config/php-fpm/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini \
+  && cp /config/php-fpm/opcache.conf /usr/local/etc/php/conf.d/opcache.ini \
   && cp /config/php-fpm/laravel.ini /usr/local/etc/php/conf.d \
   && cp /config/php-fpm/xlaravel.pool.conf /usr/local/etc/php-fpm.d/ \
   && cp /config/php-fpm/php71.ini /usr/local/etc/php/php.ini \
-  && rm -Rf /config
+  && tar -xvf app.tar.gz \
+  && mkdir -p app/var/cache/prod/sessions \
+  && mkdir -p app/var/cache/prod/sessions \
+  && chown www-data app/var -R \
+  && rm -Rf /config \
+  && rm -f /app.tar.gz \
+  && usermod -u 1000 www-data
 
-RUN usermod -u 1000 www-data
-
-COPY . /var/www/app/
 WORKDIR /var/www/app
 
 ENV APP_ENV=$APP_ENV
-
-RUN if [ ${APP_ENV} = "prod" ]; then \
-      composer install \
-        --no-dev --no-suggest \
-        --optimize-autoloader --classmap-authoritative \
-        --no-interaction --no-progress; \
-     else \
-        composer install --no-interaction --no-progress \
-;fi
-
-RUN mkdir -p var/cache/prod/sessions \
-    && chown www-data var -R
-
-COPY ./public/build /var/www/app/public/build/
 
 CMD ["php-fpm"]
 

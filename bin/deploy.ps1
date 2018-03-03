@@ -5,7 +5,7 @@ function BuildProduction([parameter()]$imageName) {
         docker-compose.exe -f docker-compose.yml -f docker-compose.prod.yml build php
         docker-compose.exe -f docker-compose.yml -f docker-compose.prod.yml build web
     } else {
-        docker-compose.exe -f docker-compose.yml -f docker-compose.prod.yml build --build-args VERSION=latest $imageName
+        docker-compose.exe  -f docker-compose.prod.yml build --build-arg VERSION=latest $imageName
     }
 }
 

@@ -1,11 +1,9 @@
 ARG PHP_VERSION=7.1-fpm
 
-### Build PHP & Nginx Server
 FROM php:${PHP_VERSION}
 
 ENV COMPOSER_HOME /var/www/.composer
 
-ARG APP_DEBUG=false
 ARG APP_ENV=prod
 
 RUN apt-get update \
@@ -36,34 +34,35 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 
-ARG CONFIGPATH
-COPY "./${CONFIGPATH}/" /config/
+COPY "./docker/${APP_ENV}/" /config/
+COPY . /var/www/app/
 
 RUN cp /config/php-fpm/laravel.ini /usr/local/etc/php/conf.d \
   && cp /config/php-fpm/xlaravel.pool.conf /usr/local/etc/php-fpm.d/ \
   && cp /config/php-fpm/php71.ini /usr/local/etc/php/php.ini \
   && rm -Rf /config
 
-RUN usermod -u 1000 www-data
-
-COPY . /app/
-WORKDIR /app
+WORKDIR /var/www/app
 
 ENV APP_ENV=$APP_ENV
 
 RUN if [ ${APP_ENV} = "prod" ]; then \
-      composer install \
-        --no-dev --no-suggest \
-        --optimize-autoloader --classmap-authoritative \
-        --no-interaction --no-progress; \
-     else \
+          composer install \
+            --no-dev --no-suggest \
+            --optimize-autoloader --classmap-authoritative \
+            --no-interaction --no-progress; \
+    else \
         composer install --no-interaction --no-progress \
-;fi
+    ;fi \
+    && rm -rf /var/www/app/var/cache/prod/* \
+    && rm -rf /var/www/app/var/cache/dev/* \
+    && mkdir -p var/cache/prod/sessions \
+    && chown -R www-data:www-data /var/www/app/var
 
-RUN mkdir -p var/cache/prod/sessions \
-    && chown www-data var -R
+COPY ./public/build /var/www/app/public/build/
 
-COPY ./public/build /app/public/build/
+WORKDIR /var/www
 
-RUN tar cvzf /app.tar.gz /app
+RUN tar cvzf /app.tar.gz ./app
 
+CMD ["echo", "Build is complete and your tar is ready at /app.tar.gz"]
