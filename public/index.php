@@ -1,11 +1,5 @@
 <?php
 
-if (false !== strpos($_SERVER['HTTP_HOST'], 'cryptocurrency.yourweb.online')) {
-    header('Status: 301 Moved Permanently', false, 301);
-    header('Location: https://yourweb.money');
-    exit;
-}
-
 use App\Kernel;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\Dotenv\Dotenv;

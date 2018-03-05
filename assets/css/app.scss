@@ -1,15 +1,30 @@
 
-@import "partials/colors";
+@import "variables/colors";
+@import "variables/fonts";
+@import "variables/urls";
+
+
+@import "font-awesome/fontawesome";
+@import "font-awesome/fa-brands";
+@import "font-awesome/fa-solid";
+@import "font-awesome/fa-regular";
+
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
 @import "partials/content_boxes";
 @import "partials/buttons";
 @import "partials/browser_frame";
 @import "partials/base_elements";
 @import "partials/service_box";
 
+@import "style";
+@import "global-custom";
+
 @import "pages/service_directory";
 @import "pages/site_review_article";
 @import "pages/website_icon";
 @import "pages/home";
+
 
 
 

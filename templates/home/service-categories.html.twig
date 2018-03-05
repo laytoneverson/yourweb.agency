@@ -1,5 +1,5 @@
 <div class="service-box-heading">
-    <em><i class="fa fa-bitcoin green"></i></em>
+    <h3><i class="fas fa-map-signs"></i></h3>
     <h3>Service Directory</h3>
 </div>
 
@@ -7,7 +7,7 @@
     {% for cat in categories %}
         <li class="list-group-item clearfix">
             <a href="{{ path('websiteReviewCategory', {'slug':cat.categorySlug} ) }}">
-                <i class="fa fa-angle-right"></i>{{ cat.categoryName }}
+                <i class="fas fa-caret-square-right"></i>{{ cat.categoryName }}
             </a>
         </li>
     {% endfor %}

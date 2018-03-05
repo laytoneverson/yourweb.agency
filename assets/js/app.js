@@ -1,6 +1,6 @@
 
-const $ = require('jquery');
-
+var $ = require('jquery');
+require('bootstrap-sass');
 // create global $ and jQuery variables
 global.$ = global.jQuery = $;
 global.Layout = _Layout;
