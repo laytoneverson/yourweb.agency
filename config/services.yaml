@@ -1,17 +1,13 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    env(APP_SECRET): KL873243298JSKJFOEPJIJOJ7856JHFSDHUIUHFSIUE
-    env(DOMAIN_CRYPTOCURRENCY): YourWeb.Money
-    env(DOMAIN_HOME): yourweb.online
-    env(DOMAIN_STORAGE): cloudstorage.yourweb.online
-
-    domain_cryptocurrency: '%env(DOMAIN_CRYPTOCURRENCY)%'
-    domain_home: '%env(DOMAIN_HOME)%'
-    domain_storage: '%env(DOMAIN_STORAGE)%'
+    env(APP_SECRET): CHANGEME
     locale: 'en'
     router.request_context.host: yourweb.money
     router.request_context.scheme: https
+
+    env(ADMIN_PASS): ChangeMe
+    admin.password: '%env(ADMIN_PASS)%'
 
     review-site-statuses:
         GOOD_STANDING: 'Good Standing'

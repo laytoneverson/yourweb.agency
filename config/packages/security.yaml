@@ -5,7 +5,7 @@ security:
             memory:
                 users:
                     layton:
-                        password: $2y$12$ynX9afdMGTW6GLC4nJg/vOFh411el2hdk.ZsbT6EFSibj6fGHmEUe
+                        password: '%admin.password%'
                         roles: 'ROLE_ADMIN'
     encoders:
         Symfony\Component\Security\Core\User\User:
