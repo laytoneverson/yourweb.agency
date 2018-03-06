@@ -495,7 +495,7 @@ div {
   li {
     &.menu-search {
       position: relative;
-      top: 17px;
+      top: 27px;
       i {
         color: $color_mine_shaft_approx;
         font-size: 16px;
@@ -594,6 +594,7 @@ div {
     }
   }
 }
+
 @media(min-width: 1025px) {
   .header-navigation > ul > li:hover > .dropdown-menu {
     display: block;
@@ -1113,7 +1114,7 @@ div {
   }
   > li + li:before {
     font-family: $font-fontawesome-free;
-    content: "\f105";
+    content: '\f105';
     -moz-osx-font-smoothing: grayscale;
     display: inline-block;
     font-style: normal;
@@ -3040,7 +3041,7 @@ body.page-header-fixed {
   margin-bottom: 30px;
 }
 .dropdown.open > .dropdown-toggle {
-  border-color: none !important;
+  border-color:  none !important;
 }
 .sidebar2 a {
   color: $color_raven_approx;
@@ -3124,7 +3125,7 @@ body.page-header-fixed {
     }
     &:before {
       font-family: $font-fontawesome-free;
-      content: "\f101";
+      content: '\f101';
       -moz-osx-font-smoothing: grayscale;
       display: inline-block;
       font-style: normal;

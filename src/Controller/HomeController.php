@@ -41,6 +41,20 @@ class HomeController extends AbstractController
     }
 
     /**
+     * @Route("/search", name="search", options={
+     *     "sitemap" = {"priority" = 0.1, "changefreq" = "yearly", "section" = "home" }
+     *     })
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function searchAction(Request $request)
+    {
+        $s = $request->query->get('s');
+        return $this->render('home/search.html.twig');
+    }
+
+
+
+    /**
      * @Route("/legal-stuff/terms-of-use", name="terms-of-use", options={
      *     "sitemap" = {"priority" = 0.1, "changefreq" = "yearly", "section" = "home" }
      *     })

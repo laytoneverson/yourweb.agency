@@ -1,14 +1,24 @@
+{% extends 'two-column-page.html.twig' %}
+{% block leftcolumn %}
 <div>
-    <script>
-        (function() {
-            var cx = '004086048178092861879:v4hnoqiiahy';
-            var gcse = document.createElement('script');
-            gcse.type = 'text/javascript';
-            gcse.async = true;
-            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(gcse, s);
-        })();
-    </script>
-    <gcse:searchresults-only></gcse:searchresults-only>
+    <div>
+        <script>
+            (function() {
+                var cx = '004086048178092861879:v4hnoqiiahy';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+            })();
+        </script>
+        <div class="gcse-searchbox" data-resultsUrl="https://yourweb.money/search"
+             data-newWindow="false" data-queryParameterName="s" >
+    </div>
+
+    <div>
+        {{  "<gcse:searchresults></gcse:searchresults>"|raw }}
+    </div>
 </div>
+{% endblock %}

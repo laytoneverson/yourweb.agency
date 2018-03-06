@@ -1,0 +1,972 @@
+//colors
+$white: #fff;
+$color_boston_blue_approx: #428bca;
+$color_steel_blue_approx: #3379b5;
+$color_st_tropaz_approx: #2a6496;
+$color_jelly_bean_approx: #2d6ca2;
+$color_astral_approx: #3071a9;
+$color_puerto_rico_approx: #45b6af;
+$color_keppel_approx: #3ea49d;
+$color_paradiso_approx: #307f7a;
+$color_lochinvar_approx: #348a84;
+$color_jordy_blue_approx: #89c4f4;
+$color_malibu_approx: #72b8f2;
+$color_picton_blue_approx: #43a1ed;
+$color_anzac_approx: #dfba49;
+$color_old_gold_approx: #dbb233;
+$color_golden_grass_approx: #daae2b;
+$color_marigold_approx: #bb9521;
+$color_nugget_approx: #c89f23;
+$color_hokey_pokey_approx: #d0a625;
+$color_carnation_approx: #f3565d;
+$color_coral_red_approx: #f13e46;
+$color_torch_red_approx: #ec111b;
+$color_alizarin_crimson_approx: #ef1d26;
+
+//urls
+$url_0: url('../img/social/amazon.png');
+$url_1: url('../img/social/behance.png');
+$url_2: url('../img/social/blogger.png');
+$url_3: url('../img/social/deviantart.png');
+$url_4: url('../img/social/dribbble.png');
+$url_5: url('../img/social/dropbox.png');
+$url_6: url('../img/social/evernote.png');
+$url_7: url('../img/social/facebook.png');
+$url_8: url('../img/social/forrst.png');
+$url_9: url('../img/social/github.png');
+$url_10: url('../img/social/googleplus.png');
+$url_11: url('../img/social/jolicloud.png');
+$url_12: url('../img/social/last-fm.png');
+$url_13: url('../img/social/linkedin.png');
+$url_14: url('../img/social/picasa.png');
+$url_15: url('../img/social/pintrest.png');
+$url_16: url('../img/social/rss.png');
+$url_17: url('../img/social/skype.png');
+$url_18: url('../img/social/spotify.png');
+$url_19: url('../img/social/stumbleupon.png');
+$url_20: url('../img/social/tumblr.png');
+$url_21: url('../img/social/twitter.png');
+$url_22: url('../img/social/vimeo.png');
+$url_23: url('../img/social/wordpress.png');
+$url_24: url('../img/social/xing.png');
+$url_25: url('../img/social/yahoo.png');
+$url_26: url('../img/social/youtube.png');
+$url_27: url('../img/social/vk.png');
+$url_28: url('../img/social/instagram.png');
+$url_29: url('../img/social/reddit.png');
+$url_30: url('../img/social/aboutme.png');
+$url_31: url('../img/social/flickr.png');
+$url_32: url('../img/social/foursquare.png');
+$url_33: url('../img/social/gravatar.png');
+$url_34: url('../img/social/klout.png');
+$url_35: url('../img/social/myspace.png');
+$url_36: url('../img/social/quora.png');
+
+//@extend-elements
+//original selectors
+//.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active
+%extend_1 {
+  color: $white;
+  background-color: $color_steel_blue_approx;
+  border-color: $color_st_tropaz_approx;
+}
+
+//original selectors
+//.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active
+%extend_2 {
+  color: $white;
+  background-color: $color_keppel_approx;
+  border-color: $color_paradiso_approx;
+}
+
+//original selectors
+//.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active
+%extend_3 {
+  color: $white;
+  background-color: $color_malibu_approx;
+  border-color: $color_picton_blue_approx;
+}
+
+//original selectors
+//.btn-warning:hover, .btn-warning:focus, .btn-warning:active, .btn-warning.active
+%extend_4 {
+  color: $white;
+  background-color: $color_golden_grass_approx;
+  border-color: $color_marigold_approx;
+}
+
+//original selectors
+//.btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active
+%extend_5 {
+  color: $white;
+  background-color: $color_coral_red_approx;
+  border-color: $color_torch_red_approx;
+}
+
+
+div {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+input {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+select {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+textarea {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+span {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+img {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+table {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+label {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+td {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+th {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+p {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+a {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+  outline: 0;
+  &:focus {
+    outline: 0;
+  }
+  &:hover {
+    outline: 0;
+  }
+  &:active {
+    outline: 0;
+  }
+}
+button {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+ul {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+code {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+pre {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+li {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0 !important;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+input::-moz-focus-inner {
+  border: 0;
+}
+.btn-primary {
+  color: $white;
+  background-color: $color_boston_blue_approx;
+  border: none;
+  &:hover {
+    @extend %extend_1;
+  }
+  &:focus {
+    @extend %extend_1;
+  }
+  &:active {
+    @extend %extend_1;
+    background-image: none;
+    background-color: $color_jelly_bean_approx;
+    &:hover {
+      background-color: $color_astral_approx;
+    }
+  }
+  &.active {
+    @extend %extend_1;
+    background-image: none;
+    background-color: $color_jelly_bean_approx;
+    &:hover {
+      background-color: $color_astral_approx;
+    }
+  }
+  &.disabled {
+    background-color: $color_boston_blue_approx;
+    border-color: $color_steel_blue_approx;
+    &:hover {
+      background-color: $color_boston_blue_approx;
+      border-color: $color_steel_blue_approx;
+    }
+    &:focus {
+      background-color: $color_boston_blue_approx;
+      border-color: $color_steel_blue_approx;
+    }
+    &:active {
+      background-color: $color_boston_blue_approx;
+      border-color: $color_steel_blue_approx;
+    }
+    &.active {
+      background-color: $color_boston_blue_approx;
+      border-color: $color_steel_blue_approx;
+    }
+  }
+  .badge {
+    color: $color_boston_blue_approx;
+    background-color: $white;
+  }
+}
+.open {
+  .btn-primary.dropdown-toggle {
+    color: $white;
+    background-color: $color_steel_blue_approx;
+    border-color: $color_st_tropaz_approx;
+    background-image: none;
+  }
+  .btn-success.dropdown-toggle {
+    color: $white;
+    background-color: $color_keppel_approx;
+    border-color: $color_paradiso_approx;
+    background-image: none;
+  }
+  .btn-info.dropdown-toggle {
+    color: $white;
+    background-color: $color_malibu_approx;
+    border-color: $color_picton_blue_approx;
+    background-image: none;
+  }
+  .btn-warning.dropdown-toggle {
+    color: $white;
+    background-color: $color_golden_grass_approx;
+    border-color: $color_marigold_approx;
+    background-image: none;
+  }
+  .btn-danger.dropdown-toggle {
+    color: $white;
+    background-color: $color_coral_red_approx;
+    border-color: $color_torch_red_approx;
+    background-image: none;
+  }
+}
+.btn-primary[disabled] {
+  background-color: $color_boston_blue_approx;
+  border-color: $color_steel_blue_approx;
+  &:hover {
+    background-color: $color_boston_blue_approx;
+    border-color: $color_steel_blue_approx;
+  }
+  &:focus {
+    background-color: $color_boston_blue_approx;
+    border-color: $color_steel_blue_approx;
+  }
+  &:active {
+    background-color: $color_boston_blue_approx;
+    border-color: $color_steel_blue_approx;
+  }
+  &.active {
+    background-color: $color_boston_blue_approx;
+    border-color: $color_steel_blue_approx;
+  }
+}
+fieldset[disabled] {
+  .btn-primary {
+    background-color: $color_boston_blue_approx;
+    border-color: $color_steel_blue_approx;
+    &:hover {
+      background-color: $color_boston_blue_approx;
+      border-color: $color_steel_blue_approx;
+    }
+    &:focus {
+      background-color: $color_boston_blue_approx;
+      border-color: $color_steel_blue_approx;
+    }
+    &:active {
+      background-color: $color_boston_blue_approx;
+      border-color: $color_steel_blue_approx;
+    }
+    &.active {
+      background-color: $color_boston_blue_approx;
+      border-color: $color_steel_blue_approx;
+    }
+  }
+  .btn-success {
+    background-color: $color_puerto_rico_approx;
+    border-color: $color_keppel_approx;
+    &:hover {
+      background-color: $color_puerto_rico_approx;
+      border-color: $color_keppel_approx;
+    }
+    &:focus {
+      background-color: $color_puerto_rico_approx;
+      border-color: $color_keppel_approx;
+    }
+    &:active {
+      background-color: $color_puerto_rico_approx;
+      border-color: $color_keppel_approx;
+    }
+    &.active {
+      background-color: $color_puerto_rico_approx;
+      border-color: $color_keppel_approx;
+    }
+  }
+  .btn-info {
+    background-color: $color_jordy_blue_approx;
+    border-color: $color_malibu_approx;
+    &:hover {
+      background-color: $color_jordy_blue_approx;
+      border-color: $color_malibu_approx;
+    }
+    &:focus {
+      background-color: $color_jordy_blue_approx;
+      border-color: $color_malibu_approx;
+    }
+    &:active {
+      background-color: $color_jordy_blue_approx;
+      border-color: $color_malibu_approx;
+    }
+    &.active {
+      background-color: $color_jordy_blue_approx;
+      border-color: $color_malibu_approx;
+    }
+  }
+  .btn-warning {
+    background-color: $color_anzac_approx;
+    border-color: $color_old_gold_approx;
+    &:hover {
+      background-color: $color_anzac_approx;
+      border-color: $color_old_gold_approx;
+    }
+    &:focus {
+      background-color: $color_anzac_approx;
+      border-color: $color_old_gold_approx;
+    }
+    &:active {
+      background-color: $color_anzac_approx;
+      border-color: $color_old_gold_approx;
+    }
+    &.active {
+      background-color: $color_anzac_approx;
+      border-color: $color_old_gold_approx;
+    }
+  }
+  .btn-danger {
+    background-color: $color_carnation_approx;
+    border-color: $color_coral_red_approx;
+    &:hover {
+      background-color: $color_carnation_approx;
+      border-color: $color_coral_red_approx;
+    }
+    &:focus {
+      background-color: $color_carnation_approx;
+      border-color: $color_coral_red_approx;
+    }
+    &:active {
+      background-color: $color_carnation_approx;
+      border-color: $color_coral_red_approx;
+    }
+    &.active {
+      background-color: $color_carnation_approx;
+      border-color: $color_coral_red_approx;
+    }
+  }
+}
+.btn-success {
+  color: $white;
+  background-color: $color_puerto_rico_approx;
+  border-color: $color_keppel_approx;
+  &:hover {
+    @extend %extend_2;
+  }
+  &:focus {
+    @extend %extend_2;
+  }
+  &:active {
+    @extend %extend_2;
+    background-image: none;
+    background-color: $color_lochinvar_approx;
+    &:hover {
+      background-color: $color_lochinvar_approx;
+    }
+  }
+  &.active {
+    @extend %extend_2;
+    background-image: none;
+    background-color: $color_lochinvar_approx;
+    &:hover {
+      background-color: $color_lochinvar_approx;
+    }
+  }
+  &.disabled {
+    background-color: $color_puerto_rico_approx;
+    border-color: $color_keppel_approx;
+    &:hover {
+      background-color: $color_puerto_rico_approx;
+      border-color: $color_keppel_approx;
+    }
+    &:focus {
+      background-color: $color_puerto_rico_approx;
+      border-color: $color_keppel_approx;
+    }
+    &:active {
+      background-color: $color_puerto_rico_approx;
+      border-color: $color_keppel_approx;
+    }
+    &.active {
+      background-color: $color_puerto_rico_approx;
+      border-color: $color_keppel_approx;
+    }
+  }
+  .badge {
+    color: $color_puerto_rico_approx;
+    background-color: $white;
+  }
+}
+.btn-success[disabled] {
+  background-color: $color_puerto_rico_approx;
+  border-color: $color_keppel_approx;
+  &:hover {
+    background-color: $color_puerto_rico_approx;
+    border-color: $color_keppel_approx;
+  }
+  &:focus {
+    background-color: $color_puerto_rico_approx;
+    border-color: $color_keppel_approx;
+  }
+  &:active {
+    background-color: $color_puerto_rico_approx;
+    border-color: $color_keppel_approx;
+  }
+  &.active {
+    background-color: $color_puerto_rico_approx;
+    border-color: $color_keppel_approx;
+  }
+}
+.btn-info {
+  color: $white;
+  background-color: $color_jordy_blue_approx;
+  border-color: $color_malibu_approx;
+  &:hover {
+    @extend %extend_3;
+  }
+  &:focus {
+    @extend %extend_3;
+  }
+  &:active {
+    @extend %extend_3;
+    background-image: none;
+    background-color: $color_picton_blue_approx;
+    &:hover {
+      background-color: $color_picton_blue_approx;
+    }
+  }
+  &.active {
+    @extend %extend_3;
+    background-image: none;
+    background-color: $color_picton_blue_approx;
+    &:hover {
+      background-color: $color_picton_blue_approx;
+    }
+  }
+  &.disabled {
+    background-color: $color_jordy_blue_approx;
+    border-color: $color_malibu_approx;
+    &:hover {
+      background-color: $color_jordy_blue_approx;
+      border-color: $color_malibu_approx;
+    }
+    &:focus {
+      background-color: $color_jordy_blue_approx;
+      border-color: $color_malibu_approx;
+    }
+    &:active {
+      background-color: $color_jordy_blue_approx;
+      border-color: $color_malibu_approx;
+    }
+    &.active {
+      background-color: $color_jordy_blue_approx;
+      border-color: $color_malibu_approx;
+    }
+  }
+  .badge {
+    color: $color_jordy_blue_approx;
+    background-color: $white;
+  }
+}
+.btn-info[disabled] {
+  background-color: $color_jordy_blue_approx;
+  border-color: $color_malibu_approx;
+  &:hover {
+    background-color: $color_jordy_blue_approx;
+    border-color: $color_malibu_approx;
+  }
+  &:focus {
+    background-color: $color_jordy_blue_approx;
+    border-color: $color_malibu_approx;
+  }
+  &:active {
+    background-color: $color_jordy_blue_approx;
+    border-color: $color_malibu_approx;
+  }
+  &.active {
+    background-color: $color_jordy_blue_approx;
+    border-color: $color_malibu_approx;
+  }
+}
+.btn-warning {
+  color: $white;
+  background-color: $color_anzac_approx;
+  border-color: $color_old_gold_approx;
+  &:hover {
+    @extend %extend_4;
+  }
+  &:focus {
+    @extend %extend_4;
+  }
+  &:active {
+    @extend %extend_4;
+    background-image: none;
+    background-color: $color_nugget_approx;
+    &:hover {
+      background-color: $color_hokey_pokey_approx;
+    }
+  }
+  &.active {
+    @extend %extend_4;
+    background-image: none;
+    background-color: $color_nugget_approx;
+    &:hover {
+      background-color: $color_hokey_pokey_approx;
+    }
+  }
+  &.disabled {
+    background-color: $color_anzac_approx;
+    border-color: $color_old_gold_approx;
+    &:hover {
+      background-color: $color_anzac_approx;
+      border-color: $color_old_gold_approx;
+    }
+    &:focus {
+      background-color: $color_anzac_approx;
+      border-color: $color_old_gold_approx;
+    }
+    &:active {
+      background-color: $color_anzac_approx;
+      border-color: $color_old_gold_approx;
+    }
+    &.active {
+      background-color: $color_anzac_approx;
+      border-color: $color_old_gold_approx;
+    }
+  }
+  .badge {
+    color: $color_anzac_approx;
+    background-color: $white;
+  }
+}
+.btn-warning[disabled] {
+  background-color: $color_anzac_approx;
+  border-color: $color_old_gold_approx;
+  &:hover {
+    background-color: $color_anzac_approx;
+    border-color: $color_old_gold_approx;
+  }
+  &:focus {
+    background-color: $color_anzac_approx;
+    border-color: $color_old_gold_approx;
+  }
+  &:active {
+    background-color: $color_anzac_approx;
+    border-color: $color_old_gold_approx;
+  }
+  &.active {
+    background-color: $color_anzac_approx;
+    border-color: $color_old_gold_approx;
+  }
+}
+.btn-danger {
+  color: $white;
+  background-color: $color_carnation_approx;
+  border-color: $color_coral_red_approx;
+  &:hover {
+    @extend %extend_5;
+  }
+  &:focus {
+    @extend %extend_5;
+  }
+  &:active {
+    @extend %extend_5;
+    background-image: none;
+    background-color: $color_alizarin_crimson_approx;
+    &:hover {
+      background-color: $color_alizarin_crimson_approx;
+    }
+  }
+  &.active {
+    @extend %extend_5;
+    background-image: none;
+    background-color: $color_alizarin_crimson_approx;
+    &:hover {
+      background-color: $color_alizarin_crimson_approx;
+    }
+  }
+  &.disabled {
+    background-color: $color_carnation_approx;
+    border-color: $color_coral_red_approx;
+    &:hover {
+      background-color: $color_carnation_approx;
+      border-color: $color_coral_red_approx;
+    }
+    &:focus {
+      background-color: $color_carnation_approx;
+      border-color: $color_coral_red_approx;
+    }
+    &:active {
+      background-color: $color_carnation_approx;
+      border-color: $color_coral_red_approx;
+    }
+    &.active {
+      background-color: $color_carnation_approx;
+      border-color: $color_coral_red_approx;
+    }
+  }
+  .badge {
+    color: $color_carnation_approx;
+    background-color: $white;
+  }
+}
+.btn-danger[disabled] {
+  background-color: $color_carnation_approx;
+  border-color: $color_coral_red_approx;
+  &:hover {
+    background-color: $color_carnation_approx;
+    border-color: $color_coral_red_approx;
+  }
+  &:focus {
+    background-color: $color_carnation_approx;
+    border-color: $color_coral_red_approx;
+  }
+  &:active {
+    background-color: $color_carnation_approx;
+    border-color: $color_coral_red_approx;
+  }
+  &.active {
+    background-color: $color_carnation_approx;
+    border-color: $color_coral_red_approx;
+  }
+}
+.social-icons {
+  padding: 0;
+  margin: 0;
+  &:before {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+  li {
+    float: left;
+    display: inline;
+    list-style: none;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    text-indent: -9999px;
+    > a {
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 2px;
+      width: 28px;
+      height: 28px;
+      display: block;
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+      transition: all 0.3s ease-in-out;
+    }
+    .amazon {
+      background: $url_0 no-repeat;
+    }
+    .behance {
+      background: $url_1 no-repeat;
+    }
+    .blogger {
+      background: $url_2 no-repeat;
+    }
+    .deviantart {
+      background: $url_3 no-repeat;
+    }
+    .dribbble {
+      background: $url_4 no-repeat;
+    }
+    .dropbox {
+      background: $url_5 no-repeat;
+    }
+    .evernote {
+      background: $url_6 no-repeat;
+    }
+    .facebook {
+      background: $url_7 no-repeat;
+    }
+    .forrst {
+      background: $url_8 no-repeat;
+    }
+    .github {
+      background: $url_9 no-repeat;
+    }
+    .googleplus {
+      background: $url_10 no-repeat;
+    }
+    .jolicloud {
+      background: $url_11 no-repeat;
+    }
+    .last-fm {
+      background: $url_12 no-repeat;
+    }
+    .linkedin {
+      background: $url_13 no-repeat;
+    }
+    .picasa {
+      background: $url_14 no-repeat;
+    }
+    .pintrest {
+      background: $url_15 no-repeat;
+    }
+    .rss {
+      background: $url_16 no-repeat;
+    }
+    .skype {
+      background: $url_17 no-repeat;
+    }
+    .spotify {
+      background: $url_18 no-repeat;
+    }
+    .stumbleupon {
+      background: $url_19 no-repeat;
+    }
+    .tumblr {
+      background: $url_20 no-repeat;
+    }
+    .twitter {
+      background: $url_21 no-repeat;
+    }
+    .vimeo {
+      background: $url_22 no-repeat;
+    }
+    .wordpress {
+      background: $url_23 no-repeat;
+    }
+    .xing {
+      background: $url_24 no-repeat;
+    }
+    .yahoo {
+      background: $url_25 no-repeat;
+    }
+    .youtube {
+      background: $url_26 no-repeat;
+    }
+    .vk {
+      background: $url_27 no-repeat;
+    }
+    .instagram {
+      background: $url_28 no-repeat;
+    }
+    .reddit {
+      background: $url_29 no-repeat;
+    }
+    .aboutme {
+      background: $url_30 no-repeat;
+    }
+    .flickr {
+      background: $url_31 no-repeat;
+    }
+    .foursquare {
+      background: $url_32 no-repeat;
+    }
+    .gravatar {
+      background: $url_33 no-repeat;
+    }
+    .klout {
+      background: $url_34 no-repeat;
+    }
+    .myspace {
+      background: $url_35 no-repeat;
+    }
+    .quora {
+      background: $url_36 no-repeat;
+    }
+    &:hover > a {
+      background-position: 0 -38px;
+    }
+  }
+  &.social-icons-color > li > a {
+    opacity: 0.7;
+    background-position: 0 -38px !important;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &.social-icons-circle > li > a {
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 25px !important;
+  }
+}
+.social-icon {
+  display: inline-block !important;
+  width: 28px;
+  height: 28px;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 2px;
+  //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+  transition: all 0.3s ease-in-out;
+  &.social-icon-circle {
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 25px !important;
+  }
+  &.amazon {
+    background: $url_0 no-repeat;
+  }
+  &.behance {
+    background: $url_1 no-repeat;
+  }
+  &.blogger {
+    background: $url_2 no-repeat;
+  }
+  &.deviantart {
+    background: $url_3 no-repeat;
+  }
+  &.dribbble {
+    background: $url_4 no-repeat;
+  }
+  &.dropbox {
+    background: $url_5 no-repeat;
+  }
+  &.evernote {
+    background: $url_6 no-repeat;
+  }
+  &.facebook {
+    background: $url_7 no-repeat;
+  }
+  &.forrst {
+    background: $url_8 no-repeat;
+  }
+  &.github {
+    background: $url_9 no-repeat;
+  }
+  &.googleplus {
+    background: $url_10 no-repeat;
+  }
+  &.jolicloud {
+    background: $url_11 no-repeat;
+  }
+  &.last-fm {
+    background: $url_12 no-repeat;
+  }
+  &.linkedin {
+    background: $url_13 no-repeat;
+  }
+  &.picasa {
+    background: $url_14 no-repeat;
+  }
+  &.pintrest {
+    background: $url_15 no-repeat;
+  }
+  &.rss {
+    background: $url_16 no-repeat;
+  }
+  &.skype {
+    background: $url_17 no-repeat;
+  }
+  &.spotify {
+    background: $url_18 no-repeat;
+  }
+  &.stumbleupon {
+    background: $url_19 no-repeat;
+  }
+  &.tumblr {
+    background: $url_20 no-repeat;
+  }
+  &.twitter {
+    background: $url_21 no-repeat;
+  }
+  &.vimeo {
+    background: $url_22 no-repeat;
+  }
+  &.wordpress {
+    background: $url_23 no-repeat;
+  }
+  &.xing {
+    background: $url_24 no-repeat;
+  }
+  &.yahoo {
+    background: $url_25 no-repeat;
+  }
+  &.youtube {
+    background: $url_26 no-repeat;
+  }
+  &.vk {
+    background: $url_27 no-repeat;
+  }
+  &.instagram {
+    background: $url_28 no-repeat;
+  }
+  &.reddit {
+    background: $url_29 no-repeat;
+  }
+  &.aboutme {
+    background: $url_30 no-repeat;
+  }
+  &.flickr {
+    background: $url_31 no-repeat;
+  }
+  &.foursquare {
+    background: $url_32 no-repeat;
+  }
+  &.gravatar {
+    background: $url_33 no-repeat;
+  }
+  &.klout {
+    background: $url_34 no-repeat;
+  }
+  &.myspace {
+    background: $url_35 no-repeat;
+  }
+  &.quora {
+    background: $url_36 no-repeat;
+  }
+  &:hover {
+    background-position: 0 -38px;
+  }
+}
+.social-icon-color {
+  opacity: 0.7;
+  background-position: 0 -38px !important;
+  &:hover {
+    opacity: 1;
+  }
+}

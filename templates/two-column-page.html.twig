@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% import 'macros.html.twig' as macros %}
+
+{% block bodyContent %}
+    <main class="main">
+        <div class="container">
+            {% block breadCrumb %}
+                <nav class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    {% block breadCrumbItems %}
+                        <li><a href="javascript:;">Service Index</a></li>
+                        <li class="active"></li>
+                    {% endblock breadCrumbItems %}
+                </nav>
+            {% endblock breadCrumb %}
+
+            <div class="row margin-bottom-40">
+                <div class="col-md-12 col-sm-12">
+                    <div class="content-page">
+                        <header>
+                            <h1 class="pageTitle">
+                                {% block indexPageTitle %}ADD ME block indexPageTitle{% endblock %}
+                            </h1>
+                            {% block pageSubHeading %}
+
+                            {% endblock pageSubHeading %}
+                        </header>
+                        <div class="row margin-bottom-40">
+                            <section class="{% block leftColumnClass %}col-sm-9 col-xs-12{% endblock %}">
+                                {% block leftColumn %}
+
+                                {% endblock %}
+                            </section>
+                            <div class="{% block rightColumnClass %}col-sm-3 hidden-xs-down{% endblock %}">
+                                {% block rightColumn %}
+
+                                {% endblock %}
+                            </div>
+                        </div>
+                        {% block bodyBottomContent %}
+
+                        {% endblock bodyBottomContent %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

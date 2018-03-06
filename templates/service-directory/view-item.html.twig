@@ -1,4 +1,4 @@
-{% extends 'section-item.html.twig' %}
+{% extends 'two-column-page.html.twig' %}
 {% import 'macros.html.twig' as macros %}
 
 {% block socialMetaData %}
@@ -13,20 +13,30 @@
     ) }}
 {% endblock socialMetaData %}
 
-{% block breadcrumbEntry %}{{ site.websiteName }}{% endblock breadcrumbEntry %}
+{% block breadCrumbItems %}
+    <li><a href="javascript:;">Service Index</a></li>
+    <li class="active">{% block breadcrumbEntry %}{{ site.websiteName }}{% endblock breadcrumbEntry %}</li>
+{% endblock breadCrumbItems %}
 
 {% block indexPageTitle %}{{ site.websiteName }} <small>Service Review</small>{% endblock indexPageTitle %}
-{% block sectionSummary %}
-    YourWeb.online reviews cryptocurrency services such as {{ site.websiteName }}. YourWeb nor the author of this
-    article represent {{ site.websiteName }}, and are not responsible or liable for any negative outcome that may
-    result from using any of the services in or directory including {{ site.websiteName }}.
-{% endblock sectionSummary %}
-{% block sectionSummaryRight %}
-    We do commit to providing our visitors with honest and accurate details
-    about the services we review in an effort to arm you, the visitor with
-    the tools you need to make good decisions about the crypto-services you use.
-{% endblock sectionSummaryRight %}
-{% block indexBody %}
+
+{% block pageSubHeading %}
+    <p class="section-summary col-md-5">
+        YourWeb.online reviews cryptocurrency services such as {{ site.websiteName }}. YourWeb nor the author of this
+        article represent {{ site.websiteName }}, and are not responsible or liable for any negative outcome that may
+        result from using any of the services in or directory including {{ site.websiteName }}.
+    </p>
+
+    <p class="section-summary col-md-5">
+        We do commit to providing our visitors with honest and accurate details
+        about the services we review in an effort to arm you, the visitor with
+        the tools you need to make good decisions about the crypto-services you use.
+    </p>
+{% endblock pageSubHeading %}
+
+
+
+{% block leftColumn %}
 
 <div class="row site-review-article">
     <div class="col-md-7">
@@ -49,11 +59,11 @@
             </div>
             <ul class="col-md-12 review-site-summary">
                <li><h6>Is {{ site.websiteName }} a scam?</h6></li>
-                <li><span>Website Rating</span> {{ site.myRecommendation }}</li>
-                <li><span>Website Status</span>
-                   <span class="{{ macros.writeStatusClass(site.websiteStatus) }}">
+                <li class="clearfix"><span>Website Rating</span> <p>{{ site.myRecommendation }}</p></li>
+                <li class="clearfix"><span>Website Status</span>
+                   <p class="{{ macros.writeStatusClass(site.websiteStatus) }}">
                         {{ site.websiteStatus|readable_enum }}
-                   </span>
+                   </p>
                </li>
 
             </ul>
@@ -61,9 +71,18 @@
     </div>
 </div>
 
-{% endblock %}
+{% endblock leftColumn %}
 
 
-{% block sideBar %}
+{% block rightColumn %}
 
-{% endblock %}
+{% endblock rightColumn %}
+
+{% block bodyBottomContent %}
+    <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-6">{{ macros.displaySquare() }}</div>
+        <div class="col-md-3 col-sm-4 col-xs-6" >{{ macros.displaySquare() }}</div>
+        <div class="col-md-3 col-sm-4 hidden-xs">{{ macros.displaySquare() }}</div>
+        <div class="col-md-3 hidden-sm">{{ macros.displaySquare() }}</div>
+    </div>
+{% endblock bodyBottomContent %}

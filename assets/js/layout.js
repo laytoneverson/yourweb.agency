@@ -122,7 +122,6 @@ module.exports = function () {
     }
 
     var handleSearch = function() {
-        return;
         $('.search-btn').click(function () {
             if($('.search-btn').hasClass('show-search-icon')){
                 if ($(window).width()>767) {
@@ -142,7 +141,7 @@ module.exports = function () {
         });
 
         // close search box on body click
-        if($('.search-btn').size() != 0) {
+        if($('.search-btn').length() != 0) {
             $('.search-box, .search-btn').on('click', function(e){
                 e.stopPropagation();
             });
@@ -236,7 +235,7 @@ module.exports = function () {
                 type: 'iframe'
             });
         }
-    }
+    };
 
     // Handles Bootstrap Accordions.
     var handleAccordions = function () {
@@ -245,7 +244,7 @@ module.exports = function () {
             Layout.scrollTo($(e.target), -100);
         });
         
-    }
+    };
 
     // Handles Bootstrap Tabs.
     var handleTabs = function () {
@@ -259,7 +258,7 @@ module.exports = function () {
             var tabid = location.hash.substr(1);
             $('a[href="#' + tabid + '"]').click();
         }
-    }
+    };
 
     var handleMobiToggler = function () {
         $(".mobi-toggler").on("click", function(event) {
@@ -268,36 +267,11 @@ module.exports = function () {
             $(".header").toggleClass("menuOpened");
             $(".header").find(".header-navigation").toggle(300);
         });
-    }
+    };
 
     var handleTheme = function () {
-    
-        var panel = $('.color-panel');
-    
-        // handle theme colors
-        var setColor = function (color) {
-            $('#style-color').attr("href", "assets/corporate/css/themes/" + color + ".css");
-            $('.corporate .site-logo img').attr("src", "assets/corporate/img/logos/logo-corp-" + color + ".png");
-            $('.ecommerce .site-logo img').attr("src", "assets/corporate/img/logos/logo-shop-" + color + ".png");
-        }
-
-        $('.icon-color', panel).click(function () {
-            $('.color-mode').show();
-            $('.icon-color-close').show();
-        });
-
-        $('.icon-color-close', panel).click(function () {
-            $('.color-mode').hide();
-            $('.icon-color-close').hide();
-        });
-
-        $('li', panel).click(function () {
-            var color = $(this).attr("data-style");
-            setColor(color);
-            $('.inline li', panel).removeClass("current");
-            $(this).addClass("current");
-        });
-    }
+        return;
+    };
 	
     return {
         init: function () {
@@ -312,6 +286,7 @@ module.exports = function () {
             handleSidebarMenu();
             handleAccordions();
             handleMenu();
+            handleTabs();
             handleScrollers();
             handleSubMenuExt();
             handleMobiToggler();
@@ -331,9 +306,10 @@ module.exports = function () {
         },
 
         initTwitter: function () {
-            !function(d,s,id){
-                var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}
-            }(document,"script","twitter-wjs");
+            !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");
+            // !function(d,s,id){
+            //     var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}
+            // }(document,"script","twitter-wjs");
         },
 
         initTouchspin: function () {

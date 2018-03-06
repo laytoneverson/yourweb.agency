@@ -1,3 +1,4 @@
+@import "partials/component_base";
 
 @import "variables/colors";
 @import "variables/fonts";
@@ -11,21 +12,22 @@
 
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
-@import "partials/content_boxes";
-@import "partials/buttons";
-@import "partials/browser_frame";
-@import "partials/base_elements";
-@import "partials/service_box";
-
 @import "style";
-@import "global-custom";
+@import "responsive";
 
 @import "pages/service_directory";
 @import "pages/site_review_article";
 @import "pages/website_icon";
 @import "pages/home";
 
+@import "partials/animate";
+@import "partials/content_boxes";
+@import "partials/buttons";
+@import "partials/browser_frame";
+@import "partials/base_elements";
+@import "partials/service_box";
+@import "partials/card";
 
-
+@import "partials/green_theme";
 
 

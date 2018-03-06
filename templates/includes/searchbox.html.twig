@@ -1,14 +1,27 @@
-<li class="menu-search">
+
+<li class="menu-search" style="display: none;">
     <span class="sep"></span>
     <i class="fa fa-search search-btn"></i>
     <div class="search-box">
-        <form action="#">
-            <div class="input-group">
-                <input type="text" placeholder="Search" class="form-control">
-                <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                </span>
-            </div>
-        </form>
+        <script>
+            (function() {
+                var cx = '004086048178092861879:v4hnoqiiahy';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+            })();
+        </script>
+
+        {#<form action="{{ path('search') }}" method="get">#}
+            {#<div class="input-group">#}
+                {#<input type="text" placeholder="Search" class="form-control" name="s">#}
+                {#<span class="input-group-btn">#}
+                    {#<button class="btn btn-primary" type="submit">Search</button>#}
+                {#</span>#}
+            {#</div>#}
+        {#</form>#}
     </div>
 </li>
