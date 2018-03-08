@@ -18,4 +18,5 @@ return [
     Fresh\DoctrineEnumBundle\FreshDoctrineEnumBundle::class => ['all' => true],
     Presta\SitemapBundle\PrestaSitemapBundle::class => ['all' => true],
     Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle::class => ['all' => true],
+    Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
 ];

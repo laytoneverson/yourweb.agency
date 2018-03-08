@@ -128,6 +128,12 @@ class Website
      */
     private $slug;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\OutboundLinkUrl", mappedBy="website")
+     * @var OutboundLinkUrl
+     */
+    private $outboundLinkUrl;
+
     public function getWebsiteFriendlyUrl($scheme = "http://"): string
     {
         $url = $this->getWebsiteUrl();
@@ -575,4 +581,22 @@ class Website
 
         return $this;
     }
+
+    /**
+     * @return OutboundLinkUrl
+     */
+    public function getOutboundLinkUrl(): OutboundLinkUrl
+    {
+        return $this->outboundLinkUrl;
+    }
+
+    /**
+     * @param OutboundLinkUrl $outboundLinkUrl
+     */
+    public function setOutboundLinkUrl(OutboundLinkUrl $outboundLinkUrl): void
+    {
+        $this->outboundLinkUrl = $outboundLinkUrl;
+    }
+
+
 }

@@ -4,3 +4,4 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         review_site_service: '@App\Service\CryptoCurrencySiteService'
+        exit_link_service: '@App\Service\OutboundLinkService'

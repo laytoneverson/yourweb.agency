@@ -34,30 +34,29 @@
     </p>
 {% endblock pageSubHeading %}
 
-
-
 {% block leftColumn %}
 
 <div class="row site-review-article">
     <div class="col-md-7">
-        <div class="article-content">
-            <h3>{{ site.websiteName }} Details</h3>
+        <div class="col-md-12 article-content margin-bottom-40">
+            <h3>Summary of {{ site.websiteName }}</h3>
             {{ site.websiteSummary|markdown }}
-            <h3>More Details</h3>
             {{ site.websiteReview|markdown }}
         </div>
+        <div class="col-md-12">{{ macros.displayRegularBanner() }}</div>
     </div>
     <div class="col-md-5">
         <div class="row">
             <div class="col-md-12 website-image">
+                {% set linkUrl = exit_link_service.serviceDirectorySiteLink(site) %}
                 {{ macros.browserImageFrame(
-                    "http://" ~ site.websiteImageUrl,
+                    "https://" ~ site.websiteImageUrl,
                     "Screen Shot Of " ~ site.websiteName,
-                    site.websiteUrl,
+                    linkUrl,
                     site.websiteFriendlyUrl
                 ) }}
             </div>
-            <ul class="col-md-12 review-site-summary">
+            <ul class="col-md-12 review-site-summary margin-bottom-40">
                <li><h6>Is {{ site.websiteName }} a scam?</h6></li>
                 <li class="clearfix"><span>Website Rating</span> <p>{{ site.myRecommendation }}</p></li>
                 <li class="clearfix"><span>Website Status</span>
@@ -65,8 +64,8 @@
                         {{ site.websiteStatus|readable_enum }}
                    </p>
                </li>
-
             </ul>
+            <div class="col-md-12">{{ macros.displayHalfBanner() }}</div>
         </div>
     </div>
 </div>
@@ -75,14 +74,20 @@
 
 
 {% block rightColumn %}
-
+    <div class="col-md-12 margin-bottom-40">
+        {{ macros.displaySquare() }}
+    </div>
+    <div class="col-md-12 margin-bottom-40">
+        {{ macros.displaySquare() }}
+    </div>
+    <div class="col-md-12 margin-bottom-40">
+        {{ macros.displaySquare() }}
+    </div>
 {% endblock rightColumn %}
 
 {% block bodyBottomContent %}
     <div class="row">
-        <div class="col-md-3 col-sm-4 col-xs-6">{{ macros.displaySquare() }}</div>
-        <div class="col-md-3 col-sm-4 col-xs-6" >{{ macros.displaySquare() }}</div>
-        <div class="col-md-3 col-sm-4 hidden-xs">{{ macros.displaySquare() }}</div>
-        <div class="col-md-3 hidden-sm">{{ macros.displaySquare() }}</div>
+        <div class="col-md-6 col-sm-12">{{ macros.displayRegularBanner() }}</div>
+        <div class="col-md-6 hidden-sm" >{{ macros.displayRegularBanner() }}</div>
     </div>
 {% endblock bodyBottomContent %}

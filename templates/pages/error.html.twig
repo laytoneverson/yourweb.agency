@@ -1,0 +1,31 @@
+{% extends 'two-column-page.html.twig' %}
+
+{% import 'macros.html.twig' as macros %}
+
+{% block indexPageTitle %}Ooooooops, something really, really bad happened...{% endblock %}
+
+{% block leftColumn %}
+    <div class="col-md-12 margin-bottom-40">
+        <h2>There was a problem serving your request.</h2>
+        <p>Please contact our administration with the following details:</p>
+        <p>{{ errorMessage ?: "Unknown Error" }}</p>
+    </div>
+    <div class="col-md-12 text-center">
+        {{ macros.displayRegularBanner() }}
+    </div>
+{% endblock %}
+{% block rightColumn %}
+    <div class="col-md-12 margin-bottom-40">
+        {{ macros.displaySquare() }}
+    </div>
+    <div class="col-md-12 margin-bottom-40">
+        {{ macros.displaySquare() }}
+    </div>
+    <div class="col-md-12 margin-bottom-40">
+        {{ macros.displaySquare() }}
+    </div>
+    <div class="col-md-12 margin-bottom-40">
+        {{ macros.displaySquare() }}
+    </div>
+
+{% endblock %}

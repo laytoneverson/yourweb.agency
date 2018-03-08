@@ -38,9 +38,11 @@
 
 {% macro displayRegularBanner() %}
     {% set randomNumber = random(1000) %}
-    {% if randomNumber <= 334 %}
+    {% if randomNumber <= 250 %}
         {% include 'adverts/banner-468x60-a-ads.html.twig' %}
-    {% elseif randomNumber <= 666 %}
+    {% elseif randomNumber <= 500 %}
+        {% include 'adverts/banner-468x60-wolfinvest.html.twig' %}
+    {% elseif randomNumber <= 750 %}
         {% include 'adverts/banner-468x60-coinhits.html.twig' %}
     {% else %}
         {% include 'adverts/banner-468x60-google.html.twig' %}
@@ -60,12 +62,14 @@
 
 {% macro displayMediumRectangle() %}
     {% set randomNumber = random(1000) %}
-    {% if randomNumber <= 250 %}
-        {% include 'adverts/medium-rectangle-300x250-coinhits.html.twig' %}
-    {% elseif randomNumber <= 500 %}
-        {% include 'adverts/medium-rectangle-300x250-coin-media.html.twig' %}
-    {% elseif randomNumber <= 750 %}
+    {% if randomNumber <= 200 %}
         {% include 'adverts/medium-rectangle-300x250-aads.html.twig' %}
+    {% elseif randomNumber <= 400 %}
+        {% include 'adverts/medium-rectangle-300x250-coin-media.html.twig' %}
+    {% elseif randomNumber <= 650 %}
+        {% include 'adverts/medium-rectangle-300x250-coinhits.html.twig' %}
+    {% elseif randomNumber <= 800 %}
+        {% include 'adverts/medium-rectangle-300x250-fastdoge.html.twig' %}
     {% else %}
         {% include 'adverts/medium-rectangle-300x250-google.html.twig' %}
     {% endif %}
@@ -73,10 +77,12 @@
 
 {% macro displaySquare() %}
     {% set randomNumber = random(1000) %}
-    {% if randomNumber <= 334 %}
+    {% if randomNumber <= 225 %}
         {% include 'adverts/square-200x200-aads.html.twig' %}
-    {% elseif randomNumber <= 666 %}
+    {% elseif randomNumber <= 500 %}
         {% include 'adverts/square-200x200-coinmedia.html.twig' %}
+    {% elseif randomNumber <= 750 %}
+        {% include 'adverts/square-200x200-blockcext.html.twig' %}
     {% else %}
         {% include 'adverts/square-200x200-utcoinbilders.html.twig' %}
     {% endif %}
